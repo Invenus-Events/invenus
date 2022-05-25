@@ -1,13 +1,13 @@
-package hello.world.demo;
+package club.invenus.invenus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class InvenusApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(InvenusApplication.class, args);
 	}
 
 }

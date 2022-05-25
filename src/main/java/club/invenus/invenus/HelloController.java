@@ -1,4 +1,4 @@
-package hello.world.demo;
+package club.invenus.invenus;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @GetMapping("sayHello")
+    @GetMapping("/sayHello")
     public String sayHello() {
         return "Hello World!";
     }
