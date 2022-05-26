@@ -1,6 +1,6 @@
-name: Invenus Server
+name: Docker Containers
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
@@ -15,7 +15,16 @@ jobs:
           distribution: 'adopt'
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
-      - name: Build with Gradle
+      - name: Build Invenus Server
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
         with:
           arguments: build
+      - name: Unpack Invenus Server Jar
+        run: |
+          mkdir -p build/dependency
+          cd build/dependency
+          jar -xf ../libs/Invenus-0.0.1-SNAPSHOT.jar
+      - name: Build the stack
+        run: docker-compose up -d
+      - name: Test
+        run: docker run --network container:invenus-web appropriate/curl -s --retry 10 --retry-connrefused http://invenus-web:8000/
