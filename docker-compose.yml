@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   sonardb:
+    container_name: sonardb
     image: postgres:latest
     environment:
       POSTGRES_USER: sonar
@@ -10,6 +11,7 @@ services:
       - postgresql_sonar:/var/lib/postgresql
       - postgresql_sonar_data:/var/lib/postgresql/data
   invenusdb:
+    container_name: invenusdb
     image: postgres:latest
     environment:
       POSTGRES_USER: invenus
@@ -19,6 +21,7 @@ services:
       - postgresql_invenus:/var/lib/postgresql
       - postgresql_invenus_data:/var/lib/postgresql/data
   web:
+    container_name: invenus-web
     build:
       context: docker/nginx
       dockerfile: Dockerfile
@@ -28,6 +31,7 @@ services:
     ports:
      - "80:8000"
   sonarqube:
+    container_name: sonarqube
     image: sonarqube:community
     depends_on:
       - sonardb
@@ -40,6 +44,7 @@ services:
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_logs:/opt/sonarqube/logs
   invenus-server:
+    container_name: invenus-server
     build:
       context: .
       dockerfile: docker/invenus-server/Dockerfile
