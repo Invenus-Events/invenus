@@ -27,4 +27,4 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Test
-        run: docker run --network container:invenus-web appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8000/
+        run: docker run --network container:invenus-web appropriate/curl -s --retry 10 --retry-connrefused http://invenus-web:8000/
