@@ -20,6 +20,24 @@ services:
     volumes:
       - postgresql_invenus:/var/lib/postgresql
       - postgresql_invenus_data:/var/lib/postgresql/data
+  minio:
+    container_name: minio
+    hostname: minio
+    image: quay.io/minio/minio:RELEASE.2022-05-26T05-48-41Z
+    command: server /data1 --console-address ":9001"
+    expose:
+      - "9000"
+      - "9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin # todo: change
+      MINIO_ROOT_PASSWORD: minioadmin
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    volumes:
+      - data1:/data1
   web:
     container_name: invenus-web
     build:
@@ -28,6 +46,7 @@ services:
     depends_on:
       - sonarqube
       - invenus-server
+      - minio
     ports:
      - "80:8000"
   sonarqube:
@@ -50,6 +69,7 @@ services:
       dockerfile: docker/invenus-server/Dockerfile
     depends_on:
       - invenusdb
+      - minio
     environment:
       LOG_PATH: /app/logs
     volumes:
@@ -63,3 +83,4 @@ volumes:
   postgresql_invenus:
   postgresql_invenus_data:
   invenus_logs:
+  data1:
