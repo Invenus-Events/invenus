@@ -10,9 +10,9 @@ class MapView extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            lng: 11.5754,
+            lng: 11.5754 - 0.020,
             lat: 48.1374,
-            zoom: 12
+            zoom: 12.5
         };
         this.mapContainer = React.createRef();
     }
@@ -21,7 +21,7 @@ class MapView extends React.PureComponent {
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
-            style: 'mapbox://styles/mapbox/streets-v11',
+            style: 'mapbox://styles/leon-liang/cl3pzciel002d16lawlprcelh',
             center: [lng, lat],
             zoom: zoom
         });
