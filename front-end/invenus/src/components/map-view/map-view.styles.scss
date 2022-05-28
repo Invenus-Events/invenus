@@ -2,3 +2,8 @@
   height: 50vh;
   margin-top: 0;
 }
+
+// remove mapbox logo and info box
+.mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
+  display: none;
+}
