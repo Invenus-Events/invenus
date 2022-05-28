@@ -1,13 +1,5 @@
-* {
-    font-family : "Helvetica Neue";
-    justify-content: center;
-    padding-top: 2px;
-    align-items: center;
-}
-
-h1{
+#title{
     font-size: 15px;
-    color : crimson;
 }
 
 .rootContainer{
@@ -22,12 +14,10 @@ h1{
 .buttons{
     padding-left: 25px;
 }
-
-.btn{
-    margin-left: 10px;
-}
-
-
+//
+//.btn{
+//    margin-left: 10px;
+//}
 
 #eventDetails{
     font-size: 10px;
