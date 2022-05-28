@@ -2,19 +2,56 @@ import React from "react";
 
 import './events-list.styles.scss';
 
-const EventsList = () => {
-    return (
-        <div className='events-list-container'>
-            <h1>Upcoming events.</h1>
-            <input className='events-list-search-field' type="text" placeholder="Search..."/>
-            <div className='events-list-event-listing'>
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+import EventCard from "../event-card/event-card.component";
+
+class EventsList extends React.Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            events: [
+                {
+                    title: "P1 SOMMERFEST 2022",
+                    imageUrl: "https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/Website-Event.jpg",
+                    description: "Freunde und Familie kommen wieder zu einem ganz besonderen Fest zusammen, denn das P1 lädt zum Event-Highlight 2022 ein. Das P1 Sommerfest verschlägt uns in die Weiten des Ozeans: auf Luao Islands. Gemeinsam mit dir erkunden wir den „Aloha Spirit“ mit tropischen Melodien und vielen weiteren Überraschungen!\n"
+                },
+                {
+                    title: "THE SATURDAYS",
+                    imageUrl: "https://www.ruby-danceclub.de/images/club/samstag_head.jpg",
+                    description: "The Club w/ Dominik Muélar – Munich Alexander Heilberger – Munich"
+                },
+                {
+                    title: "Pack Ma’s! – Wiesn 2022",
+                    imageUrl: "https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/P1-Afterwiesn-3.jpg",
+                    description: "Zwei Jahre keine Wiesn, kein Gspusi, kein süffiges Festbier… Doch das Warten hat ein Ende und das größte Volksfest der Welt ist zurück!"
+                },
+                {
+                    title: "PAY ONE DRINK TWO",
+                    imageUrl: "https://www.ruby-danceclub.de/images/club/freitag_head.jpg",
+                    description: "Jeden Freitag: PAY ONE DRINK TWO organized by DOCH DOCH (Ruby Friday Team)"
+                }
+            ]
+        }
+    }
+
+    render() {
+
+        let events = this.state.events.map((event, index) => {
+            return <EventCard key={index} title={event.title} imageUrl={event.imageUrl} description={event.description}/>
+        })
+
+        return (
+            <div className='events-list-container'>
+                <h1>Upcoming events.</h1>
+                <input className='events-list-search-field' type="text" placeholder="Search..."/>
+                <div className='events-list-event-listing'>
+                    { events }
+                </div>
+                <button className='events-list-learn-more-button'>Learn more</button>
             </div>
-            <button className='events-list-learn-more-button'>Learn more</button>
-        </div>
-    )
+        )
+    }
 }
 
 export default EventsList;
