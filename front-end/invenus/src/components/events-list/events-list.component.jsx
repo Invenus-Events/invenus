@@ -32,7 +32,7 @@ class EventsList extends React.Component {
                         {
                             this.props.events.map((event, index) => {
                                 return (
-                                    <InView threshold={this.state.isMobile ? null: 1} key={index} as="div" onChange={(inView, entry) => {
+                                    <InView threshold={this.state.isMobile ? null: 0.75} key={index} as="div" onChange={(inView, entry) => {
                                         if (entry.isIntersecting) {
                                             this.props.getEventInView(index)
                                         }
