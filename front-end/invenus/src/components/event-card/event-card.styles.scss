@@ -3,9 +3,20 @@
 }
 
 .event-card-image {
+  margin-top: 10px;
   width: 100%;
 }
 
 .event-card-description {
-  margin: 15px 0 20px 0;
+  margin-top: 15px;
+}
+
+.event-card-learn-more-button {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px 0 30px 0;
 }

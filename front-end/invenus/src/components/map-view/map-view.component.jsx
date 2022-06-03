@@ -10,31 +10,76 @@ class MapView extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            lng: 11.5754 - 0.020,
-            lat: 48.1374,
-            zoom: 12.5
+            lng: this.props.long,
+            lat: this.props.lat,
+            zoom: 15
         };
         this.mapContainer = React.createRef();
     }
 
+    updateMap(lng, lat) {
+        if (this.state.map) {
+            this.state.map.flyTo({
+                center: [
+                    lng,
+                    lat
+                ],
+                zoom: this.state.zoom,
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.updateMap(this.props.long, this.props.lat);
+    }
+
     componentDidMount() {
-        const { lng, lat, zoom } = this.state;
+        const { zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             style: 'mapbox://styles/leon-liang/cl3pzciel002d16lawlprcelh',
-            center: [lng, lat],
+            center: [this.props.long, this.props.lat],
             zoom: zoom
         });
 
-        map.on('move', () => {
-            this.setState({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2)
-            });
-        });
-    }
+        const features = this.props.events.map((event) => {
+            return  {
+                'type': 'Feature',
+                'properties': {},
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [event.coordinates.long, event.coordinates.lat]
+                }
+            }
+        })
 
+        map.on("load", () => {
+            map.addSource('points', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': features
+                }
+            });
+            map.addLayer({
+                'id': 'points',
+                'type': 'circle',
+                'source': 'points',
+                'paint': {
+                    'circle-color': '#000',
+                    'circle-radius': 6,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff'
+                }
+            });
+        })
+
+
+
+        this.setState(() => ({
+            map
+        }))
+    }
 
     render() {
         return (
