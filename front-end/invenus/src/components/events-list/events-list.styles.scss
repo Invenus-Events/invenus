@@ -3,6 +3,7 @@
   height: 50vh;
   padding: 20px;
   border-radius: 10px;
+  display: flex;
 }
 
 .events-list-search-field {
@@ -16,10 +17,10 @@
 }
 
 .events-list-event-listing {
-  position: relative;
   overflow: scroll;
-  height: 30vh;
+  height: 100%;
   margin: 15px 0;
+  flex-grow: 1;
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none;  /* IE and Edge */

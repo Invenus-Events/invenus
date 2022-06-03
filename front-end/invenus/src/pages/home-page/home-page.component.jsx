@@ -31,7 +31,15 @@ class HomePage extends React.Component {
                         lat: 48.2489
                     }
                 },
-
+                {
+                    title: "Tequila Night 03.06.2022",
+                    imageUrl: "https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg",
+                    description: "🍋TEQUILA NIGHT 🍋",
+                    coordinates: {
+                       long:  6.14137,
+                        lat: 49.61143
+                    }
+                }
             ]
         }
     }
