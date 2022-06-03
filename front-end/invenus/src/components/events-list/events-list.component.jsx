@@ -7,6 +7,21 @@ import EventCard from "../event-card/event-card.component";
 
 class EventsList extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            isMobile: window.innerWidth < 768
+        }
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', () => {
+            this.setState({
+                isMobile: window.innerWidth < 992
+            }, null);
+        })
+    }
+
     render() {
         return (
             <div className='events-list-container'>
@@ -17,7 +32,7 @@ class EventsList extends React.Component {
                         {
                             this.props.events.map((event, index) => {
                                 return (
-                                    <InView key={index} as="div" onChange={(inView, entry) => {
+                                    <InView threshold={this.state.isMobile ? null: 1} key={index} as="div" onChange={(inView, entry) => {
                                         if (entry.isIntersecting) {
                                             this.props.getEventInView(index)
                                         }

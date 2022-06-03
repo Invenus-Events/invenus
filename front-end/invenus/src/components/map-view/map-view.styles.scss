@@ -1,6 +1,18 @@
 .map-container {
-  height: 40vh;
   margin-top: 0;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 40vh;
+}
+@media (min-width: 768px) {
+  .map-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 60%;
+  }
 }
 
 // remove mapbox logo and info box
