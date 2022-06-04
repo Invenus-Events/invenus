@@ -17,7 +17,7 @@ class HomePage extends React.Component {
                     id: 'd1d3c5a6-e91f-4f05-9668-7491a815cb95',
                     title: "P1 SOMMERFEST 2022",
                     imageUrl: "https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/Website-Event.jpg",
-                    description: "Freunde und Familie kommen wieder zu einem ganz besonderen Fest zusammen, denn das P1 lädt zum Event-Highlight 2022 ein. Das P1 Sommerfest verschlägt uns in die Weiten des Ozeans: auf Luao Islands. Gemeinsam mit dir erkunden wir den „Aloha Spirit“ mit tropischen Melodien und vielen weiteren Überraschungen!\n",
+                    description: "Das P1 Sommerfest verschlägt uns in die Weiten des Ozeans: auf Luao Islands. Gemeinsam mit dir erkunden wir den „Aloha Spirit“ mit tropischen Melodien und vielen weiteren Überraschungen!\n",
                     coordinates: {
                         long: 11.5853,
                         lat: 48.1445
