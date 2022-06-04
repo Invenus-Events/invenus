@@ -37,7 +37,7 @@ class EventsList extends React.Component {
                                             this.props.getEventInView(index)
                                         }
                                     }}>
-                                        <EventCard title={event.title} imageUrl={event.imageUrl} description={event.description}/>
+                                        <EventCard eventId={event.id} title={event.title} imageUrl={event.imageUrl} description={event.description}/>
                                     </InView>
                                 )
                             })

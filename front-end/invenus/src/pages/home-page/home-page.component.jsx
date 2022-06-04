@@ -14,6 +14,7 @@ class HomePage extends React.Component {
             eventIndex: 0,
             events: [
                 {
+                    id: 'd1d3c5a6-e91f-4f05-9668-7491a815cb95',
                     title: "P1 SOMMERFEST 2022",
                     imageUrl: "https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/Website-Event.jpg",
                     description: "Freunde und Familie kommen wieder zu einem ganz besonderen Fest zusammen, denn das P1 lädt zum Event-Highlight 2022 ein. Das P1 Sommerfest verschlägt uns in die Weiten des Ozeans: auf Luao Islands. Gemeinsam mit dir erkunden wir den „Aloha Spirit“ mit tropischen Melodien und vielen weiteren Überraschungen!\n",
@@ -23,6 +24,7 @@ class HomePage extends React.Component {
                     }
                 },
                 {
+                    id: '6b2d28f7-283d-481d-bd7a-82f92e042bd0',
                     title: "Pack Ma’s! – Wiesn 2022",
                     imageUrl: "https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/P1-Afterwiesn-3.jpg",
                     description: "Zwei Jahre keine Wiesn, kein Gspusi, kein süffiges Festbier… Doch das Warten hat ein Ende und das größte Volksfest der Welt ist zurück!",
@@ -32,6 +34,7 @@ class HomePage extends React.Component {
                     }
                 },
                 {
+                    id: '57d534a6-09d0-4427-ab98-75c206f98789',
                     title: "Tequila Night 03.06.2022",
                     imageUrl: "https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg",
                     description: "🍋TEQUILA NIGHT 🍋",
@@ -42,6 +45,12 @@ class HomePage extends React.Component {
                 }
             ]
         }
+    }
+
+    componentDidMount() {
+        this.setState(() => ({
+            eventIndex: 0
+        }))
     }
 
     getEventInView = (eventIndex) => {

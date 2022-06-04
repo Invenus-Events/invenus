@@ -1,9 +1,14 @@
 import React from "react";
 
+import { useParams } from "react-router-dom";
+
 import EventHeader from '../../components/event-page-header/event-page-header.component.jsx';
 import EventPageInformationCard from "../../components/event-page-information-card.component/event-page-information-card.component";
 
 const EventPage = () => {
+
+    const { id } = useParams();
+
     const eventExample = {
         genre : "house",
         club : "Enter the Dragon",
@@ -16,7 +21,7 @@ const EventPage = () => {
     <div>
         <div className="">
             <EventHeader event={eventExample}></EventHeader>
-            <EventPageInformationCard title = "What's happening"></EventPageInformationCard>
+            <EventPageInformationCard title = {`EventId ${id}`}></EventPageInformationCard>
         </div>
     </div>
     )
