@@ -28,12 +28,12 @@ class EventsList extends React.Component {
                 <div className='events-list-content'>
                     <h1>Upcoming events.</h1>
                     <input className='events-list-search-field' type="text" placeholder="Search..."/>
-                    <div className='events-list-event-listing'>
+                    <div className={`events-list-event-listing ${this.state.isMobile ? null : 'scroll-snap'}`}>
                         {
                             this.props.events.map((event, index) => {
                                 return (
                                     <InView threshold={this.state.isMobile ? null: 0.75} key={index} as="div" onChange={(inView, entry) => {
-                                        if (entry.isIntersecting) {
+                                        if (entry.isIntersecting && inView) {
                                             this.props.getEventInView(index)
                                         }
                                     }}>

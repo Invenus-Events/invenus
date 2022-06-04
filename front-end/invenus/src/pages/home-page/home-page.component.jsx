@@ -11,6 +11,8 @@ class HomePage extends React.Component {
         super();
 
         this.state = {
+            // accounts for the first setState that shouldn't take place
+            counter: 1,
             eventIndex: 0,
             events: [
                 {
@@ -63,9 +65,18 @@ class HomePage extends React.Component {
     }
 
     getEventInView = (eventIndex) => {
-        this.setState(() => ({
-            eventIndex
-        }))
+        // known bug: on initial load of website, second element is set to InView.
+        // accounting for the first state change that shouldn't take place
+
+        if (this.state.counter > 0) {
+            this.setState((prevState) => ({
+                counter: prevState.counter - 1,
+            }))
+        } else {
+            this.setState(() => ({
+                eventIndex
+            }))
+        }
     }
 
     render() {
