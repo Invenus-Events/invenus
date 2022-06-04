@@ -6,7 +6,7 @@ import './event-card.styles.scss';
 const EventCard = (props) => {
     const { event } = props;
     return (
-    <div>
+    <div className='event-card-container'>
       <h1 className='event-card-title'>{event.title}</h1>
       <p className='event-card-date'>{event.date}</p>
       <p>

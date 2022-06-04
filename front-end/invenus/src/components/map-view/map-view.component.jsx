@@ -5,10 +5,10 @@ import mapboxgl from 'mapbox-gl';
 import './map-view.styles.scss';
 
 // For development
-mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbi1saWFuZyIsImEiOiJja2s2d3B3aGMwM3U1MnZvNDZ1eWRreTBkIn0.v36rtfP7kOlwQQx30MLqdw';
+// mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbi1saWFuZyIsImEiOiJja2s2d3B3aGMwM3U1MnZvNDZ1eWRreTBkIn0.v36rtfP7kOlwQQx30MLqdw';
 
 // For production
-// mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbi1saWFuZyIsImEiOiJjbDNwc2hia2wwNWttM2RtMW0xY29saGNsIn0.z-hk73VMrjx34Hdg2O8S1w';
+mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbi1saWFuZyIsImEiOiJjbDNwc2hia2wwNWttM2RtMW0xY29saGNsIn0.z-hk73VMrjx34Hdg2O8S1w';
 
 class MapView extends React.PureComponent {
     constructor(props) {

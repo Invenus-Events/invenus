@@ -14,19 +14,6 @@ class HomePage extends React.Component {
             eventIndex: 0,
             events: [
                 {
-                    id: '57d534a6-09d0-4427-ab98-75c206f98789',
-                    date: "FRIDAY, JUNE 3, 2022 AT 10:00 PM UTC+02",
-                    club: "Melusina",
-                    organizer: "Melusina",
-                    title: "Tequila Night 03.06.2022",
-                    imageUrl: "https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg",
-                    description: "🍋TEQUILA NIGHT 🍋",
-                    coordinates: {
-                        long:  6.14137,
-                        lat: 49.61143
-                    }
-                },
-                {
                     id: 'd1d3c5a6-e91f-4f05-9668-7491a815cb95',
                     title: "P1 SOMMERFEST 2022",
                     date: "WEDNESDAY, JUNE 22, 2022 AT 10:00 PM UTC+02",
@@ -37,6 +24,19 @@ class HomePage extends React.Component {
                     coordinates: {
                         long: 11.5853,
                         lat: 48.1445
+                    }
+                },
+                {
+                    id: '57d534a6-09d0-4427-ab98-75c206f98789',
+                    date: "FRIDAY, JUNE 3, 2022 AT 10:00 PM UTC+02",
+                    club: "Melusina",
+                    organizer: "Melusina",
+                    title: "Tequila Night 03.06.2022",
+                    imageUrl: "https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg",
+                    description: "🍋TEQUILA NIGHT 🍋",
+                    coordinates: {
+                        long:  6.14137,
+                        lat: 49.61143
                     }
                 },
                 {
