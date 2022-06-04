@@ -25,7 +25,7 @@ const EventCard = (props) => {
       </p>
       <img className='event-card-image' src={event.imageUrl} alt=""/>
       <p className='event-card-description'>{event.description}</p>
-        <Link className='event-card-learn-more-link' to={`/event/${event.eventId}`}>
+        <Link className='event-card-learn-more-link' to={`/event/${event.id}`}>
             <button className='event-card-learn-more-button'>Learn More</button>
         </Link>
     </div>
