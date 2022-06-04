@@ -10,7 +10,7 @@ class EventsList extends React.Component {
     constructor() {
         super();
         this.state = {
-            isMobile: window.innerWidth < 768
+            isMobile: window.innerWidth < 992
         }
     }
 
