@@ -2,6 +2,11 @@
   scroll-snap-align: start;
 }
 
+.event-card-container .container {
+  padding-left: 0;
+  margin-left: 0;
+}
+
 .event-card-title {
   padding-top: 15px;
   font-size: 1.5rem;
@@ -16,24 +21,26 @@
   width: 100%;
 }
 
-.event-card-price {
-  font-size: 2rem;
-  padding-top: 15px;
-  display: inline-block;
-  float: right;
-}
 
 .event-card-description {
   margin-top: 15px;
+  text-align: justify;
 }
 
 .event-card-organizer {
   display: inline-block;
 }
 
+.event-card-price {
+  display: inline-block;
+}
+
+.bi-ticket-perforated-fill {
+  transform: rotate(45deg);
+}
+
 .event-card-club {
   display: inline-block;
-  margin-left: 50px;
 }
 
 .event-card-learn-more-button {
