@@ -50,8 +50,8 @@ class HomePage extends React.Component {
                     imageUrl: "https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/P1-Afterwiesn-3.jpg",
                     description: "Zwei Jahre keine Wiesn, kein Gspusi, kein süffiges Festbier… Doch das Warten hat ein Ende und das größte Volksfest der Welt ist zurück!",
                     coordinates: {
-                        long: 11.6532,
-                        lat: 48.2489
+                        long: 11.5853,
+                        lat: 48.1445
                     }
                 }
             ]
