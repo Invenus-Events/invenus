@@ -5,6 +5,10 @@
 .event-card-title {
   padding-top: 15px;
   font-size: 1.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
 }
 
 .event-card-image {
@@ -12,8 +16,24 @@
   width: 100%;
 }
 
+.event-card-price {
+  font-size: 2rem;
+  padding-top: 15px;
+  display: inline-block;
+  float: right;
+}
+
 .event-card-description {
   margin-top: 15px;
+}
+
+.event-card-organizer {
+  display: inline-block;
+}
+
+.event-card-club {
+  display: inline-block;
+  margin-left: 50px;
 }
 
 .event-card-learn-more-button {

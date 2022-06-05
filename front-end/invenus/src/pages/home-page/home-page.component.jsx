@@ -19,6 +19,7 @@ class HomePage extends React.Component {
                     id: 'd1d3c5a6-e91f-4f05-9668-7491a815cb95',
                     title: "P1 SOMMERFEST 2022",
                     date: "WEDNESDAY, JUNE 22, 2022 AT 10:00 PM UTC+02",
+                    price: 10,
                     club: "P1 Club",
                     organizer: "P1 Club",
                     imageUrl: "https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/Website-Event.jpg",
@@ -31,6 +32,7 @@ class HomePage extends React.Component {
                 {
                     id: '57d534a6-09d0-4427-ab98-75c206f98789',
                     date: "FRIDAY, JUNE 3, 2022 AT 10:00 PM UTC+02",
+                    price: 20,
                     club: "Melusina",
                     organizer: "Melusina",
                     title: "Tequila Night 03.06.2022",
@@ -44,6 +46,7 @@ class HomePage extends React.Component {
                 {
                     id: '6b2d28f7-283d-481d-bd7a-82f92e042bd0',
                     date: "FRIDAY, JULY 1, 2022 AT 10:00 PM UTC+02",
+                    price: 15,
                     club: "P1 Club",
                     organizer: "P1 Club",
                     title: "Pack Ma’s! – Wiesn 2022",
