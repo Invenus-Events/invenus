@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'org.asciidoctor.convert' version '1.5.8'
     id 'java'
+    id 'io.freefair.lombok' version '6.4.3'
 }
 
 group = 'club.invenus'
@@ -23,7 +24,7 @@ repositories {
 
 ext {
     set('snippetsDir', file("build/generated-snippets"))
-    set('springCloudVersion', "2021.0.3-SNAPSHOT")
+    set('springCloudVersion', "2021.0.3")
 }
 
 dependencies {
@@ -38,6 +39,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.postgresql:postgresql'
+
+    implementation 'com.neovisionaries:nv-i18n:1.29'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
