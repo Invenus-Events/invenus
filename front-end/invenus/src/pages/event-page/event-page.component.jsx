@@ -6,6 +6,7 @@ import EventHeader from '../../components/event-page-header/event-page-header.co
 import EventDescriptionCardComponent from "../../components/event-description-card/event-description-card.component";
 import EventMediaCardComponent from "../../components/event-media-card/event-media-card.component";
 import EventClubInformationCardComponent from "../../components/event-club-information-card/event-club-information-card.component";
+import EventLocationCardComponent from "../../components/event-location-card/event-location-card.component";
 // import EventPageInformationCard from "../../components/event-page-information-card.component/event-page-information-card.component";
 
 const EventPage = () => {
@@ -28,6 +29,7 @@ const EventPage = () => {
             <EventDescriptionCardComponent event = {eventExample}></EventDescriptionCardComponent>
             <EventMediaCardComponent></EventMediaCardComponent>
             <EventClubInformationCardComponent></EventClubInformationCardComponent>
+            <EventLocationCardComponent></EventLocationCardComponent>
             {/*<EventPageInformationCard title = {`EventId ${id}`}></EventPageInformationCard>*/}
         </div>
     </div>

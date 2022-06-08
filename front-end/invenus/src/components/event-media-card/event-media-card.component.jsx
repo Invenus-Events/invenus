@@ -1,14 +1,15 @@
 import React from "react";
 
-const event = ({media}) => {
+import './event-media-card.style.scss';
+
+const EventMediaCard = ({media}) => {
     return (
-        <div>
-            <h3> The Location </h3>
+        <div className = "container-lg EventDescriptionCard">
+            <h4> Media </h4>
             <div>
-                <p1> </p1>
             </div>
         </div>
     );
 }
 
-export default event;
+export default EventMediaCard;

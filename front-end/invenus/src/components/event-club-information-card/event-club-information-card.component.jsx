@@ -1,14 +1,13 @@
 import React from "react";
 
-const clubInformationCard = ({event}) => {
+const ClubInformationCard = ({event}) => {
     return (
-        <div>
-            <h3> The Club </h3>
-            <div className="THIS WILL BE A CARD">
-                <p1> Music & DJ </p1>
+        <div className="EventDescriptionCard container-lg">
+            <h4> The Club </h4>
+            <div>
             </div>
         </div>
     );
 }
 
-export default clubInformationCard;
+export default ClubInformationCard;
