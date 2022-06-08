@@ -19,7 +19,10 @@ const EventPage = () => {
         date : "Saturday, 15th August",
         startTime : "10 PM",
         title: "Techno Tuesday",
-        description: "This is an event that is going to take place at Blitz"
+        description: "This is an event that is going to take place at Blitz",
+        address: "Prinzregentenstraße 1\n" + "80538 München",
+        lat: "48.1445",
+        lng: "11.5853"
     }
 
     return (
@@ -29,7 +32,7 @@ const EventPage = () => {
             <EventDescriptionCardComponent event = {eventExample}></EventDescriptionCardComponent>
             <EventMediaCardComponent></EventMediaCardComponent>
             <EventClubInformationCardComponent></EventClubInformationCardComponent>
-            <EventLocationCardComponent></EventLocationCardComponent>
+            <EventLocationCardComponent event={eventExample}></EventLocationCardComponent>
             {/*<EventPageInformationCard title = {`EventId ${id}`}></EventPageInformationCard>*/}
         </div>
     </div>

@@ -7,7 +7,7 @@ const EventDescriptionCard = ({event}) => {
         <div className = "EventDescriptionCard container-lg">
             <h4> What's Happening </h4>
             <div>
-                <p1> {event.description} </p1>
+                <p> {event.description} </p>
             </div>
         </div>
     );
