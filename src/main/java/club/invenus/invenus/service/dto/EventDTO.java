@@ -1,9 +1,8 @@
 package club.invenus.invenus.service.dto;
 
-import club.domain.Location;
-import club.domain.TimeFrame;
-import club.domain.event.Event;
-import club.domain.event.EventInstance;
+import club.invenus.invenus.domain.Location;
+import club.invenus.invenus.domain.TimeFrame;
+import club.invenus.invenus.domain.event.EventInstance;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package club.domain.media;
+package club.invenus.invenus.domain.media;
 
 import lombok.Getter;
 import lombok.Setter;

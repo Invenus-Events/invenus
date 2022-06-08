@@ -1,6 +1,5 @@
 package club.invenus.invenus.web;
 
-import club.domain.club.Club;
 import club.invenus.invenus.service.ClubService;
 import club.invenus.invenus.service.dto.ClubDTO;
 import org.springframework.beans.factory.annotation.Autowired;

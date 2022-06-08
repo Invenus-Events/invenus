@@ -1,4 +1,4 @@
-package club.domain.rating;
+package club.invenus.invenus.domain.rating;
 
 import lombok.Getter;
 import lombok.Setter;

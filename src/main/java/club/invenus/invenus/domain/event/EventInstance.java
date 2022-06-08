@@ -1,7 +1,7 @@
-package club.domain.event;
+package club.invenus.invenus.domain.event;
 
-import club.domain.TimeFrame;
-import club.domain.profile.DJ;
+import club.invenus.invenus.domain.TimeFrame;
+import club.invenus.invenus.domain.profile.DJ;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

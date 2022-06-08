@@ -1,7 +1,7 @@
-package club.domain.club;
+package club.invenus.invenus.domain.club;
 
-import club.domain.Location;
-import club.domain.profile.ClubProfile;
+import club.invenus.invenus.domain.Location;
+import club.invenus.invenus.domain.profile.ClubProfile;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

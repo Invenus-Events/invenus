@@ -1,8 +1,8 @@
-package club.domain.event;
+package club.invenus.invenus.domain.event;
 
-import club.domain.club.Club;
-import club.domain.media.Media;
-import club.domain.rating.RatingCollection;
+import club.invenus.invenus.domain.club.Club;
+import club.invenus.invenus.domain.media.Media;
+import club.invenus.invenus.domain.rating.RatingCollection;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

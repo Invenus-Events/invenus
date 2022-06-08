@@ -1,11 +1,11 @@
-package club.domain.profile;
+package club.invenus.invenus.domain.profile;
 
-import club.domain.Genre;
-import club.domain.club.Club;
-import club.domain.club.PriceRange;
-import club.domain.event.Event;
-import club.domain.media.Media;
-import club.domain.rating.RatingCollection;
+import club.invenus.invenus.domain.Genre;
+import club.invenus.invenus.domain.club.Club;
+import club.invenus.invenus.domain.club.PriceRange;
+import club.invenus.invenus.domain.event.Event;
+import club.invenus.invenus.domain.media.Media;
+import club.invenus.invenus.domain.rating.RatingCollection;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
