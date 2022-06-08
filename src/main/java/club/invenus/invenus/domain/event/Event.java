@@ -60,7 +60,6 @@ public class Event {
     private Media media;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    @JoinColumn(name = "event_instance_id")
     @ToString.Exclude
     private List<EventInstance> eventInstances = new ArrayList<>();
 

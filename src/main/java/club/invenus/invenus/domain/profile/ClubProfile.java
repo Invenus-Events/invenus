@@ -60,7 +60,6 @@ public class ClubProfile {
     private Media media;
 
     @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
-    @JoinColumn(name = "event_id")
     @ToString.Exclude
     private List<Event> events = new ArrayList<>();
 

@@ -22,7 +22,9 @@ class BaseResourceTest {
 
     @Test
     public void testMain() throws Exception {
-        mvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string("Invenus/0.0.1"));
+        mvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Invenus/0.0.1"));
     }
 
 }
