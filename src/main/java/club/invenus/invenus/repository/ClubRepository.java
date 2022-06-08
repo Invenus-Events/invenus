@@ -8,4 +8,3 @@ import java.util.UUID;
 @Repository
 public interface ClubRepository extends ExtendedRepository<Club, UUID> {
 }
-

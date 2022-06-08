@@ -9,4 +9,3 @@ import java.util.stream.Stream;
 @Repository
 public interface EventRepository extends ExtendedRepository<Event, UUID> {
 }
-
