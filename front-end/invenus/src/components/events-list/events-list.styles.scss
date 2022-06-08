@@ -16,14 +16,11 @@
     width: 40%; }
 }
 
-.events-list-search-field {
+.events-list-sort-button {
+  text-align: left;
   display: inline-block;
   width: 100%;
-  margin: 10px 0 0 0;
-  background-color: rgb(238, 238, 238);
   border: none;
-  padding: 10px;
-  color: #000;
 }
 
 .events-list-event-listing {
@@ -34,6 +31,10 @@
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+.filter-accordion {
+  margin-top: 20px;
 }
 
 //.scroll-snap {
