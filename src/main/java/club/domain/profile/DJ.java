@@ -21,8 +21,8 @@ import java.util.UUID;
 public class DJ {
 
     @Id
-    @Column(name = "id", nullable = false)
-    private UUID id;
+    @Column(name = "dj_id", nullable = false)
+    private UUID djId;
 
 
 
