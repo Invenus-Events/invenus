@@ -1,6 +1,8 @@
 package club.domain.event;
 
 import club.domain.club.Club;
+import club.domain.media.Media;
+import club.domain.rating.RatingCollection;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,4 +28,26 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "club_id")
     private Club club;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "capacity")
+    private int capacity;
+
+    @Column(name = "tickets")
+    private int sold;
+
+    @Column(name = "price")
+    private double price;
+
+    @Column(name = "rating")
+    private RatingCollection rating;
+
+    @Embedded
+    private Media media;
+
 }

@@ -1,6 +1,8 @@
-package club.domain.club;
+package club.domain.profile;
 
 import club.domain.Genre;
+import club.domain.club.Club;
+import club.domain.club.PriceRange;
 import club.domain.event.Event;
 import club.domain.media.Media;
 import club.domain.rating.RatingCollection;

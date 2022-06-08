@@ -1,6 +1,7 @@
 package club.domain.club;
 
 import club.domain.Location;
+import club.domain.profile.ClubProfile;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
