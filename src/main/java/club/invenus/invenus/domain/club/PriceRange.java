@@ -1,4 +1,4 @@
-package club.domain.club;
+package club.invenus.invenus.domain.club;
 
 public enum PriceRange {
 

@@ -1,9 +1,8 @@
-package club.domain.club;
+package club.invenus.invenus.domain.club;
 
-import club.domain.Location;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import club.invenus.invenus.domain.Location;
+import club.invenus.invenus.domain.profile.ClubProfile;
+import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -17,10 +16,13 @@ import java.util.UUID;
 @Setter
 @Getter
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Club {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "club_id")
     private UUID clubId;
 

@@ -1,10 +1,10 @@
-package club.invenus.invenus;
+package club.invenus.invenus.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BaseController {
+public class BaseResource {
 
     @GetMapping("/")
     public String base() {

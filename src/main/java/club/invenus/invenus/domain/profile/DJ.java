@@ -1,4 +1,4 @@
-package club.domain.rating;
+package club.invenus.invenus.domain.profile;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,18 +7,21 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
-@Table(name = "rating_collection")
+@Table(name = "dj_profile")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Getter
 @Setter
+@Getter
 @ToString
-public class RatingCollection {
+public class DJ {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ratingCollectionId")
-    private int ratingCollectionId;
+    @Column(name = "dj_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID djId;
+
+
 
 }
