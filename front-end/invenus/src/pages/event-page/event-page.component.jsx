@@ -3,25 +3,32 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import EventHeader from '../../components/event-page-header/event-page-header.component.jsx';
-import EventPageInformationCard from "../../components/event-page-information-card.component/event-page-information-card.component";
+import EventDescriptionCardComponent from "../../components/event-description-card/event-description-card.component";
+import EventMediaCardComponent from "../../components/event-media-card/event-media-card.component";
+import EventClubInformationCardComponent from "../../components/event-club-information-card/event-club-information-card.component";
+// import EventPageInformationCard from "../../components/event-page-information-card.component/event-page-information-card.component";
 
 const EventPage = () => {
 
     const { id } = useParams();
 
     const eventExample = {
-        genre : "house",
-        club : "Enter the Dragon",
+        genre : "Techno",
+        club : "Blitz",
         date : "Saturday, 15th August",
         startTime : "10 PM",
-        title: "House at 089 Bar"
+        title: "Techno Tuesday",
+        description: "This is an event that is going to take place at Blitz"
     }
 
     return (
     <div>
-        <div className="">
+        <div>
             <EventHeader event={eventExample}></EventHeader>
-            <EventPageInformationCard title = {`EventId ${id}`}></EventPageInformationCard>
+            <EventDescriptionCardComponent event = {eventExample}></EventDescriptionCardComponent>
+            <EventMediaCardComponent></EventMediaCardComponent>
+            <EventClubInformationCardComponent></EventClubInformationCardComponent>
+            {/*<EventPageInformationCard title = {`EventId ${id}`}></EventPageInformationCard>*/}
         </div>
     </div>
     )
