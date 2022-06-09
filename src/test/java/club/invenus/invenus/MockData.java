@@ -97,9 +97,7 @@ public class MockData {
         return Event.builder()
                 .organizer("P1 Club")
                 .title("P1 SOMMERFEST 2022")
-                .description("""
-                        Das P1 Sommerfest verschlägt uns in die Weiten des Ozeans: auf Luao Islands. Gemeinsam mit dir erkunden wir den „Aloha Spirit“ mit tropischen Melodien und vielen weiteren Überraschungen!
-                        """)
+                .description("Das P1 Sommerfest verschlägt uns in die Weiten des Ozeans: auf Luao Islands. Gemeinsam mit dir erkunden wir den „Aloha Spirit“ mit tropischen Melodien und vielen weiteren Überraschungen!")
                 .capacity(100)
                 .sold(0)
                 .price(BigDecimal.valueOf(10))
@@ -144,9 +142,7 @@ public class MockData {
         Event event = Event.builder()
                 .organizer("P1 Club")
                 .title("Pack Ma's! - Wiesn 2022")
-                .description("""
-                        Zwei Jahre keine Wiesn, kein Gspusi, kein süffiges Festbier… Doch das Warten hat ein Ende und das größte Volksfest der Welt ist zurück!
-                        """)
+                .description("Zwei Jahre keine Wiesn, kein Gspusi, kein süffiges Festbier… Doch das Warten hat ein Ende und das größte Volksfest der Welt ist zurück!")
                 .capacity(100)
                 .sold(0)
                 .price(BigDecimal.valueOf(15))

@@ -34,7 +34,7 @@ public class Media {
         if (overwrite != null) {
             return overwrite;
         } else {
-            return "assets.invenus.club/" + mediaId;
+            return "https://assets.invenus.club/" + mediaId;
         }
     }
 

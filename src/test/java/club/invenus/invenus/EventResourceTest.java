@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -107,13 +108,53 @@ public class EventResourceTest {
 
     // todo: move
 
-    // todo: make string equality ignore ID
+    // todo: make string equality ignore ID & fix indentation
     @Test
     @Ignore
     public void testGetClubs() throws Exception {
         mvc.perform(get("/clubs"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("[{\"id\":\"334dede9-63d7-4282-9c33-dba1acc87a90\",\"name\":\"P1 Club\",\"shortName\":\"P1\",\"location\":{\"address\":\"Prinzregentenstraße 1\",\"city\":\"Munich\",\"postCode\":80538,\"country\":\"Germany\",\"latitude\":48.144466,\"longitude\":11.585315},\"website\":\"https://p1-club.de\",\"email\":\"contact@p1-club.de\",\"phoneNumber\":\"089 2111140\",\"description\":\"P1 Club Description\",\"imageUrl\":\"assets.invenus.club/5c2faf66-439a-43e2-846a-db148c39df25\",\"priceRange\":\"EXPENSIVE\"},{\"id\":\"d808b268-415f-48e7-a57d-1481cda2dd26\",\"name\":\"Melusina\",\"shortName\":\"Melusina\",\"location\":{\"address\":\"145 Rue de la Tour Jacob\",\"city\":\"Luxembourg City\",\"postCode\":1831,\"country\":\"Luxembourg\",\"latitude\":49.611233,\"longitude\":6.1367464},\"website\":\"https://melusina.lu\",\"email\":\"contact@melusina.lu\",\"phoneNumber\":\"+352 26 00 89 75\",\"description\":\"Melusina Club Description\",\"imageUrl\":\"https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg\",\"priceRange\":\"MEDIUM\"}]"));
+                .andExpect(content().string("""
+                        [
+                          {
+                            "id": "334dede9-63d7-4282-9c33-dba1acc87a90",
+                            "name": "P1 Club",
+                            "shortName": "P1",
+                            "location": {
+                              "address": "Prinzregentenstraße 1",
+                              "city": "Munich",
+                              "postCode": 80538,
+                              "country": "Germany",
+                              "latitude": 48.144466,
+                              "longitude": 11.585315
+                            },
+                            "website": "https://p1-club.de",
+                            "email": "contact@p1-club.de",
+                            "phoneNumber": "089 2111140",
+                            "description": "P1 Club Description",
+                            "imageUrl": "https://assets.invenus.club/5c2faf66-439a-43e2-846a-db148c39df25",
+                            "priceRange": "EXPENSIVE"
+                          },
+                          {
+                            "id": "d808b268-415f-48e7-a57d-1481cda2dd26",
+                            "name": "Melusina",
+                            "shortName": "Melusina",
+                            "location": {
+                              "address": "145 Rue de la Tour Jacob",
+                              "city": "Luxembourg City",
+                              "postCode": 1831,
+                              "country": "Luxembourg",
+                              "latitude": 49.611233,
+                              "longitude": 6.1367464
+                            },
+                            "website": "https://melusina.lu",
+                            "email": "contact@melusina.lu",
+                            "phoneNumber": "+352 26 00 89 75",
+                            "description": "Melusina Club Description",
+                            "imageUrl": "https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg",
+                            "priceRange": "MEDIUM"
+                          }
+                        ]""".strip().lines().collect(Collectors.joining())));
     }
 
     @Test
@@ -121,7 +162,117 @@ public class EventResourceTest {
     public void testGetEvents() throws Exception {
         mvc.perform(get("/events"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("[{\"id\":\"a15614e0-d70c-43de-ba7a-c53f4c16f4d5\",\"title\":\"Tequila Night 03.06.2022\",\"timeFrame\":{},\"price\":20.00,\"club\":{\"id\":\"1ec035e6-8ad1-403f-9302-b2152cac3673\",\"name\":\"Melusina\",\"shortName\":\"Melusina\",\"location\":{\"address\":\"145 Rue de la Tour Jacob\",\"city\":\"Luxembourg City\",\"postCode\":1831,\"country\":\"Luxembourg\",\"latitude\":49.611233,\"longitude\":6.1367464},\"website\":\"https://melusina.lu\",\"email\":\"contact@melusina.lu\",\"phoneNumber\":\"+352 26 00 89 75\",\"description\":\"Melusina Club Description\",\"imageUrl\":\"https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg\",\"priceRange\":\"MEDIUM\"},\"organizer\":\"Melusina\",\"imageUrl\":\"assets.invenus.club/341f762f-f217-4b1c-8abc-fc68fe3d2a9c\",\"description\":\"\\uD83C\\uDF4BTEQUILA NIGHT \\uD83C\\uDF4B\",\"location\":{\"address\":\"145 Rue de la Tour Jacob\",\"city\":\"Luxembourg City\",\"postCode\":1831,\"country\":\"Luxembourg\",\"latitude\":49.611233,\"longitude\":6.1367464}},{\"id\":\"d72acb1e-8e04-4929-b0c9-caa672c9ad9a\",\"title\":\"P1 SOMMERFEST 2022\",\"timeFrame\":{},\"price\":10.00,\"club\":{\"id\":\"4b35465d-69fe-4e2d-b0e0-659bcc0c7743\",\"name\":\"P1 Club\",\"shortName\":\"P1\",\"location\":{\"address\":\"Prinzregentenstraße 1\",\"city\":\"Munich\",\"postCode\":80538,\"country\":\"Germany\",\"latitude\":48.144466,\"longitude\":11.585315},\"website\":\"https://p1-club.de\",\"email\":\"contact@p1-club.de\",\"phoneNumber\":\"089 2111140\",\"description\":\"P1 Club Description\",\"imageUrl\":\"assets.invenus.club/fb3c92cc-eb2b-4ab0-8aae-1f8061376873\",\"priceRange\":\"EXPENSIVE\"},\"organizer\":\"P1 Club\",\"imageUrl\":\"https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/Website-Event.jpg\",\"description\":\"Das P1 Sommerfest verschlägt uns in die Weiten des Ozeans: auf Luao Islands. Gemeinsam mit dir erkunden wir den „Aloha Spirit“ mit tropischen Melodien und vielen weiteren Überraschungen!\\n\",\"location\":{\"address\":\"Prinzregentenstraße 1\",\"city\":\"Munich\",\"postCode\":80538,\"country\":\"Germany\",\"latitude\":48.144466,\"longitude\":11.585315}},{\"id\":\"5c8df26b-537c-43c5-9f46-aaf1e633ffe5\",\"title\":\"Pack Ma's! - Wiesn 2022\",\"timeFrame\":{},\"price\":15.00,\"club\":{\"id\":\"4b35465d-69fe-4e2d-b0e0-659bcc0c7743\",\"name\":\"P1 Club\",\"shortName\":\"P1\",\"location\":{\"address\":\"Prinzregentenstraße 1\",\"city\":\"Munich\",\"postCode\":80538,\"country\":\"Germany\",\"latitude\":48.144466,\"longitude\":11.585315},\"website\":\"https://p1-club.de\",\"email\":\"contact@p1-club.de\",\"phoneNumber\":\"089 2111140\",\"description\":\"P1 Club Description\",\"imageUrl\":\"assets.invenus.club/fb3c92cc-eb2b-4ab0-8aae-1f8061376873\",\"priceRange\":\"EXPENSIVE\"},\"organizer\":\"P1 Club\",\"imageUrl\":\"assets.invenus.club/5c49fe55-0925-4a62-b63d-33ef1b72b9fb\",\"description\":\"Zwei Jahre keine Wiesn, kein Gspusi, kein süffiges Festbier… Doch das Warten hat ein Ende und das größte Volksfest der Welt ist zurück!\\n\",\"location\":{\"address\":\"Prinzregentenstraße 1\",\"city\":\"Munich\",\"postCode\":80538,\"country\":\"Germany\",\"latitude\":48.144466,\"longitude\":11.585315}}]"));
+                .andExpect(content().string("""
+                        [
+                          {
+                            "id": "^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$",
+                            "title": "Tequila Night 03.06.2022",
+                            "timeFrame": {},
+                            "price": 20.00,
+                            "club": {
+                              "id": "1ec035e6-8ad1-403f-9302-b2152cac3673",
+                              "name": "Melusina",
+                              "shortName": "Melusina",
+                              "location": {
+                                "address": "145 Rue de la Tour Jacob",
+                                "city": "Luxembourg City",
+                                "postCode": 1831,
+                                "country": "Luxembourg",
+                                "latitude": 49.611233,
+                                "longitude": 6.1367464
+                              },
+                              "website": "https://melusina.lu",
+                              "email": "contact@melusina.lu",
+                              "phoneNumber": "+352 26 00 89 75",
+                              "description": "Melusina Club Description",
+                              "imageUrl": "https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg",
+                              "priceRange": "MEDIUM"
+                            },
+                            "organizer": "Melusina",
+                            "imageUrl": "https://assets.invenus.club/341f762f-f217-4b1c-8abc-fc68fe3d2a9c",
+                            "description": "\\uD83C\\uDF4BTEQUILA NIGHT \\uD83C\\uDF4B",
+                            "location": {
+                              "address": "145 Rue de la Tour Jacob",
+                              "city": "Luxembourg City",
+                              "postCode": 1831,
+                              "country": "Luxembourg",
+                              "latitude": 49.611233,
+                              "longitude": 6.1367464
+                            }
+                          },
+                          {
+                            "id": "d72acb1e-8e04-4929-b0c9-caa672c9ad9a",
+                            "title": "P1 SOMMERFEST 2022",
+                            "timeFrame": {},
+                            "price": 10.00,
+                            "club": {
+                              "id": "4b35465d-69fe-4e2d-b0e0-659bcc0c7743",
+                              "name": "P1 Club",
+                              "shortName": "P1",
+                              "location": {
+                                "address": "Prinzregentenstraße 1",
+                                "city": "Munich",
+                                "postCode": 80538,
+                                "country": "Germany",
+                                "latitude": 48.144466,
+                                "longitude": 11.585315
+                              },
+                              "website": "https://p1-club.de",
+                              "email": "contact@p1-club.de",
+                              "phoneNumber": "089 2111140",
+                              "description": "P1 Club Description",
+                              "imageUrl": "https://assets.invenus.club/fb3c92cc-eb2b-4ab0-8aae-1f8061376873",
+                              "priceRange": "EXPENSIVE"
+                            },
+                            "organizer": "P1 Club",
+                            "imageUrl": "https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/Website-Event.jpg",
+                            "description": "Das P1 Sommerfest verschlägt uns in die Weiten des Ozeans: auf Luao Islands. Gemeinsam mit dir erkunden wir den „Aloha Spirit“ mit tropischen Melodien und vielen weiteren Überraschungen!\\n",
+                            "location": {
+                              "address": "Prinzregentenstraße 1",
+                              "city": "Munich",
+                              "postCode": 80538,
+                              "country": "Germany",
+                              "latitude": 48.144466,
+                              "longitude": 11.585315
+                            }
+                          },
+                          {
+                            "id": "5c8df26b-537c-43c5-9f46-aaf1e633ffe5",
+                            "title": "Pack Ma's! - Wiesn 2022",
+                            "timeFrame": {},
+                            "price": 15.00,
+                            "club": {
+                              "id": "4b35465d-69fe-4e2d-b0e0-659bcc0c7743",
+                              "name": "P1 Club",
+                              "shortName": "P1",
+                              "location": {
+                                "address": "Prinzregentenstraße 1",
+                                "city": "Munich",
+                                "postCode": 80538,
+                                "country": "Germany",
+                                "latitude": 48.144466,
+                                "longitude": 11.585315
+                              },
+                              "website": "https://p1-club.de",
+                              "email": "contact@p1-club.de",
+                              "phoneNumber": "089 2111140",
+                              "description": "P1 Club Description",
+                              "imageUrl": "https://assets.invenus.club/fb3c92cc-eb2b-4ab0-8aae-1f8061376873",
+                              "priceRange": "EXPENSIVE"
+                            },
+                            "organizer": "P1 Club",
+                            "imageUrl": "https://assets.invenus.club/5c49fe55-0925-4a62-b63d-33ef1b72b9fb",
+                            "description": "Zwei Jahre keine Wiesn, kein Gspusi, kein süffiges Festbier… Doch das Warten hat ein Ende und das größte Volksfest der Welt ist zurück!",
+                            "location": {
+                              "address": "Prinzregentenstraße 1",
+                              "city": "Munich",
+                              "postCode": 80538,
+                              "country": "Germany",
+                              "latitude": 48.144466,
+                              "longitude": 11.585315
+                            }
+                          }
+                        ]"""));
     }
 
 
