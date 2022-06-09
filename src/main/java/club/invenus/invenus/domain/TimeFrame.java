@@ -1,6 +1,7 @@
 package club.invenus.invenus.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class TimeFrame {
 
     @Column(name = "time_from", columnDefinition = "TIMESTAMP")

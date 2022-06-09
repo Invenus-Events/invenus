@@ -101,9 +101,9 @@ public class EventResourceTest {
 
     @AfterEach
     public void cleanUp() {
-        clubRepository.deleteAll();
-        eventRepository.deleteAll();
-        djRepository.deleteAll();
+       clubRepository.deleteAll();
+       eventRepository.deleteAll();
+       djRepository.deleteAll();
     }
 
     // todo: move
