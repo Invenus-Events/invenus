@@ -10,11 +10,13 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.cors()
+                .and()
+                .authorizeRequests()
                 .anyRequest()
-                .permitAll();
-
-        http.oauth2ResourceServer()
+                .permitAll()
+                .and()
+                .oauth2ResourceServer()
                 .jwt();
 
         return http.build();

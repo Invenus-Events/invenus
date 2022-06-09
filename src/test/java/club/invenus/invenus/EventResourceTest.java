@@ -107,7 +107,6 @@ public class EventResourceTest {
     }
 
     // todo: move
-
     // todo: make string equality ignore ID & fix indentation
     @Test
     @Ignore

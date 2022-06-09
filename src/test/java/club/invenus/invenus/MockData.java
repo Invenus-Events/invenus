@@ -113,6 +113,9 @@ public class MockData {
                         LocalDateTime.of(2022, 6, 4, 4, 0, 0)))
                 .build();
 
+        Media media = new Media();
+        media.setOverwrite("https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg");
+
         Event event = Event.builder()
                 .organizer("Melusina")
                 .title("Tequila Night 03.06.2022")
@@ -121,7 +124,7 @@ public class MockData {
                 .sold(0)
                 .price(BigDecimal.valueOf(20))
                 .ratingCollection(new RatingCollection())
-                .media(new Media())
+                .media(media)
                 .eventInstances(List.of(eventInstance))
                 .build();
 
@@ -147,7 +150,7 @@ public class MockData {
                 .sold(0)
                 .price(BigDecimal.valueOf(15))
                 .ratingCollection(new RatingCollection())
-                .media(new Media())
+                .media(media)
                 .eventInstances(List.of(eventInstance))
                 .build();
         eventInstance.setEvent(event);
