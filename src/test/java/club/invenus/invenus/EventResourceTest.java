@@ -7,9 +7,9 @@ import club.invenus.invenus.domain.profile.DJ;
 import club.invenus.invenus.repository.ClubRepository;
 import club.invenus.invenus.repository.DJRepository;
 import club.invenus.invenus.repository.EventRepository;
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
 @SpringBootTest
+@Disabled
 public class EventResourceTest {
 
     @Autowired
@@ -109,7 +110,6 @@ public class EventResourceTest {
     // todo: move
     // todo: make string equality ignore ID & fix indentation
     @Test
-    @Ignore
     public void testGetClubs() throws Exception {
         mvc.perform(get("/clubs"))
                 .andExpect(status().isOk())
@@ -157,7 +157,6 @@ public class EventResourceTest {
     }
 
     @Test
-    @Ignore
     public void testGetEvents() throws Exception {
         mvc.perform(get("/events"))
                 .andExpect(status().isOk())
