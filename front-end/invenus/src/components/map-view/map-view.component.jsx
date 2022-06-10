@@ -43,7 +43,7 @@ class MapView extends React.PureComponent {
             container: this.mapContainer.current,
             style: 'mapbox://styles/leon-liang/cl3pzciel002d16lawlprcelh',
             center: [this.props.events[this.props.currentEvent].location.longitude, this.props.events[this.props.currentEvent].location.latitude],
-            zoom: zoom
+            zoom: 3
         });
 
         const features = this.props.events.map((event) => {
