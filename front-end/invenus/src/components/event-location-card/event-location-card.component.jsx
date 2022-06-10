@@ -34,7 +34,7 @@ class EventLocationCard extends React.Component{
             <div className="container-lg EventDescriptionCard">
                 <h4> The Location </h4>
                 <p>{this.props.event.address}</p>
-                <div ref={this.mapContainer} className="map-container" />
+                <div ref={this.mapContainer} className="event-location-card-map-container" />
             </div>
         );
     }

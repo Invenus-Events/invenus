@@ -8,7 +8,9 @@ const EventCard = (props) => {
     return (
     <div className='event-card-container'>
       <h1 className='event-card-title'>{event.title}</h1>
-      <p className='event-card-date'>{event.date}</p>
+      <p className='event-card-date'>
+          {new Date(event.timeFrame.from).toLocaleString()}
+      </p>
         <div className="container">
             <div className=".no-gutters row">
                 <div className="col-md">
@@ -27,7 +29,7 @@ const EventCard = (props) => {
                              className="bi bi-geo-alt-fill bootstrap-icon" viewBox="0 0 16 16">
                             <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                         </svg>
-                        {`At ${event.club}`}
+                        {`At ${event.club.name}`}
                     </p>
                 </div>
                 <div className="col-md">

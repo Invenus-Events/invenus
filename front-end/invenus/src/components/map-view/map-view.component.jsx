@@ -14,8 +14,8 @@ class MapView extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            lng: this.props.long,
-            lat: this.props.lat,
+            lng: this.props.events[this.props.currentEvent].location.longitude,
+            lat: this.props.events[this.props.currentEvent].location.latitude,
             zoom: 15
         };
         this.mapContainer = React.createRef();
@@ -34,7 +34,7 @@ class MapView extends React.PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        this.updateMap(this.props.long, this.props.lat);
+        this.updateMap(this.props.events[this.props.currentEvent].location.longitude, this.props.events[this.props.currentEvent].location.latitude);
     }
 
     componentDidMount() {
@@ -42,7 +42,7 @@ class MapView extends React.PureComponent {
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             style: 'mapbox://styles/leon-liang/cl3pzciel002d16lawlprcelh',
-            center: [this.props.long, this.props.lat],
+            center: [this.props.events[this.props.currentEvent].location.longitude, this.props.events[this.props.currentEvent].location.latitude],
             zoom: zoom
         });
 
@@ -52,7 +52,7 @@ class MapView extends React.PureComponent {
                 'properties': {},
                 'geometry': {
                     'type': 'Point',
-                    'coordinates': [event.coordinates.long, event.coordinates.lat]
+                    'coordinates': [event.location.longitude, event.location.latitude]
                 }
             }
         })
