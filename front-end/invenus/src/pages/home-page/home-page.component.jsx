@@ -6,6 +6,8 @@ import MapView from "../../components/map-view/map-view.component";
 import EventsList from "../../components/events-list/events-list.component";
 
 import './home-page.styles.scss';
+import MapViewLoading from "../../components/map-view-loading/map-view-loading.component";
+import EventsListLoading from "../../components/events-list-loading/events-list-loading.component";
 
 class HomePage extends React.Component {
 
@@ -50,7 +52,12 @@ class HomePage extends React.Component {
     render() {
         return (
             <div >
-                { this.state.events.length === 0 ? null:
+                { this.state.events.length === 0 ? (
+                    <div>
+                        <MapViewLoading />
+                        <EventsListLoading />
+                    </div>
+                    ) :
                     <div className="homepage-container">
                         <MapView events={this.state.events} currentEvent={this.state.eventIndex}/>
                         <EventsList getEventInView={this.getEventInView.bind(this)} events={this.state.events}/>
