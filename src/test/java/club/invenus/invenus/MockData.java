@@ -56,7 +56,6 @@ public class MockData {
     }
 
     public static Club melusinaClub() {
-
         Address address = Address.builder()
                 .address("145 Rue de la Tour Jacob")
                 .city("Luxembourg City")

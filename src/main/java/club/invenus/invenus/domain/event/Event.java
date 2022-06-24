@@ -3,7 +3,6 @@ package club.invenus.invenus.domain.event;
 import club.invenus.invenus.domain.club.Club;
 import club.invenus.invenus.domain.media.Media;
 import club.invenus.invenus.domain.rating.RatingCollection;
-import club.invenus.invenus.domain.ticket.EventTicket;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -67,10 +66,5 @@ public class Event {
     @ToString.Exclude
     @Builder.Default
     private List<EventInstance> eventInstances = new ArrayList<>();
-
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    @ToString.Exclude
-    @Builder.Default
-    private List<EventTicket> eventTickets = new ArrayList<>();
 
 }

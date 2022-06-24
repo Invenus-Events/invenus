@@ -6,17 +6,14 @@ import lombok.Data;
 public class ChargeRequest {
 
     public enum Currency {
-        EUR, USD
+        EUR,
+        USD
     }
 
-    private String description;
-
-    private int amount;
-
-    private Currency currency;
-
-    private String stripeEmail;
-
-    private String stripeToken;
+    private final String description;
+    private final int amount;
+    private final Currency currency;
+    private final String stripeEmail;
+    private final String stripeToken;
 
 }

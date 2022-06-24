@@ -1,6 +1,5 @@
 package club.invenus.invenus.domain.ticket;
 
-import club.invenus.invenus.domain.profile.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,21 +8,18 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ticket")
+@Table(name = "available_ticket")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
-public class BaseTicket {
+public class AvailableTicket {
 
     @Id
-    @Column(name = "id", nullable = false)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "available_ticket_id", nullable = false)
+    private UUID available_ticket_id;
 
     @Column(name = "price", nullable = false)
     private BigDecimal price;
-
-    @Embedded
-    private User user;
-
 
 }

@@ -16,7 +16,7 @@ import java.util.Map;
 @Service
 public class PaymentService {
 
-    @Value("${STRIPE_SECRET_KEY}")
+    @Value("${stripe.secret-key}")
     private String secretKey;
 
     @PostConstruct
@@ -25,7 +25,6 @@ public class PaymentService {
     }
 
     public Charge charge(ChargeRequest chargeRequest) throws AuthenticationException, StripeException {
-
         Map<String, Object> chargeParams = new HashMap<>();
 
         chargeParams.put("amount", chargeRequest.getAmount());
@@ -36,7 +35,5 @@ public class PaymentService {
         return Charge.create(chargeParams);
 
     }
-
-
 
 }
