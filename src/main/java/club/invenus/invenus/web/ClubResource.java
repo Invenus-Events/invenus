@@ -26,7 +26,7 @@ public class ClubResource {
         return clubService.getClubs();
     }
 
-    @GetMapping(value = "/clubs/{clubId}", produces = {"application/json; charset=UTF-8"})
+    @GetMapping(value = "/club/{clubId}", produces = {"application/json; charset=UTF-8"})
     public Optional<ClubDTO> getClub(@PathVariable UUID clubId) {
         return clubService.getClub(clubId);
     }

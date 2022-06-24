@@ -27,7 +27,7 @@ public class EventResource {
         return eventService.getEvents();
     }
 
-    @GetMapping(value = "/events/{eventId}", produces = {"application/json; charset=UTF-8"})
+    @GetMapping(value = "/event/{eventId}", produces = {"application/json; charset=UTF-8"})
     public Optional<EventDTO> getEvent(@PathVariable UUID eventId) {
         return eventService.getEvent(eventId);
     }
