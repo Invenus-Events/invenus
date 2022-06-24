@@ -1,5 +1,6 @@
 package club.invenus.invenus;
 
+import club.invenus.invenus.domain.Address;
 import club.invenus.invenus.domain.Location;
 import club.invenus.invenus.domain.TimeFrame;
 import club.invenus.invenus.domain.club.Club;
@@ -19,11 +20,15 @@ import java.util.List;
 public class MockData {
 
     public static Club p1Club() {
-        Location location = Location.builder()
+        Address address = Address.builder()
                 .address("Prinzregentenstraße 1")
                 .city("Munich")
                 .postCode(80538)
                 .country("Germany")
+                .build();
+
+        Location location = Location.builder()
+                .address(address)
                 .latitude(48.1444649f)
                 .longitude(11.5853152f)
                 .build();
@@ -51,12 +56,16 @@ public class MockData {
     }
 
     public static Club melusinaClub() {
-        Location location = Location.builder()
+
+        Address address = Address.builder()
                 .address("145 Rue de la Tour Jacob")
-                .postCode(1831)
                 .city("Luxembourg City")
+                .postCode(1831)
                 .country("Luxembourg")
-                .latitude(49.6112339f)
+                .build();
+
+        Location location = Location.builder()
+                .address(address)
                 .longitude(6.1367463f)
                 .build();
 
