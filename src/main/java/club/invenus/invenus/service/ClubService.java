@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ClubService {
@@ -23,6 +25,12 @@ public class ClubService {
         return clubRepository.streamAll()
                 .map(ClubDTO::new)
                 .toList();
+    }
+
+    @Transactional
+    public Optional<ClubDTO> getClub(UUID uuid) {
+        return clubRepository.findById(uuid)
+                .map(ClubDTO::new);
     }
 
 }

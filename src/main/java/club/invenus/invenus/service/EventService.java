@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class EventService {
@@ -27,5 +29,11 @@ public class EventService {
         return eventInstanceRepository.streamAll()
                 .map(EventDTO::new)
                 .toList();
+    }
+
+    @Transactional
+    public Optional<EventDTO> getEvent(UUID eventId) {
+        return eventInstanceRepository.findById(eventId)
+                .map(EventDTO::new);
     }
 }
