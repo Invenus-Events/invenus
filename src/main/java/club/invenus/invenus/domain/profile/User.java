@@ -38,7 +38,8 @@ public class User {
     private Address address;
 
     @Column(name = "gender", nullable = false)
-    private Gender gender;
+    private Address.Gender gender;
+
 
 
 }
