@@ -1,5 +1,5 @@
-import React from "react";
-
+import { useEffect, useState } from "react";
+import axios from 'axios';
 import { useParams } from "react-router-dom";
 
 import EventHeader from '../../components/event-page-header/event-page-header.component.jsx';
@@ -7,35 +7,44 @@ import EventDescriptionCardComponent from "../../components/event-description-ca
 import EventMediaCardComponent from "../../components/event-media-card/event-media-card.component";
 import EventClubInformationCardComponent from "../../components/event-club-information-card/event-club-information-card.component";
 import EventLocationCardComponent from "../../components/event-location-card/event-location-card.component";
-// import EventPageInformationCard from "../../components/event-page-information-card.component/event-page-information-card.component";
+import EventPageInformationCard from "../../components/event-page-information-card.component/event-page-information-card.component";
 
 const EventPage = () => {
 
     const { id } = useParams();
 
-    const eventExample = {
-        genre : "Techno",
-        club : "Blitz",
-        date : "Saturday, 15th August",
-        startTime : "10 PM",
-        title: "Techno Tuesday",
-        description: "This is an event that is going to take place at Blitz",
-        address: "Prinzregentenstraße 1\n" + "80538 München",
-        lat: "48.1445",
-        lng: "11.5853"
+    const [res, setRes] = useState(null);
+    const [error, setError] = useState('');
+
+    const fetchData = () => {
+        axios
+            .get(`http://localhost:8080/event/${ id }`)
+            .then((res) => {
+                console.log(res)
+                setRes(res.data);
+            })
+            .catch((err) => setError(err))
     }
 
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     return (
-    <div>
         <div>
-            <EventHeader event={eventExample}></EventHeader>
-            <EventDescriptionCardComponent event = {eventExample}></EventDescriptionCardComponent>
-            <EventMediaCardComponent></EventMediaCardComponent>
-            <EventClubInformationCardComponent></EventClubInformationCardComponent>
-            <EventLocationCardComponent event={eventExample}></EventLocationCardComponent>
-            {/*<EventPageInformationCard title = {`EventId ${id}`}></EventPageInformationCard>*/}
+            <div>
+                { res ? (
+                    <div>
+                        <EventHeader event={res}></EventHeader>
+                        {/*<EventDescriptionCardComponent event ={res}></EventDescriptionCardComponent>*/}
+                        {/*<EventMediaCardComponent></EventMediaCardComponent>*/}
+                        {/*<EventClubInformationCardComponent></EventClubInformationCardComponent>*/}
+                        {/*<EventLocationCardComponent event={res}></EventLocationCardComponent>*/}
+                        {/*<EventPageInformationCard title = {`EventId ${id}`}></EventPageInformationCard>*/}
+                    </div>
+                ): null}
+            </div>
         </div>
-    </div>
     )
 }
 

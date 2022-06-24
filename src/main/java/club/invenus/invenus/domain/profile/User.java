@@ -1,12 +1,15 @@
 package club.invenus.invenus.domain.profile;
 
 import club.invenus.invenus.domain.Address;
+import club.invenus.invenus.domain.ticket.Ticket;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,7 +26,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id", nullable = false)
-    private UUID id;
+    private UUID userId;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -41,5 +44,8 @@ public class User {
     private Address.Gender gender;
 
 
-
+    @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    @Builder.Default
+    private List<Ticket> tickets = new ArrayList<>();
 }
