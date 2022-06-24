@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.validation.constraints.NotNull;
 
 @Embeddable
@@ -15,21 +16,8 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class Location {
 
-    @NotNull
-    @Column(name = "address", columnDefinition = "VARCHAR(255)")
-    private String address;
-
-    @NotNull
-    @Column(name = "city", columnDefinition = "VARCHAR(255)")
-    private String city;
-
-    @NotNull
-    @Column(name = "post_code", columnDefinition = "VARCHAR(255)")
-    private int postCode;
-
-    @NotNull
-    @Column(name = "country", columnDefinition = "VARCHAR(255)")
-    private String country;
+    @Embedded
+    private Address address;
 
     @NotNull
     @Column(name = "lat", columnDefinition = "float4")
