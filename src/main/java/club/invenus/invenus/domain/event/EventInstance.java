@@ -2,6 +2,8 @@ package club.invenus.invenus.domain.event;
 
 import club.invenus.invenus.domain.TimeFrame;
 import club.invenus.invenus.domain.profile.DJ;
+import club.invenus.invenus.domain.ticket.AvailableClubTicket;
+import club.invenus.invenus.domain.ticket.AvailableEventTicket;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -35,4 +37,8 @@ public class EventInstance {
     @ManyToOne
     @JoinColumn(name = "dj_id")
     private DJ dj;
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "available_ticket_id")
+    private AvailableEventTicket ticket;
 }
