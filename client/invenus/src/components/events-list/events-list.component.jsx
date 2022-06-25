@@ -10,6 +10,7 @@ class EventsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            filter: "date-newest",
             events: props.events,
             isMobile: window.innerWidth < 992,
             prev: null
@@ -18,6 +19,14 @@ class EventsList extends React.Component {
     }
 
     componentDidMount() {
+        this.setState({
+            events: this.props.events.sort(function (a, b) {
+                return new Date(a.timeFrame.from) - new Date(b.timeFrame.from);
+            })
+        }, () => {
+            this.props.updateSortedEvents(this.state.events);
+        })
+
         window.addEventListener('resize', () => {
             this.setState({
                 isMobile: window.innerWidth < 992
@@ -33,6 +42,26 @@ class EventsList extends React.Component {
 
     sortEvents = () => {
         switch (this.state.filter) {
+            case "date-closest":
+                this.setState({
+                    events: this.props.events.sort(function (a, b) {
+                        return new Date(a.timeFrame.from) - new Date(b.timeFrame.from);
+                    })
+                }, () => {
+                    this.props.updateSortedEvents(this.state.events);
+                    this.eventCardsContainerRef.current.scrollTo(0, 0);
+                })
+                break;
+            case "date-furthest":
+                this.setState({
+                    events: this.props.events.sort(function (a, b) {
+                        return new Date(b.timeFrame.from) - new Date(a.timeFrame.from);
+                    })
+                }, () => {
+                    this.props.updateSortedEvents(this.state.events);
+                    this.eventCardsContainerRef.current.scrollTo(0, 0);
+                })
+                break;
             case "price-highest":
                 this.setState({
                     events : this.props.events.sort(function (a, b) {
@@ -40,7 +69,6 @@ class EventsList extends React.Component {
                     })
                 }, () => {
                     this.props.updateSortedEvents(this.state.events);
-                    // scroll to top
                     this.eventCardsContainerRef.current.scrollTo(0, 0);
                 });
                 break;
@@ -51,7 +79,6 @@ class EventsList extends React.Component {
                     })
                 }, () => {
                     this.props.updateSortedEvents(this.state.events);
-                    // scroll to top
                     this.eventCardsContainerRef.current.scrollTo(0, 0);
                 })
                 break;
@@ -68,11 +95,11 @@ class EventsList extends React.Component {
                     <h1>Upcoming events.</h1>
                     <form action="">
                         <select name="filter-setting" className='events-list-filter-button' onChange={this.selectChanged}>
-                            <option value="date-newest">
-                                Filter by: Date (Newest first)
+                            <option value="date-closest">
+                                Filter by: Date (Closest first)
                             </option>
-                            <option value="date-lowest">
-                                Filter by: Date (Oldest first)
+                            <option value="date-furthest">
+                                Filter by: Date (Furthest first)
                             </option>
                             {/*<option value="rating-highest">*/}
                             {/*    Filter by: Rating (Most popular first)*/}
