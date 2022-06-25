@@ -71,7 +71,12 @@ class HomePage extends React.Component {
                     ) :
                     <div className="homepage-container">
                         <MapView events={this.state.events} currentEvent={this.state.eventIndex} eventUpdateObservers={this.state.eventUpdateObservers}/>
-                        <EventsList getEventInView={this.getEventInView.bind(this)}  eventUpdateObservers={this.state.eventUpdateObservers} updateSortedEvents={this.updateSortedEvents.bind(this)} events={this.state.events}/>
+                        <EventsList
+                            getEventInView={this.getEventInView.bind(this)}
+                            eventUpdateObservers={this.state.eventUpdateObservers}
+                            updateSortedEvents={this.updateSortedEvents.bind(this)}
+                            events={this.state.events}
+                        />
                     </div>
                 }
             </div>

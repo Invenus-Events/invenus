@@ -18,7 +18,7 @@ const EventPage = () => {
 
     const fetchData = () => {
         axios
-            .get(`http://localhost:8080/event/${ id }`)
+            .get(`https://api.invenus.club/event/${ id }`)
             .then((res) => {
                 console.log(res)
                 setRes(res.data);

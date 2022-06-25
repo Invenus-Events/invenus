@@ -27,7 +27,7 @@ class EventsListLoading extends React.Component {
             <div className='events-list-loading-container'>
                 <div className='events-list-content'>
                     <h1>Upcoming events.</h1>
-                    <input className='events-list-search-field' type="text" placeholder="Search..."/>
+                    <input className='events-list-search-field' type="text" placeholder="Filter by: ..."/>
                     <div className={`events-list-event-listing ${this.state.isMobile ? null : 'scroll-snap'}`}>
                         <div className='event-card-container'>
                             <h1 className='placeholder-glow'>
