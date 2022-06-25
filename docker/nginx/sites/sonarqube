@@ -1,9 +1,0 @@
-server {
-    listen 8000;
-
-    server_name sonar.invenus.club;
-
-    location / {
-        proxy_pass http://sonarqube:9000;
-    }
-}

@@ -34,7 +34,6 @@ services:
       context: docker/nginx
       dockerfile: Dockerfile
     depends_on:
-      - sonarqube
       - invenus-server
       - minio
     ports:
