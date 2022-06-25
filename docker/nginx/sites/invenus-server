@@ -1,7 +1,7 @@
 server {
     listen 8000;
 
-    server_name invenus.club www.invenus.club;
+    server_name api.invenus.club;
 
     location / {
         if ($request_method = 'OPTIONS') {
