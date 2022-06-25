@@ -1,12 +1,9 @@
 package club.invenus.invenus.domain;
 
 import lombok.*;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 @Embeddable
 @Setter
@@ -33,4 +30,9 @@ public class Address {
     @Column(name = "country", columnDefinition = "VARCHAR(255)")
     private String country;
 
+    public enum Gender {
+
+        MALE, FEMALE, DIVERSE;
+
+    }
 }

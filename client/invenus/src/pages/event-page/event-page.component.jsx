@@ -35,11 +35,11 @@ const EventPage = () => {
             <div>
                 { res ? (
                     <div>
-                        <EventHeader event={res}></EventHeader>
-                        {/*<EventDescriptionCardComponent event ={res}></EventDescriptionCardComponent>*/}
-                        {/*<EventMediaCardComponent></EventMediaCardComponent>*/}
-                        {/*<EventClubInformationCardComponent></EventClubInformationCardComponent>*/}
-                        {/*<EventLocationCardComponent event={res}></EventLocationCardComponent>*/}
+                        <EventHeader event = {res}></EventHeader>
+                        <EventDescriptionCardComponent event = {res}></EventDescriptionCardComponent>
+                        <EventMediaCardComponent></EventMediaCardComponent>
+                        <EventClubInformationCardComponent></EventClubInformationCardComponent>
+                        <EventLocationCardComponent event = {res}></EventLocationCardComponent>
                         {/*<EventPageInformationCard title = {`EventId ${id}`}></EventPageInformationCard>*/}
                     </div>
                 ): null}

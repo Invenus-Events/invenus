@@ -65,6 +65,7 @@ public class MockData {
 
         Location location = Location.builder()
                 .address(address)
+                .latitude(49.61141454f)
                 .longitude(6.1367463f)
                 .build();
 
@@ -90,6 +91,162 @@ public class MockData {
                 .build();
 
         clubProfile.setClub(club);
+        return club;
+    }
+
+    public static Club pacha() {
+        Address address = Address.builder()
+                .address("Maximilliansplatz 5")
+                .city("Munich")
+                .postCode(80333)
+                .country("Germany")
+                .build();
+
+        Location location = Location.builder()
+                .address(address)
+                .latitude(48.1420809f)
+                .longitude(11.5697679f)
+                .build();
+
+        Media media = new Media();
+        media.setOverwrite("https://www.tz.de/bilder/2018/04/03/9745635/249205232-zu-muenchens-beste-bars-clubs-von-tom-osswald-2kdjclFoETec.jpg");
+
+        ClubProfile clubProfile = ClubProfile.builder()
+                .website("https://www.pacha-muenchen.de/de/")
+                .email("club@pacha-muenchen.de")
+                .phoneNumber("+49 89 30 90 50 85")
+                .description("Pacha Club Description")
+                .genres(new ArrayList<>())
+                .ratingCollection(new RatingCollection())
+                .media(media)
+                .priceRange(PriceRange.MEDIUM)
+                .build();
+
+        Club club = Club.builder()
+                .name("Pacha")
+                .shortName("Pacha")
+                .location(location)
+                .profile(clubProfile)
+                .build();
+
+        club.setProfile(clubProfile);
+        return club;
+    }
+
+    public static Club nulle() {
+        Address address = Address.builder()
+                .address("Maximilliansplatz 5")
+                .city("Munich")
+                .postCode(80333)
+                .country("Germany")
+                .build();
+
+        Location location = Location.builder()
+                .address(address)
+                .latitude(48.1421372f)
+                .longitude(11.5699098f)
+                .build();
+
+        Media media = new Media();
+        media.setOverwrite("https://www.klikcup.com/images/objects/1988/089-bar-munich.jpg");
+
+        ClubProfile clubProfile = ClubProfile.builder()
+                .website("https://089-bar.de/")
+                .email("office@089-bar.de")
+                .phoneNumber("+49 89 59 98 88 90")
+                .description("089 Bar Description")
+                .genres(new ArrayList<>())
+                .ratingCollection(new RatingCollection())
+                .media(media)
+                .priceRange(PriceRange.MEDIUM)
+                .build();
+
+        Club club = Club.builder()
+                .name("089 Bar")
+                .shortName("Nulle")
+                .location(location)
+                .profile(clubProfile)
+                .build();
+
+        club.setProfile(clubProfile);
+        return club;
+    }
+
+    public static Club blitz() {
+        Address address = Address.builder()
+                .address("Museumsinsel 1")
+                .city("Munich")
+                .postCode(80538)
+                .country("Germany")
+                .build();
+
+        Location location = Location.builder()
+                .address(address)
+                .latitude(48.1314923f)
+                .longitude(11.585991f)
+                .build();
+
+        Media media = new Media();
+        media.setOverwrite("https://www.baunetzwissen.de/imgs/2/2/0/1/5/0/6/Blitz_Club_Muenchen-2baa8b01cfd7f367.jpg");
+
+        ClubProfile clubProfile = ClubProfile.builder()
+                .website("https://www.blitz.club/")
+                .email("kontakt@blitz.club")
+                .phoneNumber("+49 89 38 01 26 561")
+                .description("089 Bar Description")
+                .genres(new ArrayList<>())
+                .ratingCollection(new RatingCollection())
+                .media(media)
+                .priceRange(PriceRange.EXPENSIVE)
+                .build();
+
+        Club club = Club.builder()
+                .name("BLITZ Club")
+                .shortName("Blitz")
+                .location(location)
+                .profile(clubProfile)
+                .build();
+
+        club.setProfile(clubProfile);
+        return club;
+    }
+
+    public static Club neuraum() {
+        Address address = Address.builder()
+                .address("Arnulfstraße 17")
+                .city("Munich")
+                .postCode(80335)
+                .country("Germany")
+                .build();
+
+        Location location = Location.builder()
+                .address(address)
+                .latitude(48.1422602f)
+                .longitude(11.5484573f)
+                .build();
+
+        Media media = new Media();
+        media.setOverwrite("https://neuraum.de/templates/yootheme/cache/FotoGalleryUploads-9a6246eb.jpeg");
+
+        ClubProfile clubProfile = ClubProfile.builder()
+                .website("https://neuraum.de/")
+                .email("info@neuraum.de")
+                .phoneNumber("+49 89 38 15 38 999")
+                .description("Neuraum Club Description")
+                .genres(new ArrayList<>())
+                .ratingCollection(new RatingCollection())
+                .media(media)
+                .priceRange(PriceRange.MEDIUM)
+                .build();
+
+        Club club = Club.builder()
+                .name("Neuraum")
+                .shortName("Neuraum")
+                .location(location)
+                .profile(clubProfile)
+                .build();
+
+        club.setProfile(clubProfile);
         return club;
     }
 

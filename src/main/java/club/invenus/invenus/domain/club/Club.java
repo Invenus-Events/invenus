@@ -2,6 +2,8 @@ package club.invenus.invenus.domain.club;
 
 import club.invenus.invenus.domain.Location;
 import club.invenus.invenus.domain.profile.ClubProfile;
+import club.invenus.invenus.domain.ticket.AvailableClubTicket;
+import club.invenus.invenus.domain.ticket.AvailableEventTicket;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -41,5 +43,9 @@ public class Club {
     @PrimaryKeyJoinColumn
     @NotNull
     private ClubProfile profile;
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "available_ticket_id")
+    private AvailableClubTicket ticket;
 
 }
