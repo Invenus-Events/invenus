@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { InView } from 'react-intersection-observer';
 
 import './events-list.styles.scss';
@@ -14,6 +14,7 @@ class EventsList extends React.Component {
             isMobile: window.innerWidth < 992,
             prev: null
         }
+        this.eventCardsContainerRef = React.createRef();
     }
 
     componentDidMount() {
@@ -39,6 +40,8 @@ class EventsList extends React.Component {
                     })
                 }, () => {
                     this.props.updateSortedEvents(this.state.events);
+                    // scroll to top
+                    this.eventCardsContainerRef.current.scrollTo(0, 0);
                 });
                 break;
             case "price-lowest":
@@ -48,6 +51,8 @@ class EventsList extends React.Component {
                     })
                 }, () => {
                     this.props.updateSortedEvents(this.state.events);
+                    // scroll to top
+                    this.eventCardsContainerRef.current.scrollTo(0, 0);
                 })
                 break;
         }
@@ -69,12 +74,12 @@ class EventsList extends React.Component {
                             <option value="date-lowest">
                                 Filter by: Date (Oldest first)
                             </option>
-                            <option value="rating-highest">
-                                Filter by: Rating (Most popular first)
-                            </option>
-                            <option value="rating-lowest">
-                                Filter by: Rating (Least popular first)
-                            </option>
+                            {/*<option value="rating-highest">*/}
+                            {/*    Filter by: Rating (Most popular first)*/}
+                            {/*</option>*/}
+                            {/*<option value="rating-lowest">*/}
+                            {/*    Filter by: Rating (Least popular first)*/}
+                            {/*</option>*/}
                             <option value="price-highest">
                                 Filter by: Price (Highest first)
                             </option>
@@ -89,7 +94,7 @@ class EventsList extends React.Component {
                             </option>
                         </select>
                     </form>
-                    <div className={`events-list-event-listing ${this.state.isMobile ? null : 'scroll-snap'}`}>
+                    <div ref={this.eventCardsContainerRef} className={`events-list-event-listing ${this.state.isMobile ? null : 'scroll-snap'}`}>
                         {
                             this.state.events.map((event, index) => {
                                 return (

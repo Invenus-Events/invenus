@@ -29,7 +29,7 @@ class HomePage extends React.Component {
             eventIndex: 0
         }))
 
-        axios.get('http://localhost:8080/events')
+        axios.get('https://api.invenus.club/events')
             .then(res => {
                 const events = res.data;
                 this.setState({events})

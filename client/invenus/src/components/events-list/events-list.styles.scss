@@ -43,6 +43,7 @@
 }
 
 .events-list-event-listing {
+  scroll-behavior: smooth;
   overflow: scroll;
   height: 100%;
   margin: 15px 0;
