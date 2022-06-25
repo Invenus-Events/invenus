@@ -22,7 +22,7 @@ public class AvailableTicket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "available_ticket_id", nullable = false)
+    @Column(name = "available_ticket_id")
     private UUID availableTicketId;
 
     @Column(name = "price", nullable = false)

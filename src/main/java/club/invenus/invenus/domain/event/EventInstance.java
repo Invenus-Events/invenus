@@ -38,7 +38,7 @@ public class EventInstance {
     @JoinColumn(name = "dj_id")
     private DJ dj;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "available_ticket_id")
     private AvailableEventTicket ticket;
 }
