@@ -26,7 +26,7 @@ public class Ticket {
     private UUID ticketId;
 
     @OneToOne
-    @JoinColumn(name = "available_ticket_id", nullable = false)
+    @JoinColumn(name = "available_ticket_id")
     private AvailableTicket availableTicket;
 
     @OneToOne

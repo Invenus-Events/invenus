@@ -44,7 +44,7 @@ public class Club {
     @NotNull
     private ClubProfile profile;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "available_ticket_id")
     private AvailableClubTicket ticket;
 

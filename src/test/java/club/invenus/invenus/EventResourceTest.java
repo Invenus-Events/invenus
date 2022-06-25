@@ -53,6 +53,10 @@ public class EventResourceTest {
 
         Club p1Club = clubRepository.save(MockData.p1Club());
         Club melusinaClub = clubRepository.save(MockData.melusinaClub());
+        clubRepository.save(MockData.pacha());
+        clubRepository.save(MockData.nulle());
+        clubRepository.save(MockData.blitz());
+        clubRepository.save(MockData.neuraum());
 
         Event tequilaNight = MockData.melusinaTequilaNight();
         tequilaNight.setClub(melusinaClub);

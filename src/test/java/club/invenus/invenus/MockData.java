@@ -11,6 +11,8 @@ import club.invenus.invenus.domain.media.Media;
 import club.invenus.invenus.domain.profile.ClubProfile;
 import club.invenus.invenus.domain.profile.DJ;
 import club.invenus.invenus.domain.rating.RatingCollection;
+import club.invenus.invenus.domain.ticket.AvailableEventTicket;
+import com.stripe.model.Price;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -129,7 +131,7 @@ public class MockData {
                 .profile(clubProfile)
                 .build();
 
-        club.setProfile(clubProfile);
+        clubProfile.setClub(club);
         return club;
     }
 
@@ -168,7 +170,7 @@ public class MockData {
                 .profile(clubProfile)
                 .build();
 
-        club.setProfile(clubProfile);
+        clubProfile.setClub(club);
         return club;
     }
 
@@ -207,7 +209,7 @@ public class MockData {
                 .profile(clubProfile)
                 .build();
 
-        club.setProfile(clubProfile);
+        clubProfile.setClub(club);
         return club;
     }
 
@@ -246,15 +248,19 @@ public class MockData {
                 .profile(clubProfile)
                 .build();
 
-        club.setProfile(clubProfile);
+        clubProfile.setClub(club);
         return club;
     }
 
     public static Event p1Sommerfest() {
+        AvailableEventTicket eventTicket = new AvailableEventTicket();
         EventInstance eventInstance = EventInstance.builder()
                 .timeFrame(new TimeFrame(LocalDateTime.of(2022, 6, 22, 22, 0, 0),
                         LocalDateTime.of(2022, 6, 23, 4, 0, 0)))
+                .ticket(eventTicket)
                 .build();
+        eventTicket.setEventInstance(eventInstance);
+        eventTicket.setPrice(BigDecimal.valueOf(20.00));
 
         Media media = new Media();
         media.setOverwrite("https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/Website-Event.jpg");
@@ -273,10 +279,14 @@ public class MockData {
     }
 
     public static Event melusinaTequilaNight() {
+        AvailableEventTicket eventTicket = new AvailableEventTicket();
         EventInstance eventInstance = EventInstance.builder()
                 .timeFrame(new TimeFrame(LocalDateTime.of(2022, 6, 3, 22, 0, 0),
                         LocalDateTime.of(2022, 6, 4, 4, 0, 0)))
+                .ticket(eventTicket)
                 .build();
+        eventTicket.setEventInstance(eventInstance);
+        eventTicket.setPrice(BigDecimal.TEN);
 
         Media media = new Media();
         media.setOverwrite("https://melusina.luxtix.lu/wp-content/uploads/sites/6/2022/05/279490519_10159812678814491_7132232474335391011_n.jpeg");
@@ -299,10 +309,14 @@ public class MockData {
     }
 
     public static Event p1PackMas() {
+        AvailableEventTicket eventTicket = new AvailableEventTicket();
         EventInstance eventInstance = EventInstance.builder()
                 .timeFrame(new TimeFrame(LocalDateTime.of(2022, 6, 22, 22, 0, 0),
                         LocalDateTime.of(2022, 6, 23, 4, 0, 0)))
+                .ticket(eventTicket)
                 .build();
+        eventTicket.setEventInstance(eventInstance);
+        eventTicket.setPrice(BigDecimal.valueOf(20.00));
 
         Media media = new Media();
         media.setOverwrite("https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/P1-Afterwiesn-3.jpg");
