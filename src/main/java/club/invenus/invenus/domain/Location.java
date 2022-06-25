@@ -1,5 +1,6 @@
 package club.invenus.invenus.domain;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotNull;
 public class Location {
 
     @Embedded
+    @JsonUnwrapped
     private Address address;
 
     @NotNull
