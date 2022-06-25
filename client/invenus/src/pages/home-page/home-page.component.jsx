@@ -18,7 +18,9 @@ class HomePage extends React.Component {
             // accounts for the first setState that shouldn't take place
             counter: 1,
             eventIndex: 0,
-            events: []
+            events: [],
+            shouldUpdateMap: false,
+            eventUpdateObservers: []
         }
     }
 
@@ -37,7 +39,6 @@ class HomePage extends React.Component {
     getEventInView = (eventIndex) => {
         // known bug: on initial load of website, second element is set to InView.
         // accounting for the first state change that shouldn't take place
-
         if (this.state.counter > 0) {
             this.setState((prevState) => ({
                 counter: prevState.counter - 1,
@@ -47,6 +48,16 @@ class HomePage extends React.Component {
                 eventIndex
             }))
         }
+    }
+
+    updateSortedEvents = (events) => {
+        this.setState({
+            events
+        }, () => {
+            this.setState({
+                eventIndex: 0
+            })
+        })
     }
 
     render() {
@@ -59,8 +70,8 @@ class HomePage extends React.Component {
                     </div>
                     ) :
                     <div className="homepage-container">
-                        <MapView events={this.state.events} currentEvent={this.state.eventIndex}/>
-                        <EventsList getEventInView={this.getEventInView.bind(this)} events={this.state.events}/>
+                        <MapView events={this.state.events} currentEvent={this.state.eventIndex} eventUpdateObservers={this.state.eventUpdateObservers}/>
+                        <EventsList getEventInView={this.getEventInView.bind(this)}  eventUpdateObservers={this.state.eventUpdateObservers} updateSortedEvents={this.updateSortedEvents.bind(this)} events={this.state.events}/>
                     </div>
                 }
             </div>

@@ -14,11 +14,18 @@ class MapView extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+            events: this.props.events,
+            currentEvent: this.props.currentEvent,
             lng: this.props.events[this.props.currentEvent].location.longitude,
             lat: this.props.events[this.props.currentEvent].location.latitude,
             zoom: 15
         };
         this.mapContainer = React.createRef();
+
+        let t = this;
+        props.eventUpdateObservers.push(function (events) {
+            t.updateMap(t.props.events[t.props.currentEvent].location.longitude, t.props.events[t.props.currentEvent].location.latitude);
+        })
     }
 
     updateMap(lng, lat) {
