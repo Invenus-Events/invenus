@@ -35,7 +35,7 @@ const EventPage = () => {
             <div>
                 { res ? (
                     <div>
-                        <EventHeader event = {res}></EventHeader>
+                        <EventHeader event={res}></EventHeader>
                         <EventDescriptionCardComponent event = {res}></EventDescriptionCardComponent>
                         <EventMediaCardComponent></EventMediaCardComponent>
                         <EventClubInformationCardComponent></EventClubInformationCardComponent>

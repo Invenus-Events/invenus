@@ -68,12 +68,13 @@ class EventsList extends React.Component {
                     }, () => {
                         this.notifyLocationError();
                         setTimeout(() => {
-                            this.setState({loadingLocation: false, filter: this.state.prevFilter})
+                            this.setState({loadingLocation: false, filter: this.state.prevFilter}, () => {
+                                this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
+                            })
                         }, 500)
-                        console.log("Unable to access user's location.")
                     });
                 } else {
-                    console.log("Unable to access user's location.")
+                    this.notifyLocationError();
                 }
             })
         } else {
