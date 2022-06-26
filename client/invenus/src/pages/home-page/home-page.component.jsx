@@ -51,6 +51,7 @@ class HomePage extends React.Component {
     }
 
     updateSortedEvents = (events) => {
+        console.log("---------------");
         this.setState({
             events
         }, () => {

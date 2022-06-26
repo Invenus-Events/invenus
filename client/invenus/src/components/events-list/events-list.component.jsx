@@ -37,7 +37,7 @@ class EventsList extends React.Component {
         })
     }
 
-    getLocation() {
+    getLocation(callback) {
         if (!this.state.userLocationLatitude || !this.state.userLocationLongitude) {
             this.setState({loadingLocation: true}, () => {
                 if (navigator.geolocation) {
@@ -47,14 +47,15 @@ class EventsList extends React.Component {
                             userLocationLongitude: position.coords.longitude,
                             userLocationLatitude: position.coords.latitude
                         }, () => {
-                            console.log(this.state.userLocationLongitude);
-                            console.log(this.state.userLocationLatitude);
+                            callback();
                         })
                     });
                 } else {
                     console.log("Unable to access user's location.")
                 }
             })
+        } else {
+            callback();
         }
     }
 
@@ -73,6 +74,7 @@ class EventsList extends React.Component {
                     })
                 }, () => {
                     this.props.updateSortedEvents(this.state.events);
+                    this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
                     this.eventCardsContainerRef.current.scrollTo(0, 0);
                 })
                 break;
@@ -83,6 +85,7 @@ class EventsList extends React.Component {
                     })
                 }, () => {
                     this.props.updateSortedEvents(this.state.events);
+                    this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
                     this.eventCardsContainerRef.current.scrollTo(0, 0);
                 })
                 break;
@@ -93,6 +96,7 @@ class EventsList extends React.Component {
                     })
                 }, () => {
                     this.props.updateSortedEvents(this.state.events);
+                    this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
                     this.eventCardsContainerRef.current.scrollTo(0, 0);
                 });
                 break;
@@ -103,39 +107,41 @@ class EventsList extends React.Component {
                     })
                 }, () => {
                     this.props.updateSortedEvents(this.state.events);
+                    this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
                     this.eventCardsContainerRef.current.scrollTo(0, 0);
                 })
                 break;
             case "distance-closest":
-                this.getLocation()
-                this.setState({
-                    events: this.props.events.sort((a, b) => {
-                        const distanceFromA = Math.sqrt(Math.pow(this.state.userLocationLongitude - a.location.longitude, 2) + Math.pow(this.state.userLocationLatitude - a.location.latitude, 2));
-                        const distanceFromB = Math.sqrt(Math.pow(this.state.userLocationLongitude - b.location.longitude, 2) + Math.pow(this.state.userLocationLatitude - b.location.latitude, 2));
-                        return distanceFromA - distanceFromB;
+                this.getLocation(() => {
+                    this.setState({
+                        events: this.props.events.sort((a, b) => {
+                            const distanceFromA = Math.sqrt(Math.pow(this.state.userLocationLongitude - a.location.longitude, 2) + Math.pow(this.state.userLocationLatitude - a.location.latitude, 2));
+                            const distanceFromB = Math.sqrt(Math.pow(this.state.userLocationLongitude - b.location.longitude, 2) + Math.pow(this.state.userLocationLatitude - b.location.latitude, 2));
+                            return distanceFromA - distanceFromB;
+                        })
+                    }, () => {
+                        this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
+                        this.props.updateSortedEvents(this.state.events);
                     })
-                }, () => {
-                    this.props.updateSortedEvents(this.state.events);
                 })
                 this.eventCardsContainerRef.current.scrollTo(0, 0);
                 break;
             case "distance-furthest":
-                this.getLocation();
-                this.setState({
-                    events: this.props.events.sort((a, b) => {
-                        const distanceFromA = Math.sqrt(Math.pow(this.state.userLocationLongitude - a.location.longitude, 2) + Math.pow(this.state.userLocationLatitude - a.location.latitude, 2));
-                        const distanceFromB = Math.sqrt(Math.pow(this.state.userLocationLongitude - b.location.longitude, 2) + Math.pow(this.state.userLocationLatitude - b.location.latitude, 2));
-                        return distanceFromB - distanceFromA;
+                this.getLocation(() => {
+                    this.setState({
+                        events: this.props.events.sort((a, b) => {
+                            const distanceFromA = Math.sqrt(Math.pow(this.state.userLocationLongitude - a.location.longitude, 2) + Math.pow(this.state.userLocationLatitude - a.location.latitude, 2));
+                            const distanceFromB = Math.sqrt(Math.pow(this.state.userLocationLongitude - b.location.longitude, 2) + Math.pow(this.state.userLocationLatitude - b.location.latitude, 2));
+                            return distanceFromB - distanceFromA;
+                        })
+                    }, () => {
+                        this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
+                        this.props.updateSortedEvents(this.state.events);
                     })
-                }, () => {
-                    this.props.updateSortedEvents(this.state.events);
-                })
+                });
                 this.eventCardsContainerRef.current.scrollTo(0, 0);
                 break;
         }
-
-        this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
-
     }
 
     render() {
