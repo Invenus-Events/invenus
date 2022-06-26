@@ -18,7 +18,7 @@ class EventsList extends React.Component {
             userLocationLongitude: null,
             userLocationLatitude: null,
             filter: "date-newest",
-            prevFilter: null,
+            prevFilter: "date-newest",
             events: props.events,
             isMobile: window.innerWidth < 992,
             prev: null
@@ -27,6 +27,8 @@ class EventsList extends React.Component {
     }
 
     componentDidMount() {
+        this.getLocation(() => {}, () => {});
+
         this.setState({
             events: this.props.events.sort(function (a, b) {
                 return new Date(a.timeFrame.from) - new Date(b.timeFrame.from);
@@ -53,7 +55,7 @@ class EventsList extends React.Component {
 
     });
 
-    getLocation(callback) {
+    getLocation(callback, errCallback) {
         if (!this.state.userLocationLatitude || !this.state.userLocationLongitude) {
             this.setState({loadingLocation: true}, () => {
                 if (navigator.geolocation) {
@@ -66,7 +68,7 @@ class EventsList extends React.Component {
                             callback();
                         })
                     }, () => {
-                        this.notifyLocationError();
+                        errCallback();
                         setTimeout(() => {
                             this.setState({loadingLocation: false, filter: this.state.prevFilter}, () => {
                                 this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
@@ -74,7 +76,7 @@ class EventsList extends React.Component {
                         }, 500)
                     });
                 } else {
-                    this.notifyLocationError();
+                    errCallback();
                 }
             })
         } else {
@@ -148,6 +150,8 @@ class EventsList extends React.Component {
                         this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
                         this.props.updateSortedEvents(this.state.events);
                     })
+                }, () => {
+                    this.notifyLocationError();
                 })
                 this.eventCardsContainerRef.current.scrollTo(0, 0);
                 break;
@@ -163,6 +167,8 @@ class EventsList extends React.Component {
                         this.props.eventUpdateObservers.forEach(observer => observer(this.state.events))
                         this.props.updateSortedEvents(this.state.events);
                     })
+                }, () => {
+                    this.notifyLocationError();
                 });
                 this.eventCardsContainerRef.current.scrollTo(0, 0);
                 break;
@@ -273,7 +279,11 @@ class EventsList extends React.Component {
                                                 this.props.getEventInView(index);
                                             }
                                         }}>
-                                            <EventCard event={event}/>
+                                            <EventCard
+                                                event={event}
+                                                userLocationLongitude={this.state.userLocationLongitude}
+                                                userLocationLatitude={this.state.userLocationLatitude}
+                                            />
                                         </InView>
                                     )
                                 })
