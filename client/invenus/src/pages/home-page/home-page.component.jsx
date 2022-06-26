@@ -8,6 +8,7 @@ import EventsList from "../../components/events-list/events-list.component";
 import './home-page.styles.scss';
 import MapViewLoading from "../../components/map-view-loading/map-view-loading.component";
 import EventsListLoading from "../../components/events-list-loading/events-list-loading.component";
+import { ToastContainer } from "react-toastify";
 
 class HomePage extends React.Component {
 
@@ -51,7 +52,6 @@ class HomePage extends React.Component {
     }
 
     updateSortedEvents = (events) => {
-        console.log("---------------");
         this.setState({
             events
         }, () => {
@@ -64,6 +64,17 @@ class HomePage extends React.Component {
     render() {
         return (
             <div >
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable={false}
+                    pauseOnHover={false}
+                />
                 { this.state.events.length === 0 ? (
                     <div>
                         <MapViewLoading />

@@ -4,16 +4,21 @@ import { InView } from 'react-intersection-observer';
 import './events-list.styles.scss';
 
 import EventCard from "../event-card/event-card.component";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 class EventsList extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            filterMessage: "Filter by: ...",
             loadingLocation: false,
             userLocationLongitude: null,
             userLocationLatitude: null,
             filter: "date-newest",
+            prevFilter: null,
             events: props.events,
             isMobile: window.innerWidth < 992,
             prev: null
@@ -37,6 +42,17 @@ class EventsList extends React.Component {
         })
     }
 
+    notifyLocationError = () => toast.error("We need access to your location.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+
+    });
+
     getLocation(callback) {
         if (!this.state.userLocationLatitude || !this.state.userLocationLongitude) {
             this.setState({loadingLocation: true}, () => {
@@ -49,6 +65,12 @@ class EventsList extends React.Component {
                         }, () => {
                             callback();
                         })
+                    }, () => {
+                        this.notifyLocationError();
+                        setTimeout(() => {
+                            this.setState({loadingLocation: false, filter: this.state.prevFilter})
+                        }, 500)
+                        console.log("Unable to access user's location.")
                     });
                 } else {
                     console.log("Unable to access user's location.")
@@ -60,9 +82,11 @@ class EventsList extends React.Component {
     }
 
     selectChanged = (e) => {
-        this.setState({ filter: e.target.value }, () => {
+        this.setState((prevState) => {
+            return { filter: e.target.value, prevFilter: prevState.filter}
+        }, () => {
             this.sortEvents()
-        });
+        })
     }
 
     sortEvents = () => {
@@ -150,7 +174,7 @@ class EventsList extends React.Component {
                 <div className='events-list-loading-container'>
                     <div className='events-list-content'>
                         <h1>Upcoming events.</h1>
-                        <input className='events-list-search-field' type="text" placeholder="Filter by: ..."/>
+                        <input className='events-list-search-field' type="text" placeholder={this.state.filterMessage}/>
                         <div className={`events-list-event-listing ${this.state.isMobile ? null : 'scroll-snap'}`}>
                             <div className='event-card-container'>
                                 <h1 className='placeholder-glow'>
