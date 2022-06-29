@@ -1,0 +1,28 @@
+.club-information-card-name{
+  font-size: 1rem;
+}
+
+.event-info-club-reference{
+  color: inherit;
+  text-decoration: inherit;
+}
+.club-visit-button{
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  width: 5rem;
+  border: 1px solid black;
+  padding: 2px;
+  margin-inline: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+
+}
+
+.club-information-header{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+}

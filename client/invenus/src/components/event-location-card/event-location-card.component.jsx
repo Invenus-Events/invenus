@@ -70,7 +70,7 @@ class EventLocationCard extends React.Component{
     render() {
         return (
             <div className="container-lg EventDescriptionCard">
-                <h4> The Location </h4>
+                <h4 className = "EventPageHeaderTitle"> Location </h4>
                 <p>{this.props.event.location.address.address}</p>
                 <div ref={this.mapContainer} className="event-location-card-map-container" />
             </div>
