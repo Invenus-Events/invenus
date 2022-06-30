@@ -4,6 +4,7 @@ import '../map-view/map-view.styles.scss';
 import './event-location-card.style.scss';
 
 import mapboxgl from "mapbox-gl";
+import MapView from "../map-view/map-view.component";
 
 // For development
 mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbi1saWFuZyIsImEiOiJja2s2d3B3aGMwM3U1MnZvNDZ1eWRreTBkIn0.v36rtfP7kOlwQQx30MLqdw';
@@ -31,21 +32,26 @@ class EventLocationCard extends React.Component{
             zoom: zoom
         });
 
-        const features = {
-                'type': 'Feature',
-                'properties': {},
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': [this.props.event.location.longitude, this.props.event.location.latitude]
-                }
-        }
 
-        map.on("load", () => {
+        map.on('load', () => {
             map.addSource('points', {
                 'type': 'geojson',
                 'data': {
                     'type': 'FeatureCollection',
-                    'features': features
+                    'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [
+                                    this.props.event.location.longitude, this.props.event.location.latitude
+                                ]
+                            },
+                            'properties': {
+                                'title': 'Mapbox DC'
+                            }
+                        },
+                    ]
                 }
             });
             map.addLayer({
@@ -60,10 +66,6 @@ class EventLocationCard extends React.Component{
                 }
             });
         })
-
-        this.setState(() => ({
-            map
-        }))
     }
 
 
