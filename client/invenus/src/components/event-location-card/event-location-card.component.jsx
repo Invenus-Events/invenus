@@ -29,7 +29,8 @@ class EventLocationCard extends React.Component{
             container: this.mapContainer.current,
             style: 'mapbox://styles/leon-liang/cl3pzciel002d16lawlprcelh',
             center: [this.props.event.location.longitude, this.props.event.location.latitude],
-            zoom: zoom
+            zoom: zoom,
+            interactive: false
         });
 
 
@@ -67,7 +68,6 @@ class EventLocationCard extends React.Component{
             });
         })
     }
-
 
     render() {
         return (
