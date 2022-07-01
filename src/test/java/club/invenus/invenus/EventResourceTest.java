@@ -53,10 +53,10 @@ public class EventResourceTest {
 
         Club p1Club = clubRepository.save(MockData.p1Club());
         Club melusinaClub = clubRepository.save(MockData.melusinaClub());
-        clubRepository.save(MockData.pacha());
-        clubRepository.save(MockData.nulle());
-        clubRepository.save(MockData.blitz());
-        clubRepository.save(MockData.neuraum());
+        Club pacha = clubRepository.save(MockData.pacha());
+        Club nulle = clubRepository.save(MockData.nulle());
+        Club blitz = clubRepository.save(MockData.blitz());
+        Club neuraum = clubRepository.save(MockData.neuraum());
 
         Event tequilaNight = MockData.melusinaTequilaNight();
         tequilaNight.setClub(melusinaClub);
@@ -73,13 +73,41 @@ public class EventResourceTest {
         List<EventInstance> p1PackMasEventInstances = p1PackMas.getEventInstances();
         p1PackMas.setEventInstances(new ArrayList<>());
 
+        Event pachaFreitag = MockData.pachaFreitag();
+        pachaFreitag.setClub(pacha);
+        List<EventInstance> pachaFreitagInstances = pachaFreitag.getEventInstances();
+        pachaFreitag.setEventInstances(new ArrayList<>());
+
+        Event blitzAfterShow = MockData.blitzAftershow();
+        pachaFreitag.setClub(blitz);
+        List<EventInstance> blitzAfterShowInstances = blitzAfterShow.getEventInstances();
+        blitzAfterShow.setEventInstances(new ArrayList<>());
+
+        Event neuraumClubSound = MockData.neuraumClubSound();
+        pachaFreitag.setClub(neuraum);
+        List<EventInstance> neuraumClubSoundEventInstances = neuraumClubSound.getEventInstances();
+        neuraumClubSound.setEventInstances(new ArrayList<>());
+
+        Event nulleSommerfest = MockData.nulleSommerfest();
+        pachaFreitag.setClub(nulle);
+        List<EventInstance> nulleSommerfestEventInstances = nulleSommerfest.getEventInstances();
+        nulleSommerfest.setEventInstances(new ArrayList<>());
+
         Event tequilaNightNew = eventRepository.save(tequilaNight);
         Event p1SommerfestNew = eventRepository.save(p1Sommerfest);
         Event p1PackMasNew = eventRepository.save(p1PackMas);
+        Event pachaFreitagNew = eventRepository.save(pachaFreitag);
+        Event blitzAfterShowNew = eventRepository.save(blitzAfterShow);
+        Event neuraumClubSoundNew = eventRepository.save(neuraumClubSound);
+        Event nulleSommerfestNew = eventRepository.save(nulleSommerfest);
 
         tequilaNightNew.setEventInstances(tequilaNightEventInstances);
         p1SommerfestNew.setEventInstances(p1SommerfestEventInstances);
-        p1PackMas.setEventInstances(p1PackMasEventInstances);
+        p1PackMasNew.setEventInstances(p1PackMasEventInstances);
+        pachaFreitagNew.setEventInstances(pachaFreitagInstances);
+        blitzAfterShowNew.setEventInstances(blitzAfterShowInstances);
+        neuraumClubSoundNew.setEventInstances(neuraumClubSoundEventInstances);
+        nulleSommerfestNew.setEventInstances(nulleSommerfestEventInstances);
 
         tequilaNightNew.getEventInstances().forEach(eventInstance -> {
             eventInstance.setEvent(tequilaNightNew);
@@ -99,9 +127,37 @@ public class EventResourceTest {
             eventInstance.setDj(dj);
         });
 
+        pachaFreitag.getEventInstances().forEach(eventInstance -> {
+            eventInstance.setEvent(pachaFreitag);
+            eventInstance.setEventInstanceID(pachaFreitag.getEventId());
+            eventInstance.setDj(dj);
+        });
+
+        blitzAfterShow.getEventInstances().forEach(eventInstance -> {
+            eventInstance.setEvent(blitzAfterShow);
+            eventInstance.setEventInstanceID(blitzAfterShow.getEventId());
+            eventInstance.setDj(dj);
+        });
+
+        neuraumClubSound.getEventInstances().forEach(eventInstance -> {
+            eventInstance.setEvent(neuraumClubSound);
+            eventInstance.setEventInstanceID(neuraumClubSound.getEventId());
+            eventInstance.setDj(dj);
+        });
+
+        nulleSommerfest.getEventInstances().forEach(eventInstance -> {
+            eventInstance.setEvent(nulleSommerfest);
+            eventInstance.setEventInstanceID(nulleSommerfest.getEventId());
+            eventInstance.setDj(dj);
+        });
+
         eventRepository.save(tequilaNight);
         eventRepository.save(p1Sommerfest);
         eventRepository.save(p1PackMas);
+        eventRepository.save(pachaFreitag);
+        eventRepository.save(blitzAfterShow);
+        eventRepository.save(neuraumClubSound);
+        eventRepository.save(nulleSommerfest);
     }
 
     @AfterEach

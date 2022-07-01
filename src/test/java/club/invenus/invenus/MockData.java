@@ -255,8 +255,8 @@ public class MockData {
     public static Event p1Sommerfest() {
         AvailableEventTicket eventTicket = new AvailableEventTicket();
         EventInstance eventInstance = EventInstance.builder()
-                .timeFrame(new TimeFrame(LocalDateTime.of(2022, 6, 22, 22, 0, 0),
-                        LocalDateTime.of(2022, 6, 23, 4, 0, 0)))
+                .timeFrame(new TimeFrame(LocalDateTime.of(2022, 8, 22, 22, 0, 0),
+                        LocalDateTime.of(2022, 8, 23, 4, 0, 0)))
                 .ticket(eventTicket)
                 .build();
         eventTicket.setEventInstance(eventInstance);
@@ -281,8 +281,8 @@ public class MockData {
     public static Event melusinaTequilaNight() {
         AvailableEventTicket eventTicket = new AvailableEventTicket();
         EventInstance eventInstance = EventInstance.builder()
-                .timeFrame(new TimeFrame(LocalDateTime.of(2022, 6, 3, 22, 0, 0),
-                        LocalDateTime.of(2022, 6, 4, 4, 0, 0)))
+                .timeFrame(new TimeFrame(LocalDateTime.of(2022, 9, 3, 22, 0, 0),
+                        LocalDateTime.of(2022, 9, 4, 4, 0, 0)))
                 .ticket(eventTicket)
                 .build();
         eventTicket.setEventInstance(eventInstance);
@@ -395,7 +395,7 @@ public class MockData {
         return event;
     }
 
-    public static Event neuRaumClubSound() {
+    public static Event neuraumClubSound() {
         AvailableEventTicket eventTicket = new AvailableEventTicket();
         EventInstance eventInstance = EventInstance.builder()
                 .timeFrame(new TimeFrame(LocalDateTime.of(2022, 8, 6, 22, 0, 0),
@@ -430,7 +430,7 @@ public class MockData {
         return event;
     }
 
-    public static Event nulleSommerFest() {
+    public static Event nulleSommerfest() {
         AvailableEventTicket eventTicket = new AvailableEventTicket();
         EventInstance eventInstance = EventInstance.builder()
                 .timeFrame(new TimeFrame(LocalDateTime.of(2022, 7, 16, 18, 0, 0),
