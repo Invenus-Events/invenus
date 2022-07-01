@@ -16,14 +16,23 @@
   margin-inline: 20px;
   margin-top: 5px;
   margin-bottom: 10px;
+  float:right;
+}
+
+.event-card-visit-button-right-align {
+  padding-bottom: 8px;
+  float:right;
 }
 
 .club-visit-button:hover {
   background-color: white;
+  margin-bottom: 8px;
   color: black;
 }
 
 .club-information-header{
+  padding-left: 8px;
+  padding-right: 8px;
   display: flex;
   flex-direction: row;
   align-content: center;

@@ -71,8 +71,8 @@ class EventLocationCard extends React.Component{
 
     render() {
         return (
-            <div className="container-lg EventDescriptionCard">
-                <h4 className = "EventPageHeaderTitle"> Location </h4>
+            <div className="EventDescriptionCard">
+                <h4 className = "EventPageHeader-Event-Location-Card"> Location </h4>
                 <div className="col-md-5">
                     <p className='event-card-club'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
