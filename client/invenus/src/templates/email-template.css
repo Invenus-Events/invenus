@@ -5,6 +5,11 @@
 .invenus-confirmation-email{
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
+}
+
+.confirmation-subheader{
+    margin-top: 25px;
 }
 
 .confirmation-header{
@@ -18,21 +23,43 @@
     flex-direction: column;
 }
 
-.ticket-confirmation-container{
+.ticket-receipt-container{
     background: rgba( 255, 255, 255, 0.45 );
     border: 1px solid; //rgba( 255, 255, 255, 0.18 );
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-top: 10px;
+    justify-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.confirmation-tag-header{
+    margin: 0px;
+}
+
+.event-title{
+    margin: 0px;
+}
+
+.summary-content{
+    margin-top: 30px;
+}
+
+.summary-tag{
     padding-right: 10px;
-    padding-left: 10px;
 }
 
 .event-total-container{
+    display: flex;
+    flex-direction: row;
     margin-right: 30px;
     margin-left: 30px;
+}
+
+.confirmation-total{
+    margin-bottom: 0px;
 }
 
 .confirmation-tag-header{
@@ -40,17 +67,26 @@
     font-size: 20px;
 }
 
-.confirmation-total{
-    margin-top: 20px;
-    margin-bottom: 40px;
-}
-
 .confirmation-details{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .summary-content{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+.ticket-summary-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.ticket-link{
+    padding-inline: 10px;
 }
