@@ -79,17 +79,17 @@ public class EventResourceTest {
         pachaFreitag.setEventInstances(new ArrayList<>());
 
         Event blitzAfterShow = MockData.blitzAftershow();
-        pachaFreitag.setClub(blitz);
+        blitzAfterShow.setClub(blitz);
         List<EventInstance> blitzAfterShowInstances = blitzAfterShow.getEventInstances();
         blitzAfterShow.setEventInstances(new ArrayList<>());
 
         Event neuraumClubSound = MockData.neuraumClubSound();
-        pachaFreitag.setClub(neuraum);
+        neuraumClubSound.setClub(neuraum);
         List<EventInstance> neuraumClubSoundEventInstances = neuraumClubSound.getEventInstances();
         neuraumClubSound.setEventInstances(new ArrayList<>());
 
         Event nulleSommerfest = MockData.nulleSommerfest();
-        pachaFreitag.setClub(nulle);
+        nulleSommerfest.setClub(nulle);
         List<EventInstance> nulleSommerfestEventInstances = nulleSommerfest.getEventInstances();
         nulleSommerfest.setEventInstances(new ArrayList<>());
 
@@ -162,9 +162,9 @@ public class EventResourceTest {
 
     @AfterEach
     public void cleanUp() {
-       clubRepository.deleteAll();
-       eventRepository.deleteAll();
-       djRepository.deleteAll();
+       //clubRepository.deleteAll();
+       //eventRepository.deleteAll();
+       //djRepository.deleteAll();
     }
 
     // todo: move
