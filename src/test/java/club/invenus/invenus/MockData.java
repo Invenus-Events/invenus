@@ -337,6 +337,128 @@ public class MockData {
         return event;
     }
 
+    public static Event pachaFreitag() {
+        AvailableEventTicket eventTicket = new AvailableEventTicket();
+        EventInstance eventInstance = EventInstance.builder()
+                .timeFrame(new TimeFrame(LocalDateTime.of(2022, 7, 15, 22, 0, 0),
+                        LocalDateTime.of(2022, 7, 16, 4, 0, 0)))
+                .ticket(eventTicket)
+                .build();
+        eventTicket.setEventInstance(eventInstance);
+        eventTicket.setPrice(BigDecimal.valueOf(15.00));
+
+        Media media = new Media();
+        media.setOverwrite("https://www.mucbook.de/wp-content/uploads/2019/10/Jaegermeister_Tablesfor2_KickOff_6.jpg");
+
+        Event event = Event.builder()
+                .organizer("Pacha")
+                .title("FreitagNacht w/ Mathame, Stefanie Raschke")
+                .description("Wir empfehlen, vor dem Clubbesuch einen Corona-Selbsttest zu machen und bei Krankheitssymptomen Zuhause zu bleiben. Wir alle sollten uns weiterhin schützen und Rücksicht nehmen. Danke!")
+                .capacity(100)
+                .sold(0)
+                .price(BigDecimal.valueOf(15))
+                .ratingCollection(new RatingCollection())
+                .media(media)
+                .eventInstances(List.of(eventInstance))
+                .build();
+        eventInstance.setEvent(event);
+
+        return event;
+    }
+
+    public static Event blitzAftershow() {
+        AvailableEventTicket eventTicket = new AvailableEventTicket();
+        EventInstance eventInstance = EventInstance.builder()
+                .timeFrame(new TimeFrame(LocalDateTime.of(2022, 7, 23, 23, 0, 0),
+                        LocalDateTime.of(2022, 7, 24, 6, 0, 0)))
+                .ticket(eventTicket)
+                .build();
+        eventTicket.setEventInstance(eventInstance);
+        eventTicket.setPrice(BigDecimal.valueOf(15.00));
+
+        Media media = new Media();
+        media.setOverwrite("http://retaildesignblog.net/wp-content/uploads/2017/10/Blitz-Music-CLub-by-STUDIO-KNACK-AND-SIMON-VORHAMMER-Munich-Germany.jpg");
+
+        Event event = Event.builder()
+                .organizer("Blitz Club")
+                .title("SCHALL IM SCHILF AFTERSHOW")
+                .description("Set times for the weekends are published every Friday noon at www.blitz.club. PLEASE RESPECT OUR NO PHOTO POLICY! NO PHONES ON THE DANCE FLOORS! BE WHO YOU ARE! LOVE IS THE MESSAGE!")
+                .capacity(100)
+                .sold(0)
+                .price(BigDecimal.valueOf(15))
+                .ratingCollection(new RatingCollection())
+                .media(media)
+                .eventInstances(List.of(eventInstance))
+                .build();
+        eventInstance.setEvent(event);
+
+        return event;
+    }
+
+    public static Event neuRaumClubSound() {
+        AvailableEventTicket eventTicket = new AvailableEventTicket();
+        EventInstance eventInstance = EventInstance.builder()
+                .timeFrame(new TimeFrame(LocalDateTime.of(2022, 8, 6, 22, 0, 0),
+                        LocalDateTime.of(2022, 8, 7, 6, 0, 0)))
+                .ticket(eventTicket)
+                .build();
+        eventTicket.setEventInstance(eventInstance);
+        eventTicket.setPrice(BigDecimal.valueOf(12.00));
+
+        Media media = new Media();
+        media.setOverwrite("https://www.my-private.club/images/eventdates/info/50476.jpg");
+
+        Event event = Event.builder()
+                .organizer("Neuraum")
+                .title("Mashup Baby - Clubsound 2.0 w/ Crunkz")
+                .description("Crunkz macht derzeit in der deutschen DJ-Szene ordentlich von sich Reden. Der 25-Jährige hat sich innerhalb von kürzester Zeit auch weit über die Landesgrenzen hinaus einen Namen gemacht. Angefangen mit Mixes auf YouTube geht es für den DJ und Producer seitdem kontinuierlich nach oben. Inzwischen begeistert er auch auf Soundcloud, Instagram & Co. mit seinen Tracks und Mashups nicht nur mehr als 700.000 Fans, sondern auch Stars der Szene wie Tiesto, Hardwell, Dash Berlin und viele mehr.\n" +
+                        "Aber Crunkz vereint seine Fans nicht nur in den sozialen Medien, sondern auch offline auf der Tanzfläche. Shows in Clubs von Weltrang wie dem Kölner Bootshaus und dem Münchner Neuraum und Mainstage-Gigs wie beim Open Beatz Festival haben bereits gezeigt, dass Crunkz die Zukunft gehört.\n" +
+                        "Crunkz wahre Leidenschaft ist aber das Produzieren, der Grind im Studio, das endlose Verbessern und Perfektionieren der eigenen musikalischen Werke. Das Gefühl für Rhythmus und Melodien wurde dem Spross einer musikalischen Familie quasi in die Wiege gelegt. Diese Talente bleiben nicht unentdeckt, schon 2018 findet sich Crunkz auf Hardwells Label Revealed Recordings wieder.\n" +
+                        "Viel wichtiger ist für den jungen Produzenten aber der künstlerische Aha-Moment, das Entdecken des eigenen Sounds. Der Output der letzten Jahre zeigt, dass Crunkz fündig geworden ist. Mit seinen neuesten Tracks geht er musikalisch einen ganz neuen Weg.\n" +
+                        "Frische House Music mit eingängigen Vocals und raumfüllenden Sounds – schon jetzt ein absolutes Erfolgsrezept. Egal ob „Superlike“, „Memories“ oder „I Don’t Wanna Know”:\n" +
+                        "Sie alle begeistern dank ihrer geheimnisvollen Atmosphäre, treibenden Bässe und der anziehenden Lyrics. Dem kreativen Schaffen des Youngsters scheinen einfach keine Grenzen gesetzt zu sein.\n" +
+                        "Crunkz sollte man definitiv auf dem Zettel haben!\n")
+                .capacity(100)
+                .sold(0)
+                .price(BigDecimal.valueOf(12))
+                .ratingCollection(new RatingCollection())
+                .media(media)
+                .eventInstances(List.of(eventInstance))
+                .build();
+        eventInstance.setEvent(event);
+
+        return event;
+    }
+
+    public static Event nulleSommerFest() {
+        AvailableEventTicket eventTicket = new AvailableEventTicket();
+        EventInstance eventInstance = EventInstance.builder()
+                .timeFrame(new TimeFrame(LocalDateTime.of(2022, 7, 16, 18, 0, 0),
+                        LocalDateTime.of(2022, 7, 17, 2, 0, 0)))
+                .ticket(eventTicket)
+                .build();
+        eventTicket.setEventInstance(eventInstance);
+        eventTicket.setPrice(BigDecimal.valueOf(10.00));
+
+        Media media = new Media();
+        media.setOverwrite("https://www.kuffler.de/thumbs/6673_5_01-Bar-am-SeeHaus-Chefs-Table.jpg");
+
+        Event event = Event.builder()
+                .organizer("089 Bar")
+                .title("089 Sommerfest")
+                .description("in der Bar am See/Haus!")
+                .capacity(100)
+                .sold(0)
+                .price(BigDecimal.valueOf(10))
+                .ratingCollection(new RatingCollection())
+                .media(media)
+                .eventInstances(List.of(eventInstance))
+                .build();
+        eventInstance.setEvent(event);
+
+        return event;
+    }
+
     public static DJ dj() {
         return new DJ();
     }
