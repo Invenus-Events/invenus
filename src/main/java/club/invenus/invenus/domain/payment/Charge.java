@@ -36,11 +36,11 @@ public class Charge {
     @CreationTimestamp
     private ZonedDateTime timestamp;
 
-    @Column(name = "amount", nullable = false)
-    private BigDecimal amount;
+    @Column(name = "amountSubtotal", nullable = false)
+    private BigDecimal amountSubtotal;
 
-    @Column(name = "paid")
-    private boolean paid;
+    @Column(name = "amountTotal", nullable = false)
+    private BigDecimal amountTotal;
 
     @OneToMany
     @ToString.Exclude

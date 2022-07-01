@@ -1,33 +1,46 @@
 package club.invenus.invenus.service.payment;
 
 
-import club.invenus.invenus.service.dto.CartDTO;
+import club.invenus.invenus.domain.payment.Charge;
+import club.invenus.invenus.exception.BadRequestException;
+import club.invenus.invenus.exception.UnauthorizedException;
 import com.stripe.Stripe;
-
+import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
-import com.stripe.model.Charge;
+import com.stripe.model.Event;
+import com.stripe.model.LineItem;
+import com.stripe.model.StripeObject;
 import com.stripe.model.checkout.Session;
-import com.stripe.param.InvoiceItemCreateParams;
+import com.stripe.net.Webhook;
 import com.stripe.param.checkout.SessionCreateParams;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.HashMap;
+import java.math.RoundingMode;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @Service
+@Slf4j
 public class PaymentService {
 
-    @Value("${invenus.base-url}")
-    private String baseUrl;
+    @Value("${invenus.web-url}")
+    private String webUrl;
 
     @Value("${stripe.secret-key}")
     private String secretKey;
+
+    @Autowired
+    public PaymentService() {
+    }
 
     @PostConstruct
     public void init() {
@@ -38,8 +51,8 @@ public class PaymentService {
         SessionCreateParams params =
                 SessionCreateParams.builder()
                         .setMode(SessionCreateParams.Mode.PAYMENT)
-                        .setSuccessUrl(baseUrl + "/webhook/stripe/success")
-                        .setCancelUrl(baseUrl + "/webhook/stripe/cancel")
+                        .setSuccessUrl(webUrl + "/webhook/stripe/success")
+                        .setCancelUrl(webUrl + "/webhook/stripe/cancel")
                         .setAllowPromotionCodes(false)
                         .addAllLineItem(items)
                         .setAutomaticTax(
@@ -50,7 +63,7 @@ public class PaymentService {
         return Session.create(params);
     }
 
-    public SessionCreateParams.LineItem createLineItem(String item, int quantity, String description, BigDecimal price) {
+    public SessionCreateParams.LineItem createLineItem(UUID productId, String item, int quantity, String description, BigDecimal price) {
         return SessionCreateParams.LineItem.builder()
                 .setQuantity((long) quantity)
                 .setPriceData(
@@ -60,23 +73,12 @@ public class PaymentService {
                                 .setUnitAmountDecimal(price)
                                 .setTaxBehavior(SessionCreateParams.LineItem.PriceData.TaxBehavior.INCLUSIVE)
                                 .setProductData(SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                                        .putMetadata("product_id", productId.toString())
                                         .setDescription(description)
                                         .build())
                                 .build())
                 .setAdjustableQuantity(SessionCreateParams.LineItem.AdjustableQuantity.builder().setEnabled(false).build())
                 .build();
-    }
-
-    public Charge charge(ChargeRequest chargeRequest) throws AuthenticationException, StripeException {
-        Map<String, Object> chargeParams = new HashMap<>();
-
-        chargeParams.put("amount", chargeRequest.getAmount());
-        chargeParams.put("currency", chargeRequest.getCurrency());
-        chargeParams.put("description", chargeRequest.getDescription());
-        chargeParams.put("source", chargeRequest.getStripeToken());
-
-        return Charge.create(chargeParams);
-
     }
 
 }

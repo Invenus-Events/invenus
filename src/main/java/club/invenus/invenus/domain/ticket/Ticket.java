@@ -2,10 +2,7 @@ package club.invenus.invenus.domain.ticket;
 
 import club.invenus.invenus.domain.payment.Charge;
 import club.invenus.invenus.domain.profile.User;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
@@ -19,9 +16,12 @@ import java.util.UUID;
 @Getter
 @ToString
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class Ticket {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ticket_id", nullable = false)
     private UUID ticketId;
 
@@ -29,14 +29,9 @@ public class Ticket {
     @JoinColumn(name = "available_ticket_id")
     private AvailableTicket availableTicket;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "charge_id", nullable = false)
     private Charge charge;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", updatable = false)
-    private User user;
-
 
 }
