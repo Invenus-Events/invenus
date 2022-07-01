@@ -84,8 +84,6 @@ class MapView extends React.PureComponent {
             });
         })
 
-
-
         this.setState(() => ({
             map
         }))

@@ -4,6 +4,7 @@ import '../map-view/map-view.styles.scss';
 import './event-location-card.style.scss';
 
 import mapboxgl from "mapbox-gl";
+import MapView from "../map-view/map-view.component";
 
 // For development
 mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbi1saWFuZyIsImEiOiJja2s2d3B3aGMwM3U1MnZvNDZ1eWRreTBkIn0.v36rtfP7kOlwQQx30MLqdw';
@@ -28,24 +29,30 @@ class EventLocationCard extends React.Component{
             container: this.mapContainer.current,
             style: 'mapbox://styles/leon-liang/cl3pzciel002d16lawlprcelh',
             center: [this.props.event.location.longitude, this.props.event.location.latitude],
-            zoom: zoom
+            zoom: zoom,
+            interactive: false
         });
 
-        const features = {
-                'type': 'Feature',
-                'properties': {},
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': [this.props.event.location.longitude, this.props.event.location.latitude]
-                }
-        }
 
-        map.on("load", () => {
+        map.on('load', () => {
             map.addSource('points', {
                 'type': 'geojson',
                 'data': {
                     'type': 'FeatureCollection',
-                    'features': features
+                    'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [
+                                    this.props.event.location.longitude, this.props.event.location.latitude
+                                ]
+                            },
+                            'properties': {
+                                'title': 'Mapbox DC'
+                            }
+                        },
+                    ]
                 }
             });
             map.addLayer({
@@ -60,18 +67,21 @@ class EventLocationCard extends React.Component{
                 }
             });
         })
-
-        this.setState(() => ({
-            map
-        }))
     }
-
 
     render() {
         return (
             <div className="container-lg EventDescriptionCard">
-                <h4> The Location </h4>
-                <p>{this.props.event.location.address.address}</p>
+                <h4 className = "EventPageHeaderTitle"> Location </h4>
+                <div className="col-md-5">
+                    <p className='event-card-club'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             className="bi bi-geo-alt-fill bootstrap-icon" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        {this.props.event.location.address.address}
+                    </p>
+                </div>
                 <div ref={this.mapContainer} className="event-location-card-map-container" />
             </div>
         );

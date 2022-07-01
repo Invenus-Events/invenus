@@ -1,0 +1,36 @@
+//.btn {
+//  background-color: #000;
+//  color: white;
+//  padding: 12px;
+//  margin: 10px 0;
+//  border: none;
+//  width: 100%;
+//  border-radius: 3px;
+//  cursor: pointer;
+//  font-size: 17px;
+//}
+
+.payment-page-payment-button {
+  background-color: #000;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.payment-page-payment-button:hover {
+  background-color: white;
+}
+
+.payment-page-container {
+  width: 45%;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
