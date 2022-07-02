@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import WordLimit from "react-word-limit";
+
 import './event-card.styles.scss';
 
 const EventCard = (props) => {
@@ -76,7 +78,7 @@ const EventCard = (props) => {
             </div>
         </div>
         <img className='event-card-image' src={event.imageUrl} alt=""/>
-        <p className='event-card-description'>{event.description}</p>
+        <p className='event-card-description'><WordLimit limit={200}>{event.description}</WordLimit></p>
             <Link className='event-card-learn-more-link' to={`/event/${event.id}`}>
                 <button className='event-card-learn-more-button'>Learn More</button>
             </Link>
