@@ -9,7 +9,7 @@ const EventDescriptionCard = ({event}) => {
                 <h4 className="EventPageHeaderTitle"> Details </h4>
                 <div>
                     <div className="col-sm">
-                        <p className='event-card-price'>
+                        <p className='event-card-organizer-description-card'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  className="bi bi-ticket-perforated-fill bootstrap-icon" viewBox="0 0 16 16">
                                 <path
@@ -19,7 +19,7 @@ const EventDescriptionCard = ({event}) => {
                         </p>
                     </div>
                     <div className="col-sm">
-                        <p className='event-card-price'>
+                        <p className='event-card-organizer-description-card'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  className="bi bi-clock bootstrap-icon" viewBox="0 0 16 16">
                                 <path
@@ -30,7 +30,7 @@ const EventDescriptionCard = ({event}) => {
                         </p>
                     </div>
                     <div className="col-sm">
-                        <p className='event-card-organizer'>
+                        <p className='event-card-organizer-description-card'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  className="bi bi-asterisk bootstrap-icon"
                                  viewBox="0 0 16 16">
