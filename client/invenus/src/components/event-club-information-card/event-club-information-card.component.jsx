@@ -11,7 +11,7 @@ const ClubInformationCard = ({event}) => {
             </div>
             <p className = "event-club-information-card-description-align"> {event.club.description} </p>
             <div className="col-md-3">
-                <p className='event-card-price-club'>
+                <p className='event-card-price-club-information'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          className="bi bi-clock bootstrap-icon" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
@@ -21,7 +21,7 @@ const ClubInformationCard = ({event}) => {
                 </p>
             </div>
             <div className="col-md-3">
-                <p className='event-card-price-club'>
+                <p className='event-card-price-club-information'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          className="bi bi-tag bootstrap-icon" viewBox="0 0 16 16">
                         <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
@@ -36,7 +36,7 @@ const ClubInformationCard = ({event}) => {
             </div>
 
             <div className="col-md-3">
-                <p className='event-card-price-club'>
+                <p className='event-card-price-club-information'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          className="bi bi-telephone-fill bootstrap-icon" viewBox="0 0 16 16">
                         <path fillRule="evenodd"
@@ -46,7 +46,7 @@ const ClubInformationCard = ({event}) => {
                 </p>
             </div>
             <div className="col">
-                <p className='event-card-price-club'>
+                <p className='event-card-price-club-information'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          className="bi bi-envelope bootstrap-icon" viewBox="0 0 16 16">
                         <path
@@ -54,9 +54,7 @@ const ClubInformationCard = ({event}) => {
                     </svg>
                     <a href = {"mailto:"+event.club.email}> {event.club.email} </a>
                 </p>
-                <p className='event-card-visit-button-right-align'>
-                    <a href = {event.club.website} target = "_blank"> <button className = "club-visit-button"> Visit </button> </a>
-                </p>
+                <a href = {event.club.website} target = "_blank"> <button className = "club-visit-button"> Visit </button> </a>
             </div>
         </div>
     );
