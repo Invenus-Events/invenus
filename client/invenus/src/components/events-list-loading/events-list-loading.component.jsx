@@ -1,9 +1,6 @@
 import React from "react";
 
 import './events-list-loading-styles.scss';
-import EventCard from "../event-card/event-card.component";
-import {InView} from "react-intersection-observer";
-import {Link} from "react-router-dom";
 
 class EventsListLoading extends React.Component {
 

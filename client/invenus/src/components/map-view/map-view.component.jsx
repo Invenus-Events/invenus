@@ -45,10 +45,12 @@ class MapView extends React.PureComponent {
 
     componentDidMount() {
         const { zoom } = this.state;
+        let center = [this.props.events[this.props.currentEvent].location.longitude, this.props.events[this.props.currentEvent].location.latitude];
+        console.log(center);
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             style: 'mapbox://styles/leon-liang/cl3pzciel002d16lawlprcelh',
-            center: [this.props.events[this.props.currentEvent].location.longitude, this.props.events[this.props.currentEvent].location.latitude],
+            center,
             zoom
         });
 

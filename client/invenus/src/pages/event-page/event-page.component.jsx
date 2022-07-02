@@ -30,7 +30,7 @@ const EventPage = () => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    });
 
     //event-page-container-increase
     return (

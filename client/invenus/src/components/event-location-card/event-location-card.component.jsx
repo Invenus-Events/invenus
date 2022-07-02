@@ -4,7 +4,6 @@ import '../map-view/map-view.styles.scss';
 import './event-location-card.style.scss';
 
 import mapboxgl from "mapbox-gl";
-import MapView from "../map-view/map-view.component";
 
 // For development
 mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbi1saWFuZyIsImEiOiJja2s2d3B3aGMwM3U1MnZvNDZ1eWRreTBkIn0.v36rtfP7kOlwQQx30MLqdw';

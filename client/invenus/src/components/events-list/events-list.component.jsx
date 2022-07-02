@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { InView } from 'react-intersection-observer';
 
 import './events-list.styles.scss';

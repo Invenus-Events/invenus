@@ -33,7 +33,10 @@ class HomePage extends React.Component {
         axios.get('https://api.invenus.club/events')
             .then(res => {
                 const events = res.data;
-                this.setState({events})
+                const sortedEvents = events.sort(function (a, b) {
+                    return new Date(a.timeFrame.from) - new Date(b.timeFrame.from);
+                })
+                this.setState({events: sortedEvents})
             })
     }
 
