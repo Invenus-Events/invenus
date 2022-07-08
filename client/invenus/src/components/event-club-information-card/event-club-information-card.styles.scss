@@ -15,7 +15,6 @@
   padding: 2px;
   margin-inline: 20px;
   margin-top: 5px;
-  margin-bottom: 10px;
   float:right;
 }
 
@@ -26,7 +25,6 @@
 
 .club-visit-button:hover {
   background-color: white;
-  margin-bottom: 8px;
   color: black;
 }
 
@@ -38,4 +36,50 @@
   align-content: center;
   align-items: center;
   justify-items: center;
+}
+
+.reviews{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0px;
+}
+
+.review-list{
+  display: flex;
+  flex-direction: row;
+}
+
+.review-button{
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  width: 9rem;
+  border: 1px solid black;
+  padding: 2px;
+  margin-inline: 20px;
+  float:right;
+}
+
+.review-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.reviewsTitle{
+  font-size: 25px;
+}
+
+.review-label{
+  font-size: 15px;
+  margin: 0px;
+  margin-right: 4px;
+}
+
+.invenus-rating{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
 }

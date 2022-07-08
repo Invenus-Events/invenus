@@ -10,6 +10,7 @@ import EventLocationCardComponent from "../../components/event-location-card/eve
 import './event-page-container-edit.css'
 import EventPageInformationCard
     from "../../components/event-page-information-card.component/event-page-information-card.component";
+import ReviewsViewComponent from "../../components/reviews-view/reviews-view.component";
 
 const EventPage = () => {
 
