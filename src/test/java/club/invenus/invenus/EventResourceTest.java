@@ -51,113 +51,220 @@ public class EventResourceTest {
 
         DJ dj = djRepository.save(MockData.dj());
 
-        Club p1Club = clubRepository.save(MockData.p1Club());
-        Club melusinaClub = clubRepository.save(MockData.melusinaClub());
-        Club pacha = clubRepository.save(MockData.pacha());
-        Club nulle = clubRepository.save(MockData.nulle());
-        Club blitz = clubRepository.save(MockData.blitz());
-        Club neuraum = clubRepository.save(MockData.neuraum());
+        // *************************************************************************************************************
+        // Instantiate clubs:
+        // *************************************************************************************************************
 
-        Event tequilaNight = MockData.melusinaTequilaNight();
-        tequilaNight.setClub(melusinaClub);
-        List<EventInstance> tequilaNightEventInstances = tequilaNight.getEventInstances();
-        tequilaNight.setEventInstances(new ArrayList<>());
+            // *********************************************************************************************************
+            // Munich clubs: 5
+            // *********************************************************************************************************
+            Club p1Club = clubRepository.save(MockData.p1Club());
+            Club pacha = clubRepository.save(MockData.pacha());
+            Club nulle = clubRepository.save(MockData.nulle());
+            Club blitz = clubRepository.save(MockData.blitz());
+            Club neuraum = clubRepository.save(MockData.neuraum());
+            // *********************************************************************************************************
+            // Luxembourg clubs: 2
+            // *********************************************************************************************************
+            Club melusinaClub = clubRepository.save(MockData.melusinaClub());
+            Club rockhalClub = clubRepository.save(MockData.Rockhal());
+            // *********************************************************************************************************
+            // Zurich clubs: 2
+            // *********************************************************************************************************
+            Club samigoAmusement = clubRepository.save(MockData.samigoAmusement());
+            Club clubBellevue = clubRepository.save(MockData.clubBellevue());
+            // *********************************************************************************************************
+            // Paris clubs: 2
+            // *********************************************************************************************************
+            Club rexClub = clubRepository.save(MockData.rexClub());
+            Club petitbain = clubRepository.save(MockData.petitBain());
+            // *********************************************************************************************************
+            // New York clubs: 3
+            // *********************************************************************************************************
+            Club paradiseClub = clubRepository.save(MockData.paradiseClub());
+            Club musicaClubNYC = clubRepository.save(MockData.musicaClubNYC());
+            Club theIridium = clubRepository.save(MockData.theIridium());
+            // *********************************************************************************************************
+            // Berlin clubs: 2
+            // *********************************************************************************************************
+            Club Berghain = clubRepository.save(MockData.Berghain());
+            Club YAAM = clubRepository.save(MockData.YAAM());
+            // *********************************************************************************************************
+            // Copenhagen clubs: 2
+            // *********************************************************************************************************
+            Club gayCopenhagenNightclub = clubRepository.save(MockData.gayCopenhagenNightclub());
+            Club hiveCopenhagen = clubRepository.save(MockData.hiveCopenhagen());
+            // *********************************************************************************************************
+            // Shanghai clubs: 2
+            // *********************************************************************************************************
+            Club M1NT = clubRepository.save(MockData.M1NT());
+            Club barRouge = clubRepository.save(MockData.barRouge());
 
-        Event p1Sommerfest = MockData.p1Sommerfest();
-        p1Sommerfest.setClub(p1Club);
-        List<EventInstance> p1SommerfestEventInstances = p1Sommerfest.getEventInstances();
-        p1Sommerfest.setEventInstances(new ArrayList<>());
+        // *************************************************************************************************************
+        // Instantiate Event data for clubs:
+        // *************************************************************************************************************
 
-        Event p1PackMas = MockData.p1PackMas();
-        p1PackMas.setClub(p1Club);
-        List<EventInstance> p1PackMasEventInstances = p1PackMas.getEventInstances();
-        p1PackMas.setEventInstances(new ArrayList<>());
+            // *********************************************************************************************************
+            // Munich clubs: 5
+            // *********************************************************************************************************
+            Event p1Sommerfest = MockData.p1Sommerfest();
+            p1Sommerfest.setClub(p1Club);
+            List<EventInstance> p1SommerfestEventInstances = p1Sommerfest.getEventInstances();
+            p1Sommerfest.setEventInstances(new ArrayList<>());
 
-        Event pachaFreitag = MockData.pachaFreitag();
-        pachaFreitag.setClub(pacha);
-        List<EventInstance> pachaFreitagInstances = pachaFreitag.getEventInstances();
-        pachaFreitag.setEventInstances(new ArrayList<>());
+            Event p1PackMas = MockData.p1PackMas();
+            p1PackMas.setClub(p1Club);
+            List<EventInstance> p1PackMasEventInstances = p1PackMas.getEventInstances();
+            p1PackMas.setEventInstances(new ArrayList<>());
 
-        Event blitzAfterShow = MockData.blitzAftershow();
-        blitzAfterShow.setClub(blitz);
-        List<EventInstance> blitzAfterShowInstances = blitzAfterShow.getEventInstances();
-        blitzAfterShow.setEventInstances(new ArrayList<>());
+            Event pachaFreitag = MockData.pachaFreitag();
+            pachaFreitag.setClub(pacha);
+            List<EventInstance> pachaFreitagInstances = pachaFreitag.getEventInstances();
+            pachaFreitag.setEventInstances(new ArrayList<>());
 
-        Event neuraumClubSound = MockData.neuraumClubSound();
-        neuraumClubSound.setClub(neuraum);
-        List<EventInstance> neuraumClubSoundEventInstances = neuraumClubSound.getEventInstances();
-        neuraumClubSound.setEventInstances(new ArrayList<>());
+            Event blitzAfterShow = MockData.blitzAftershow();
+            blitzAfterShow.setClub(blitz);
+            List<EventInstance> blitzAfterShowInstances = blitzAfterShow.getEventInstances();
+            blitzAfterShow.setEventInstances(new ArrayList<>());
 
-        Event nulleSommerfest = MockData.nulleSommerfest();
-        nulleSommerfest.setClub(nulle);
-        List<EventInstance> nulleSommerfestEventInstances = nulleSommerfest.getEventInstances();
-        nulleSommerfest.setEventInstances(new ArrayList<>());
+            Event neuraumClubSound = MockData.neuraumClubSound();
+            neuraumClubSound.setClub(neuraum);
+            List<EventInstance> neuraumClubSoundEventInstances = neuraumClubSound.getEventInstances();
+            neuraumClubSound.setEventInstances(new ArrayList<>());
 
-        Event tequilaNightNew = eventRepository.save(tequilaNight);
-        Event p1SommerfestNew = eventRepository.save(p1Sommerfest);
-        Event p1PackMasNew = eventRepository.save(p1PackMas);
-        Event pachaFreitagNew = eventRepository.save(pachaFreitag);
-        Event blitzAfterShowNew = eventRepository.save(blitzAfterShow);
-        Event neuraumClubSoundNew = eventRepository.save(neuraumClubSound);
-        Event nulleSommerfestNew = eventRepository.save(nulleSommerfest);
+            Event nulleSommerfest = MockData.nulleSommerfest();
+            nulleSommerfest.setClub(nulle);
+            List<EventInstance> nulleSommerfestEventInstances = nulleSommerfest.getEventInstances();
+            nulleSommerfest.setEventInstances(new ArrayList<>());
 
-        tequilaNightNew.setEventInstances(tequilaNightEventInstances);
-        p1SommerfestNew.setEventInstances(p1SommerfestEventInstances);
-        p1PackMasNew.setEventInstances(p1PackMasEventInstances);
-        pachaFreitagNew.setEventInstances(pachaFreitagInstances);
-        blitzAfterShowNew.setEventInstances(blitzAfterShowInstances);
-        neuraumClubSoundNew.setEventInstances(neuraumClubSoundEventInstances);
-        nulleSommerfestNew.setEventInstances(nulleSommerfestEventInstances);
+            // *********************************************************************************************************
+            // Luxembourg clubs: 2
+            // *********************************************************************************************************
+            Event tequilaNight = MockData.melusinaTequilaNight();
+            tequilaNight.setClub(melusinaClub);
+            List<EventInstance> tequilaNightEventInstances = tequilaNight.getEventInstances();
+            tequilaNight.setEventInstances(new ArrayList<>());
 
-        tequilaNightNew.getEventInstances().forEach(eventInstance -> {
-            eventInstance.setEvent(tequilaNightNew);
-            eventInstance.setEventInstanceID(tequilaNightNew.getEventId());
-            eventInstance.setDj(dj);
-        });
+            Event rockhalOpenAirBelval = MockData.rockhalOpenAirBelval();
+            rockhalOpenAirBelval.setClub(rockhalClub);
+            List<EventInstance> rockhalOpenAirBelvalInstance = rockhalOpenAirBelval.getEventInstances();
+            rockhalOpenAirBelval.setEventInstances(new ArrayList<>());
 
-        p1SommerfestNew.getEventInstances().forEach(eventInstance -> {
-            eventInstance.setEvent(p1SommerfestNew);
-            eventInstance.setEventInstanceID(p1SommerfestNew.getEventId());
-            eventInstance.setDj(dj);
-        });
+        // *************************************************************************************************************
+        // Save and set data for clubs:
+        // *************************************************************************************************************
 
-        p1PackMasNew.getEventInstances().forEach(eventInstance -> {
-            eventInstance.setEvent(p1PackMasNew);
-            eventInstance.setEventInstanceID(p1PackMasNew.getEventId());
-            eventInstance.setDj(dj);
-        });
+            // *********************************************************************************************************
+            // Munich clubs: 5
+            // *********************************************************************************************************
+            Event p1SommerfestNew = eventRepository.save(p1Sommerfest);
+            p1SommerfestNew.setEventInstances(p1SommerfestEventInstances);
 
-        pachaFreitag.getEventInstances().forEach(eventInstance -> {
-            eventInstance.setEvent(pachaFreitag);
-            eventInstance.setEventInstanceID(pachaFreitag.getEventId());
-            eventInstance.setDj(dj);
-        });
+            Event p1PackMasNew = eventRepository.save(p1PackMas);
+            p1PackMasNew.setEventInstances(p1PackMasEventInstances);
 
-        blitzAfterShow.getEventInstances().forEach(eventInstance -> {
-            eventInstance.setEvent(blitzAfterShow);
-            eventInstance.setEventInstanceID(blitzAfterShow.getEventId());
-            eventInstance.setDj(dj);
-        });
 
-        neuraumClubSound.getEventInstances().forEach(eventInstance -> {
-            eventInstance.setEvent(neuraumClubSound);
-            eventInstance.setEventInstanceID(neuraumClubSound.getEventId());
-            eventInstance.setDj(dj);
-        });
+            Event pachaFreitagNew = eventRepository.save(pachaFreitag);
+            pachaFreitagNew.setEventInstances(pachaFreitagInstances);
 
-        nulleSommerfest.getEventInstances().forEach(eventInstance -> {
-            eventInstance.setEvent(nulleSommerfest);
-            eventInstance.setEventInstanceID(nulleSommerfest.getEventId());
-            eventInstance.setDj(dj);
-        });
 
-        eventRepository.save(tequilaNight);
-        eventRepository.save(p1Sommerfest);
-        eventRepository.save(p1PackMas);
-        eventRepository.save(pachaFreitag);
-        eventRepository.save(blitzAfterShow);
-        eventRepository.save(neuraumClubSound);
-        eventRepository.save(nulleSommerfest);
+            Event blitzAfterShowNew = eventRepository.save(blitzAfterShow);
+            blitzAfterShowNew.setEventInstances(blitzAfterShowInstances);
+
+
+            Event neuraumClubSoundNew = eventRepository.save(neuraumClubSound);
+            neuraumClubSoundNew.setEventInstances(neuraumClubSoundEventInstances);
+
+
+            Event nulleSommerfestNew = eventRepository.save(nulleSommerfest);
+            nulleSommerfestNew.setEventInstances(nulleSommerfestEventInstances);
+
+            // *********************************************************************************************************
+            // Luxembourg clubs: 2
+            // *********************************************************************************************************
+            Event tequilaNightNew = eventRepository.save(tequilaNight);
+            tequilaNightNew.setEventInstances(tequilaNightEventInstances);
+
+            Event rockhalOpenAirBelvalnew = eventRepository.save(rockhalOpenAirBelval);
+            rockhalOpenAirBelvalnew.setEventInstances(rockhalOpenAirBelvalInstance);
+
+        // *************************************************************************************************************
+        // set Club instance information:
+        // *************************************************************************************************************
+
+            // *********************************************************************************************************
+            // Munich clubs: 5
+            // *********************************************************************************************************
+            p1SommerfestNew.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(p1SommerfestNew);
+                eventInstance.setEventInstanceID(p1SommerfestNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            p1PackMasNew.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(p1PackMasNew);
+                eventInstance.setEventInstanceID(p1PackMasNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            pachaFreitag.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(pachaFreitag);
+                eventInstance.setEventInstanceID(pachaFreitag.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            blitzAfterShow.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(blitzAfterShow);
+                eventInstance.setEventInstanceID(blitzAfterShow.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            neuraumClubSound.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(neuraumClubSound);
+                eventInstance.setEventInstanceID(neuraumClubSound.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            nulleSommerfest.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(nulleSommerfest);
+                eventInstance.setEventInstanceID(nulleSommerfest.getEventId());
+                eventInstance.setDj(dj);
+            });
+            // *********************************************************************************************************
+            // Luxembourg clubs: 2
+            // *********************************************************************************************************
+            tequilaNightNew.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(tequilaNightNew);
+                eventInstance.setEventInstanceID(tequilaNightNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            rockhalOpenAirBelvalnew.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(rockhalOpenAirBelvalnew);
+                eventInstance.setEventInstanceID(rockhalOpenAirBelvalnew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+
+        // *************************************************************************************************************
+        // Save Club instance to event Repository
+        // *************************************************************************************************************
+
+            // *********************************************************************************************************
+            // Munich clubs: 5
+            // *********************************************************************************************************
+            eventRepository.save(p1Sommerfest);
+            eventRepository.save(p1PackMas);
+            eventRepository.save(pachaFreitag);
+            eventRepository.save(blitzAfterShow);
+            eventRepository.save(neuraumClubSound);
+            eventRepository.save(nulleSommerfest);
+
+            // *********************************************************************************************************
+            // Luxembourg clubs: 2
+            // *********************************************************************************************************
+            eventRepository.save(tequilaNight);
+            eventRepository.save(rockhalOpenAirBelval);
     }
 
     @AfterEach
