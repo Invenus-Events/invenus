@@ -5,8 +5,6 @@ import google from "../../resources/google.png";
 import yelp from "../../resources/yelp.png";
 import tripadvisor from"../../resources/tripadvisor.png";
 
-import star from "./star-component";
-
 const ClubInformationCard = ({event}) => {
 
     function determineStars(number){
