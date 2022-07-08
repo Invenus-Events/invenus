@@ -12,7 +12,6 @@ import club.invenus.invenus.domain.profile.ClubProfile;
 import club.invenus.invenus.domain.profile.DJ;
 import club.invenus.invenus.domain.rating.RatingCollection;
 import club.invenus.invenus.domain.ticket.AvailableEventTicket;
-import com.stripe.model.Price;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -22,39 +21,19 @@ import java.util.List;
 public class MockData {
 
     public static Club p1Club() {
-        Address address = Address.builder()
-                .address("Prinzregentenstraße 1")
-                .city("Munich")
-                .postCode(80538)
-                .country("Germany")
-                .build();
-
-        Location location = Location.builder()
-                .address(address)
-                .latitude(48.1444649f)
-                .longitude(11.5853152f)
-                .build();
-
-        ClubProfile clubProfile = ClubProfile.builder()
-                .website("https://p1-club.de")
-                .email("contact@p1-club.de")
-                .phoneNumber("089 2111140")
-                .description("P1 Club Description")
-                .genres(new ArrayList<>())
-                .ratingCollection(new RatingCollection())
-                .media(new Media())
-                .priceRange(PriceRange.EXPENSIVE)
-                .build();
-
-        Club club = Club.builder()
+        return ClubBuilder.builder()
                 .name("P1 Club")
                 .shortName("P1")
-                .location(location)
-                .profile(clubProfile)
-                .build();
-
-        clubProfile.setClub(club);
-        return club;
+                .website("https://www.p1-club.de")
+                .email("contact@p1-club.de")
+                .phone("089 2111140")
+                .description("P1 Club Description")
+                .media("TODO")
+                .priceRange(PriceRange.EXPENSIVE)
+                .address("Prinzregentenstraße 1")
+                .lat(48.1444649f)
+                .lon(11.5853152f)
+                .build().toClub();
     }
 
     public static Club melusinaClub() {
@@ -253,29 +232,18 @@ public class MockData {
     }
 
     public static Event p1Sommerfest() {
-        AvailableEventTicket eventTicket = new AvailableEventTicket();
-        EventInstance eventInstance = EventInstance.builder()
-                .timeFrame(new TimeFrame(LocalDateTime.of(2022, 8, 22, 22, 0, 0),
-                        LocalDateTime.of(2022, 8, 23, 4, 0, 0)))
-                .ticket(eventTicket)
-                .build();
-        eventTicket.setEventInstance(eventInstance);
-        eventTicket.setPrice(BigDecimal.valueOf(20.00));
-
-        Media media = new Media();
-        media.setOverwrite("https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/Website-Event.jpg");
-
-        return Event.builder()
+        return EventBuilder.builder()
                 .organizer("P1 Club")
                 .title("P1 SOMMERFEST 2022")
                 .description("Das P1 Sommerfest verschlägt uns in die Weiten des Ozeans: auf Luao Islands. Gemeinsam mit dir erkunden wir den „Aloha Spirit“ mit tropischen Melodien und vielen weiteren Überraschungen!")
-                .capacity(100)
-                .sold(0)
-                .price(BigDecimal.valueOf(10))
-                .ratingCollection(new RatingCollection())
-                .media(media)
-                .eventInstances(List.of(eventInstance))
-                .build();
+                .media("https://p1-club.de/wp-content/themes/p1-club-template/imageresize/resize.php?w=1500&src=https://p1-club.de/wp-content/uploads/2022/05/Website-Event.jpg")
+                .month(8)
+                .dayStart(22)
+                .hourStart(22)
+                .dayEnd(23)
+                .hourEnd(4)
+                .price(20.00)
+                .build().toEvent();
     }
 
     public static Event melusinaTequilaNight() {
@@ -462,4 +430,5 @@ public class MockData {
     public static DJ dj() {
         return new DJ();
     }
+
 }
