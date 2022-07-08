@@ -41,6 +41,7 @@
     align-items: center;
     justify-items: center;
     padding: 10px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -55,6 +56,10 @@
 }
 
 .event-title{
+    margin: 0px;
+}
+
+.event-time{
     margin: 0px;
 }
 
@@ -121,7 +126,22 @@
     align-items: end;
 }
 
+.event-image{
+    width: 150px;
+}
+
 .footer-title{
     color: #0275d8;
     text-decoration: none;
 }
+
+.right-event-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.event-title-container{
+    margin-inline: 20px;
+}
+
