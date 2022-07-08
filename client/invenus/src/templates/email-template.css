@@ -144,4 +144,14 @@
 .event-title-container{
     margin-inline: 20px;
 }
+.divider{
+    height: 2px;
+    border-width: 1px;
+    background-color: #000000;
+    height: 60px;
+    border-radius: 9px;
+    width: 1px;
+    margin: 0;
+    padding: 0;
+}
 
