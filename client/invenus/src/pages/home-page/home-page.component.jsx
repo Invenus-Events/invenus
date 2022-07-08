@@ -36,7 +36,9 @@ class HomePage extends React.Component {
                 const sortedEvents = events.sort(function (a, b) {
                     return new Date(a.timeFrame.from) - new Date(b.timeFrame.from);
                 })
-                this.setState({events: sortedEvents})
+                this.setState({events: sortedEvents}, () => {
+                    console.log(this.state.events);
+                })
             })
     }
 
