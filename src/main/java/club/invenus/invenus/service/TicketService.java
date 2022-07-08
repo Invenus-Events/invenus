@@ -9,6 +9,7 @@ import club.invenus.invenus.domain.ticket.AvailableTicket;
 import club.invenus.invenus.domain.ticket.Ticket;
 import club.invenus.invenus.repository.TicketRepository;
 import club.invenus.invenus.service.dto.TicketJwtDTO;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,19 +19,22 @@ import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class TicketService {
 
     private final TicketRepository ticketRepository;
+    private final JwtService jwtService;
 
     @Value("${invenus.web-url}")
     private String webUrl;
 
     @Autowired
-    public TicketService(TicketRepository ticketRepository) {
+    public TicketService(TicketRepository ticketRepository, JwtService jwtService) {
         this.ticketRepository = ticketRepository;
+        this.jwtService = jwtService;
     }
 
     @Transactional
@@ -73,7 +77,9 @@ public class TicketService {
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.convertValue(dto, String.class);
+        TypeReference<HashMap<String, Object>> ref = new TypeReference<>() {};
+        HashMap<String, Object> dataMap = mapper.convertValue(dto, ref);
+        return jwtService.createJwt(dataMap);
     }
 
     public String getTicketUrl(@NotNull Ticket ticket) {
