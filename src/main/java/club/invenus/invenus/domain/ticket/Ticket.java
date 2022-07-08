@@ -1,7 +1,6 @@
 package club.invenus.invenus.domain.ticket;
 
 import club.invenus.invenus.domain.payment.Charge;
-import club.invenus.invenus.domain.profile.User;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
