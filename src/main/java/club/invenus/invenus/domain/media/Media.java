@@ -22,7 +22,7 @@ public class Media {
 
     // TODO: TEMPORARY
     // TODO: MEDIA INTEGRATION DOESNT WORK YET
-    @Column(name = "media_overwrite")
+    @Column(name = "media_overwrite", columnDefinition = "TEXT")
     private String overwrite;
 
     // TODO: TEMPORARY

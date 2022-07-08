@@ -35,13 +35,13 @@ public class ClubProfile {
     @JoinColumn(name = "club_id")
     private Club club;
 
-    @Column(name = "website")
+    @Column(name = "website", columnDefinition = "TEXT")
     private String website;
 
-    @Column(name = "email")
+    @Column(name = "email", columnDefinition = "TEXT")
     private String email;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", columnDefinition = "TEXT")
     private String phoneNumber;
 
     @Column(name = "description", columnDefinition = "TEXT")
