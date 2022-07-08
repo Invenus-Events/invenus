@@ -33,4 +33,7 @@ public class Ticket {
     @JoinColumn(name = "charge_id", nullable = false)
     private Charge charge;
 
+    @Column(name = "jwt", columnDefinition = "TEXT", nullable = false)
+    private String jwt;
+
 }

@@ -12,10 +12,14 @@ import club.invenus.invenus.exception.ProductNotFoundException;
 import club.invenus.invenus.exception.UnauthorizedException;
 import club.invenus.invenus.repository.AvailableTicketRepository;
 import club.invenus.invenus.repository.ChargeRepository;
+import club.invenus.invenus.service.EmailService;
 import club.invenus.invenus.service.TicketService;
 import club.invenus.invenus.service.dto.CartDTO;
 import club.invenus.invenus.service.dto.CheckoutDTO;
+import club.invenus.invenus.service.dto.ConfirmationEmailDTO;
 import club.invenus.invenus.service.dto.ProductDTO;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.LineItem;
@@ -34,7 +38,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.StreamSupport;
 
@@ -42,6 +48,7 @@ import java.util.stream.StreamSupport;
 @Slf4j
 public class CheckoutService {
 
+    private final EmailService emailService;
     private final PaymentService paymentService;
     private final TicketService ticketService;
     private final AvailableTicketRepository availableTicketRepository;
@@ -49,9 +56,12 @@ public class CheckoutService {
 
     @Value("${stripe.secret-key}")
     private String secretKey;
+    @Value("${email.template.confirmation}")
+    private String confirmationEmailTemplate;
 
     @Autowired
-    public CheckoutService(PaymentService paymentService, TicketService ticketService, AvailableTicketRepository availableTicketRepository, ChargeRepository chargeRepository) {
+    public CheckoutService(EmailService emailService, PaymentService paymentService, TicketService ticketService, AvailableTicketRepository availableTicketRepository, ChargeRepository chargeRepository) {
+        this.emailService = emailService;
         this.paymentService = paymentService;
         this.ticketService = ticketService;
         this.availableTicketRepository = availableTicketRepository;
@@ -96,7 +106,34 @@ public class CheckoutService {
         chargeRepository.save(charge);
 
         List<Ticket> tickets = ticketService.createTickets(cart, charge);
-        // todo: send email to user with receipt
+        Map<String, Object> ticketData = createConfirmationEmailData(session, tickets);
+        emailService.sendEmail(session.getCustomer(), session.getCustomerEmail(), confirmationEmailTemplate, ticketData);
+    }
+
+    private Map<String, Object> createConfirmationEmailData(Session session, List<Ticket> tickets) {
+        List<ConfirmationEmailDTO.TicketDTO> orders = tickets.stream()
+                .map(ticket -> ConfirmationEmailDTO.TicketDTO.builder()
+                        .title(getName(ticket.getAvailableTicket()))
+                        .organizer(getDescription(ticket.getAvailableTicket()))
+                        .url(ticketService.getTicketUrl(ticket))
+                        .price(ticket.getAvailableTicket().getPrice().doubleValue())
+                        .build())
+                .toList();
+
+        ConfirmationEmailDTO confirmationEmailData = ConfirmationEmailDTO.builder()
+                .name(session.getCustomer())
+                .orderNumber(session.getId())
+                .subject("INVENUS.CLUB - TICKETS")
+                .date(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")))
+                .subTotal(session.getAmountSubtotal() / 100.0)
+                .vat((session.getAmountTotal() - session.getAmountSubtotal()) / 100.0)
+                .total(session.getAmountTotal() / 100.0)
+                .orders(orders)
+                .build();
+
+        ObjectMapper mapper = new ObjectMapper();
+        TypeReference<HashMap<String, Object>> typeRef = new TypeReference<>() {};
+        return mapper.convertValue(confirmationEmailData, typeRef);
     }
 
     void handleCheckoutSessionCanceled(@NotNull Session session) {
