@@ -106,6 +106,29 @@ public class EventResourceTest {
             Club M1NT = clubRepository.save(MockData.M1NT());
             Club barRouge = clubRepository.save(MockData.barRouge());
 
+            // *********************************************************************************************************
+            // Bangkok clubs: 2
+            // *********************************************************************************************************
+            Club Bullys = clubRepository.save(MockData.Bullys());
+            Club sugarClub = clubRepository.save(MockData.sugarClub());
+
+            // *********************************************************************************************************
+            // LA clubs: 2
+            // *********************************************************************************************************
+            Club exchangeLA = clubRepository.save(MockData.exchangeLA());
+            Club clubCrawlLA = clubRepository.save(MockData.clubCrawlLA());
+
+            // *********************************************************************************************************
+            // South Korea clubs: 2
+            // *********************************************************************************************************
+            Club soapSeoul = clubRepository.save(MockData.soapSeoul());
+            Club hongdaeClubAura = clubRepository.save(MockData.hongdaeClubAura());
+
+            // *********************************************************************************************************
+            // Australia clubs: 1
+            // *********************************************************************************************************
+            Club clubRetro = clubRepository.save(MockData.clubRetro());
+
         // *************************************************************************************************************
         // Instantiate Event data for clubs:
         // *************************************************************************************************************
@@ -292,7 +315,109 @@ public class EventResourceTest {
             // *********************************************************************************************************
             // Bangkok events: 8
             // *********************************************************************************************************
+            Event bullysHappyHour = MockData.bullysHappyHour();
+            bullysHappyHour.setClub(Bullys);
+            List<EventInstance> bullysHappyHourInstance = bullysHappyHour.getEventInstances();
+            bullysHappyHour.setEventInstances(new ArrayList<>());
 
+            Event bullysFridayNightOut = MockData.bullysFridayNightOut();
+            bullysFridayNightOut.setClub(Bullys);
+            List<EventInstance> bullysFridayNightOutInstance = bullysFridayNightOut.getEventInstances();
+            bullysFridayNightOut.setEventInstances(new ArrayList<>());
+
+            Event bullysSuperbowlEvenings = MockData.bullysSuperbowlEvenings();
+            bullysSuperbowlEvenings.setClub(Bullys);
+            List<EventInstance> bullysSuperbowlEveningsInstance = bullysSuperbowlEvenings.getEventInstances();
+            bullysSuperbowlEvenings.setEventInstances(new ArrayList<>());
+
+            Event sugarClubsHipHopNight = MockData.sugarClubsHipHopNight();
+            sugarClubsHipHopNight.setClub(sugarClub);
+            List<EventInstance> sugarClubsHipHopNightInstance = sugarClubsHipHopNight.getEventInstances();
+            sugarClubsHipHopNight.setEventInstances(new ArrayList<>());
+
+            Event sugarClubsValentinesDay = MockData.sugarClubsValentinesDay();
+            sugarClubsValentinesDay.setClub(sugarClub);
+            List<EventInstance> sugarClubsValentinesDayInstance = sugarClubsValentinesDay.getEventInstances();
+            sugarClubsValentinesDay.setEventInstances(new ArrayList<>());
+
+            Event sugarClubsHalloween = MockData.sugarClubsHalloween();
+            sugarClubsHalloween.setClub(sugarClub);
+            List<EventInstance> sugarClubsHalloweenInstance = sugarClubsHalloween.getEventInstances();
+            sugarClubsHalloween.setEventInstances(new ArrayList<>());
+
+            Event sugarClubATrain = MockData.sugarClubATrain();
+            sugarClubATrain.setClub(sugarClub);
+            List<EventInstance> sugarClubATrainInstance = sugarClubATrain.getEventInstances();
+            sugarClubATrain.setEventInstances(new ArrayList<>());
+
+            Event sugarClubKidInk = MockData.sugarClubKidInk();
+            sugarClubKidInk.setClub(sugarClub);
+            List<EventInstance> sugarClubKidInkInstance = sugarClubKidInk.getEventInstances();
+            sugarClubKidInk.setEventInstances(new ArrayList<>());
+
+            // *********************************************************************************************************
+            // LA events: 6
+            // *********************************************************************************************************
+            Event luttrelExchange = MockData.luttrelExchange();
+            luttrelExchange.setClub(exchangeLA);
+            List<EventInstance> luttrelExchangeInstance = luttrelExchange.getEventInstances();
+            luttrelExchange.setEventInstances(new ArrayList<>());
+
+            Event rudimentalDJExchange = MockData.rudimentalDJExchange();
+            rudimentalDJExchange.setClub(exchangeLA);
+            List<EventInstance> rudimentalDJExchangeInstance = rudimentalDJExchange.getEventInstances();
+            rudimentalDJExchange.setEventInstances(new ArrayList<>());
+
+            Event killTheNoiseExchange = MockData.killTheNoiseExchange();
+            killTheNoiseExchange.setClub(exchangeLA);
+            List<EventInstance> killTheNoiseExchangeInstance = killTheNoiseExchange.getEventInstances();
+            killTheNoiseExchange.setEventInstances(new ArrayList<>());
+
+            Event warfaceDeadlyGunsExchange = MockData.warfaceDeadlyGunsExchange();
+            warfaceDeadlyGunsExchange.setClub(exchangeLA);
+            List<EventInstance> warfaceDeadlyGunsExchangeInstance = warfaceDeadlyGunsExchange.getEventInstances();
+            warfaceDeadlyGunsExchange.setEventInstances(new ArrayList<>());
+
+            Event fourthOfJulyClubCrawl = MockData.fourthOfJulyClubCrawl();
+            fourthOfJulyClubCrawl.setClub(clubCrawlLA);
+            List<EventInstance> fourthOfJulyClubCrawlInstance = fourthOfJulyClubCrawl.getEventInstances();
+            fourthOfJulyClubCrawl.setEventInstances(new ArrayList<>());
+
+            Event goldenNightClubCrawl = MockData.GoldenNightClubCrawl();
+            goldenNightClubCrawl.setClub(clubCrawlLA);
+            List<EventInstance> goldenNightClubCrawlInstance = goldenNightClubCrawl.getEventInstances();
+            goldenNightClubCrawl.setEventInstances(new ArrayList<>());
+
+            // *********************************************************************************************************
+            // South Korea events: 3
+            // *********************************************************************************************************
+            Event rapNightSSoap = MockData.rapNightSSoap();
+            rapNightSSoap.setClub(soapSeoul);
+            List<EventInstance> rapNightSSoapInstance = rapNightSSoap.getEventInstances();
+            rapNightSSoap.setEventInstances(new ArrayList<>());
+
+            Event redBullNightSSoap = MockData.redBullNightSSoap();
+            redBullNightSSoap.setClub(soapSeoul);
+            List<EventInstance> redBullNightSSoapInstance = redBullNightSSoap.getEventInstances();
+            redBullNightSSoap.setEventInstances(new ArrayList<>());
+
+            Event clubAuraGirlsNightOut = MockData.ClubAuraGirlsNightOut();
+            clubAuraGirlsNightOut.setClub(hongdaeClubAura);
+            List<EventInstance> clubAuraGirlsNightOutInstance = clubAuraGirlsNightOut.getEventInstances();
+            clubAuraGirlsNightOut.setEventInstances(new ArrayList<>());
+
+            // *********************************************************************************************************
+            // Australia events: 2
+            // *********************************************************************************************************
+            Event retroNightClubRetro = MockData.retroNightClubRetro();
+            retroNightClubRetro.setClub(clubRetro);
+            List<EventInstance> retroNightClubRetroInstance = retroNightClubRetro.getEventInstances();
+            retroNightClubRetro.setEventInstances(new ArrayList<>());
+
+            Event gameDayClubRetro = MockData.gameDayClubRetro();
+            gameDayClubRetro.setClub(clubRetro);
+            List<EventInstance> gameDayClubRetroInstance = gameDayClubRetro.getEventInstances();
+            gameDayClubRetro.setEventInstances(new ArrayList<>());
 
         // *************************************************************************************************************
         // Save and set data for club events:
@@ -418,6 +543,75 @@ public class EventResourceTest {
 
             Event barRougenNewYearEveNew = eventRepository.save(barRougenNewYearEve);
             barRougenNewYearEveNew.setEventInstances(barRougenNewYearEveInstance);
+
+            // *********************************************************************************************************
+            // Bangkok events: 8
+            // *********************************************************************************************************
+            Event bullysHappyHourNew = eventRepository.save(bullysHappyHour);
+            bullysHappyHourNew.setEventInstances(bullysHappyHourInstance);
+
+            Event bullysFridayNightOutNew = eventRepository.save(bullysFridayNightOut);
+            bullysFridayNightOutNew.setEventInstances(bullysFridayNightOutInstance);
+
+            Event bullysSuperbowlEveningsNew = eventRepository.save(bullysSuperbowlEvenings);
+            bullysSuperbowlEveningsNew.setEventInstances(bullysSuperbowlEveningsInstance);
+
+            Event sugarClubsHipHopNightNew = eventRepository.save(sugarClubsHipHopNight);
+            sugarClubsHipHopNightNew.setEventInstances(sugarClubsHipHopNightInstance);
+
+            Event sugarClubsValentinesDayNew = eventRepository.save(sugarClubsValentinesDay);
+            sugarClubsValentinesDayNew.setEventInstances(sugarClubsValentinesDayInstance);
+
+            Event sugarClubsHalloweenNew = eventRepository.save(sugarClubsHalloween);
+            sugarClubsHalloweenNew.setEventInstances(sugarClubsHalloweenInstance);
+
+            Event sugarClubATrainNew = eventRepository.save(sugarClubATrain);
+            sugarClubATrainNew.setEventInstances(sugarClubATrainInstance);
+
+            Event sugarClubKidInkNew = eventRepository.save(sugarClubKidInk);
+            sugarClubKidInkNew.setEventInstances(sugarClubKidInkInstance);
+
+            // *********************************************************************************************************
+            // LA events: 6
+            // *********************************************************************************************************
+            Event luttrelExchangeNew = eventRepository.save(luttrelExchange);
+            luttrelExchangeNew.setEventInstances(luttrelExchangeInstance);
+
+            Event rudimentalDJExchangeNew = eventRepository.save(rudimentalDJExchange);
+            rudimentalDJExchangeNew.setEventInstances(rudimentalDJExchangeInstance);
+
+            Event killTheNoiseExchangeNew = eventRepository.save(killTheNoiseExchange);
+            killTheNoiseExchangeNew.setEventInstances(killTheNoiseExchangeInstance);
+
+            Event warfaceDeadlyGunsExchangeNew = eventRepository.save(warfaceDeadlyGunsExchange);
+            warfaceDeadlyGunsExchangeNew.setEventInstances(warfaceDeadlyGunsExchangeInstance);
+
+            Event fourthOfJulyClubCrawlNew = eventRepository.save(fourthOfJulyClubCrawl);
+            fourthOfJulyClubCrawlNew.setEventInstances(fourthOfJulyClubCrawlInstance);
+
+            Event goldenNightClubCrawlNew = eventRepository.save(goldenNightClubCrawl);
+            goldenNightClubCrawlNew.setEventInstances(goldenNightClubCrawlInstance);
+
+            // *********************************************************************************************************
+            // South Korea events: 3
+            // *********************************************************************************************************
+            Event rapNightSSoapNew = eventRepository.save(rapNightSSoap);
+            rapNightSSoapNew.setEventInstances(rapNightSSoapInstance);
+
+            Event redBullNightSSoapNew = eventRepository.save(redBullNightSSoap);
+            redBullNightSSoapNew.setEventInstances(redBullNightSSoapInstance);
+
+            Event clubAuraGirlsNightOutNew = eventRepository.save(clubAuraGirlsNightOut);
+            clubAuraGirlsNightOutNew.setEventInstances(clubAuraGirlsNightOutInstance);
+
+            // *********************************************************************************************************
+            // Australia events: 2
+            // *********************************************************************************************************
+            Event retroNightClubRetroNew = eventRepository.save(retroNightClubRetro);
+            retroNightClubRetroNew.setEventInstances(retroNightClubRetroInstance);
+
+            Event gameDayClubRetroNew = eventRepository.save(gameDayClubRetro);
+            gameDayClubRetroNew.setEventInstances(gameDayClubRetroInstance);
 
 
         // *************************************************************************************************************
@@ -633,12 +827,144 @@ public class EventResourceTest {
                 eventInstance.setDj(dj);
             });
 
+            // *********************************************************************************************************
+            // Bangkok events: 8
+            // *********************************************************************************************************
+            bullysHappyHour.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(bullysHappyHourNew);
+                eventInstance.setEventInstanceID(bullysHappyHourNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            bullysFridayNightOut.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(bullysFridayNightOutNew);
+                eventInstance.setEventInstanceID(bullysFridayNightOutNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            bullysSuperbowlEvenings.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(bullysSuperbowlEveningsNew);
+                eventInstance.setEventInstanceID(bullysSuperbowlEveningsNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            sugarClubsHipHopNight.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(sugarClubsHipHopNightNew);
+                eventInstance.setEventInstanceID(sugarClubsHipHopNightNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            sugarClubsValentinesDay.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(sugarClubsValentinesDayNew);
+                eventInstance.setEventInstanceID(sugarClubsValentinesDayNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            sugarClubsHalloween.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(sugarClubsHalloweenNew);
+                eventInstance.setEventInstanceID(sugarClubsHalloweenNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            sugarClubATrain.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(sugarClubATrainNew);
+                eventInstance.setEventInstanceID(sugarClubATrainNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            sugarClubKidInk.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(sugarClubKidInkNew);
+                eventInstance.setEventInstanceID(sugarClubKidInkNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            // *********************************************************************************************************
+            // LA events: 6
+            // *********************************************************************************************************
+            luttrelExchange.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(luttrelExchangeNew);
+                eventInstance.setEventInstanceID(luttrelExchangeNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            rudimentalDJExchange.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(rudimentalDJExchangeNew);
+                eventInstance.setEventInstanceID(rudimentalDJExchangeNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            killTheNoiseExchange.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(killTheNoiseExchangeNew);
+                eventInstance.setEventInstanceID(killTheNoiseExchangeNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            fourthOfJulyClubCrawl.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(fourthOfJulyClubCrawlNew);
+                eventInstance.setEventInstanceID(fourthOfJulyClubCrawlNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            warfaceDeadlyGunsExchange.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(warfaceDeadlyGunsExchangeNew);
+                eventInstance.setEventInstanceID(warfaceDeadlyGunsExchangeNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            fourthOfJulyClubCrawl.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(fourthOfJulyClubCrawlNew);
+                eventInstance.setEventInstanceID(fourthOfJulyClubCrawlNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            goldenNightClubCrawl.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(goldenNightClubCrawlNew);
+                eventInstance.setEventInstanceID(goldenNightClubCrawlNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            // *********************************************************************************************************
+            // South Korea events: 3
+            // *********************************************************************************************************
+            rapNightSSoap.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(rapNightSSoapNew);
+                eventInstance.setEventInstanceID(rapNightSSoapNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            redBullNightSSoap.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(redBullNightSSoapNew);
+                eventInstance.setEventInstanceID(redBullNightSSoapNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            clubAuraGirlsNightOut.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(clubAuraGirlsNightOutNew);
+                eventInstance.setEventInstanceID(clubAuraGirlsNightOutNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            // *********************************************************************************************************
+            // Australia events: 2
+            // *********************************************************************************************************
+            retroNightClubRetro.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(retroNightClubRetroNew);
+                eventInstance.setEventInstanceID(retroNightClubRetroNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
+            gameDayClubRetro.getEventInstances().forEach(eventInstance -> {
+                eventInstance.setEvent(gameDayClubRetroNew);
+                eventInstance.setEventInstanceID(gameDayClubRetroNew.getEventId());
+                eventInstance.setDj(dj);
+            });
+
         // *************************************************************************************************************
-        // Save Club instance to event Repository
+        // Save Club instance to event Repository (50 total events)
         // *************************************************************************************************************
 
             // *********************************************************************************************************
-            // Munich events: 5
+            // Munich events: 6
             // *********************************************************************************************************
             eventRepository.save(p1Sommerfest);
             eventRepository.save(p1PackMas);
@@ -699,6 +1025,41 @@ public class EventResourceTest {
             eventRepository.save(M1NTWhiteAffair);
             eventRepository.save(barRougeGirlsNightOut);
             eventRepository.save(barRougenNewYearEve);
+
+            // *********************************************************************************************************
+            // Bangkok events: 8
+            // *********************************************************************************************************
+            eventRepository.save(bullysHappyHour);
+            eventRepository.save(bullysFridayNightOut);
+            eventRepository.save(bullysSuperbowlEvenings);
+            eventRepository.save(sugarClubsHipHopNight);
+            eventRepository.save(sugarClubsValentinesDay);
+            eventRepository.save(sugarClubsHalloween);
+            eventRepository.save(sugarClubATrain);
+            eventRepository.save(sugarClubKidInk);
+
+            // *********************************************************************************************************
+            // LA events: 6
+            // *********************************************************************************************************
+            eventRepository.save(luttrelExchange);
+            eventRepository.save(rudimentalDJExchange);
+            eventRepository.save(killTheNoiseExchange);
+            eventRepository.save(warfaceDeadlyGunsExchange);
+            eventRepository.save(fourthOfJulyClubCrawl);
+            eventRepository.save(goldenNightClubCrawl);
+
+            // *********************************************************************************************************
+            // South Korea events: 3
+            // *********************************************************************************************************
+            eventRepository.save(rapNightSSoap);
+            eventRepository.save(redBullNightSSoap);
+            eventRepository.save(clubAuraGirlsNightOut);
+
+            // *********************************************************************************************************
+            // Australia events: 2
+            // *********************************************************************************************************
+            eventRepository.save(retroNightClubRetro);
+            eventRepository.save(gameDayClubRetro);
     }
 
     @AfterEach
