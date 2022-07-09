@@ -431,11 +431,148 @@ public class MockData {
                     .build().toClub();
         }
 
+        // *************************************************************************************************************
+        // Bangkok clubs: 2
+        // *************************************************************************************************************
+        public static Club Bullys() {
+            return ClubBuilder.builder()
+                    .name("Bully's")
+                    .shortName("Bully's")
+                    .website("https://www.bullys-bangkok.com/")
+                    .email("pubbullys@gmail.com")
+                    .phone("+66996160008")
+                    .description("The true American experience!")
+                    .priceRange(PriceRange.MEDIUM)
+                    .address("8 Sukhumvit Rd, Khlong Toei")
+                    .city("Bankik")
+                    .postCode(10110)
+                    .country("Thailand")
+                    .lat(13.743019775937714f)
+                    .lon(100.55227282844709f)
+                    .build().toClub();
+        }
+
+        public static Club sugarClub() {
+            return ClubBuilder.builder()
+                    .name("Sugar Club")
+                    .shortName("Sugar Club")
+                    .website("https://www.sugarclub-bangkok.com/")
+                    .email("sugarClub@gmail.com")
+                    .phone("+66613913111")
+                    .description("The #1 Hip Hop club in Thailand")
+                    .priceRange(PriceRange.MEDIUM)
+                    .address("37 Soi Sukhumvit 11, Khlong Toei Nuea, Watthana")
+                    .city("Bankik")
+                    .postCode(10110)
+                    .country("Thailand")
+                    .lat(13.74368676252214f)
+                    .lon(100.55553439444083f)
+                    .build().toClub();
+        }
+
+        // *************************************************************************************************************
+        // LA clubs: 2
+        // *************************************************************************************************************
+        public static Club exchangeLA() {
+            return ClubBuilder.builder()
+                    .name("Exchange LA")
+                    .shortName("Exchange")
+                    .website("https://exchangela.com/contact/")
+                    .email("INFO@EXCHANGELA.COM")
+                    .phone("+12136278070")
+                    .description("The best Club in LA")
+                    .priceRange(PriceRange.EXPENSIVE)
+                    .address("618 S Spring St")
+                    .city("Los Angeles")
+                    .postCode(90014)
+                    .country("United States")
+                    .lat(34.04709970342051f)
+                    .lon(-118.25183122361082f)
+                    .build().toClub();
+        }
+
+        public static Club clubCrawlLA() {
+            return ClubBuilder.builder()
+                    .name("Club Crawl LA")
+                    .shortName("Club Crawl")
+                    .website("https://losangelesclubcrawl.com")
+                    .email("events@losangelesclubcrawl.com")
+                    .phone("+13236676282")
+                    .description("Events company organizing hosted local nightclub tours with VIP entry & drink deals.")
+                    .priceRange(PriceRange.EXPENSIVE)
+                    .address("830 S Broadway")
+                    .city("Los Angeles")
+                    .postCode(90014)
+                    .country("United States")
+                    .lat(34.043779546333525f)
+                    .lon(-118.25525840723023f)
+                    .build().toClub();
+        }
+
+        // *************************************************************************************************************
+        // South Korea clubs: 2
+        // *************************************************************************************************************
+        public static Club soapSeoul() {
+            return ClubBuilder.builder()
+                    .name("Soap Seoul")
+                    .shortName("Soap Seoul")
+                    .website("https://soapseoul.com")
+                    .email("events@sSeoul.com")
+                    .phone("+827044576860")
+                    .description("This dance club enhances the sensory experience with elaborate lighting, design & the latest hits.")
+                    .priceRange(PriceRange.EXPENSIVE)
+                    .address("132-3 Itaewon-dong Yongsan-gu Seoul KRy")
+                    .city("Seoul")
+                    .postCode(4346)
+                    .country("South Korea")
+                    .lat(37.53356727906893f)
+                    .lon(126.99513219336157f)
+                    .build().toClub();
+        }
+
+        public static Club hongdaeClubAura() {
+            return ClubBuilder.builder()
+                    .name("Hongdae Club Aura")
+                    .shortName("Club Aura")
+                    .website("https://linktr.ee/clubaura")
+                    .email("events@ClubAura.org")
+                    .phone("+82-10-6667-6460")
+                    .description("This dance club provides the latest hits and the best time ever!")
+                    .priceRange(PriceRange.EXPENSIVE)
+                    .address("364-24 Seogyo-dong, Mapo-gu")
+                    .city("Seoul")
+                    .postCode(4346)
+                    .country("South Korea")
+                    .lat(37.552351069508696f)
+                    .lon(126.92182243595664f)
+                    .build().toClub();
+        }
+
+        // *************************************************************************************************************
+        // Australia clubs: 1
+        // *************************************************************************************************************
+        public static Club clubRetro() {
+            return ClubBuilder.builder()
+                    .name("Club Retro")
+                    .shortName("Club retro")
+                    .website("https://www.clubretro.com.au")
+                    .email("info@clubretro.com.au")
+                    .phone("+61396706575")
+                    .description("The perfect place to have your birthday party or work function!")
+                    .priceRange(PriceRange.MEDIUM)
+                    .address(" 383 Lonsdale St")
+                    .city("Melbourne")
+                    .postCode(3000)
+                    .country("South Australia")
+                    .lat(-37.81243616417134f)
+                    .lon(144.96113780141528f)
+                    .build().toClub();
+        }
 
 
 
     // *****************************************************************************************************************
-    // Events 31
+    // Events 50
     // *****************************************************************************************************************
 
         // *************************************************************************************************************
@@ -873,7 +1010,7 @@ public class MockData {
                     .build().toEvent();
         }
 
-        public static Event hiveGradOpening() {
+        public static Event hiveGrandOpening() {
             return EventBuilder.builder()
                     .organizer("Hive")
                     .title("Grand Opening")
@@ -962,6 +1099,305 @@ public class MockData {
                     .hourStart(20)
                     .dayEnd(23)
                     .hourEnd(4)
+                    .price(20.00)
+                    .build().toEvent();
+        }
+
+        // *************************************************************************************************************
+        // Bangkok Events: 8
+        // *************************************************************************************************************
+        public static Event bullysHappyHour() {
+            return EventBuilder.builder()
+                    .organizer("Bully's")
+                    .title("Happy hour")
+                    .description("Come celebrate happy hour here at Bully's pub where every for every 2 drinks bought you get one for free")
+                    .media("https://www.bullys-bangkok.com/wp-content/themes/bullys/img/ogimage.jpg")
+                    .month(7)
+                    .dayStart(22)
+                    .hourStart(20)
+                    .dayEnd(7)
+                    .hourEnd(24)
+                    .price(12.00)
+                    .build().toEvent();
+        }
+
+        public static Event bullysFridayNightOut() {
+            return EventBuilder.builder()
+                    .organizer("Bully's")
+                    .title("Friday Night out")
+                    .description("Come celebrate the start of your weekend at Bully's!")
+                    .media("https://www.bullys-bangkok.com/wp-content/themes/bullys/img/ogimage.jpg")
+                    .month(8)
+                    .dayStart(4)
+                    .hourStart(20)
+                    .dayEnd(5)
+                    .hourEnd(2)
+                    .price(20.00)
+                    .build().toEvent();
+        }
+
+        public static Event bullysSuperbowlEvenings() {
+            return EventBuilder.builder()
+                    .organizer("Bully's")
+                    .title("Superbowl at Bully's")
+                    .description("Come watch the 2023 Superbowl at Bully's")
+                    .media("https://media-cdn.tripadvisor.com/media/photo-s/0e/c6/60/9f/people-watching.jpg")
+                    .year(2023)
+                    .month(2)
+                    .dayStart(12)
+                    .hourStart(12)
+                    .dayEnd(12)
+                    .hourEnd(24)
+                    .price(35.00)
+                    .build().toEvent();
+        }
+
+        public static Event sugarClubsHipHopNight() {
+            return EventBuilder.builder()
+                    .organizer("Sugar Club")
+                    .title("Hip Hop night ft DJ Kay")
+                    .description("Time to let loose and have fun at Sugar!")
+                    .media("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr47nmUIVy1EM9oOG94IW7Gp0B6UvBVhubrg&usqp=CAU")
+                    .month(11)
+                    .dayStart(7)
+                    .hourStart(22)
+                    .dayEnd(8)
+                    .hourEnd(5)
+                    .price(15.00)
+                    .build().toEvent();
+        }
+
+        public static Event sugarClubsValentinesDay() {
+            return EventBuilder.builder()
+                    .organizer("Sugar Club")
+                    .title("Valentines Day party")
+                    .description("Time to let loose and meet new people and give your love life a jump start")
+                    .media("https://d3hwaim9vs2gfj.cloudfront.net/596-3161478610.jpg")
+                    .year(2023)
+                    .month(2)
+                    .dayStart(14)
+                    .hourStart(22)
+                    .dayEnd(15)
+                    .hourEnd(5)
+                    .price(20.00)
+                    .build().toEvent();
+        }
+
+        public static Event sugarClubsHalloween() {
+            return EventBuilder.builder()
+                    .organizer("Sugar Club")
+                    .title("Halloween party")
+                    .description("Time to get your costumes on and ready to give a scare!")
+                    .media("https://clubfilter.directory/custom/domain_1/image_files/sitemgr_photo_376.jpg")
+                    .month(10)
+                    .dayStart(31)
+                    .hourStart(18)
+                    .dayEnd(31)
+                    .hourEnd(24)
+                    .price(20.00)
+                    .build().toEvent();
+        }
+
+        public static Event sugarClubATrain() {
+            return EventBuilder.builder()
+                    .organizer("Sugar Club")
+                    .title("A Train")
+                    .description("Please welcome world famous A train to Bangkok Sugar Club!")
+                    .media("https://i0.wp.com/clubbingthailand.com/wp-content/uploads/2018/10/11-08-18-Sugar-Club-Bangkok-A-Train.jpg?resize=1170%2C500&ssl=1")
+                    .month(11)
+                    .dayStart(8)
+                    .hourStart(21)
+                    .dayEnd(9)
+                    .hourEnd(2)
+                    .price(25.00)
+                    .build().toEvent();
+        }
+
+        public static Event sugarClubKidInk() {
+            return EventBuilder.builder()
+                    .organizer("Sugar Club")
+                    .title("Kid Ink")
+                    .description("Please welcome world famous Kid Ink to Bangkok Sugar Club!")
+                    .media("https://i0.wp.com/clubbingthailand.com/wp-content/uploads/2019/06/07-18-19-Sugar-Club-Bangkok-Kid-Ink.jpg?resize=1170%2C500&ssl=1")
+                    .month(7)
+                    .dayStart(18)
+                    .hourStart(22)
+                    .dayEnd(18)
+                    .hourEnd(2)
+                    .price(25.00)
+                    .build().toEvent();
+        }
+
+        // *************************************************************************************************************
+        // LA Events: 6
+        // *************************************************************************************************************
+        public static Event luttrelExchange() {
+            return EventBuilder.builder()
+                    .organizer("LA Exchange")
+                    .title("Luttrel at Exchange")
+                    .description("Please welcome world famous Luttrel to the famous club Luttrel")
+                    .media("https://exchangela.com/wp-content/uploads/2022/05/07-15-22_EXLA_Luttrell_1920x1005_Horizontal.png")
+                    .month(7)
+                    .dayStart(15)
+                    .hourStart(22)
+                    .dayEnd(16)
+                    .hourEnd(4)
+                    .price(35.00)
+                    .build().toEvent();
+        }
+
+        public static Event rudimentalDJExchange() {
+            return EventBuilder.builder()
+                    .organizer("LA Exchange")
+                    .title("Rudimental DJ at Exchange")
+                    .description("Please welcome world famous DJ Rudimental to the famous club Luttrel")
+                    .media("https://exchangela.com/wp-content/uploads/2022/04/07-16-22_EXLA_Rudimental_1920x1080.png")
+                    .month(7)
+                    .dayStart(16)
+                    .hourStart(22)
+                    .dayEnd(17)
+                    .hourEnd(4)
+                    .price(35.00)
+                    .build().toEvent();
+        }
+
+        public static Event killTheNoiseExchange() {
+            return EventBuilder.builder()
+                    .organizer("LA Exchange")
+                    .title("Kill The Noise at Exchange")
+                    .description("Get ready for the Kill the Noise Embrace album tour to the famous club Luttrel")
+                    .media("https://exchangela.com/wp-content/uploads/2022/04/07-22-22_EXLA_Kill_The_Noise_Support_1920x1080.png")
+                    .month(7)
+                    .dayStart(22)
+                    .hourStart(22)
+                    .dayEnd(23)
+                    .hourEnd(4)
+                    .price(40.00)
+                    .build().toEvent();
+        }
+
+        public static Event warfaceDeadlyGunsExchange() {
+            return EventBuilder.builder()
+                    .organizer("LA Exchange")
+                    .title("Warface Deadly Guns at Exchange")
+                    .description("Get ready for the best event of the year: Warface Deadly Guns Kill to the famous club Luttrel")
+                    .media("https://exchangela.com/wp-content/uploads/2022/06/047-29-22_EXLA_BC_Warface__Deadly_Guns_1920x1005.png")
+                    .month(7)
+                    .dayStart(29)
+                    .hourStart(22)
+                    .dayEnd(30)
+                    .hourEnd(4)
+                    .price(30.00)
+                    .build().toEvent();
+        }
+
+        public static Event fourthOfJulyClubCrawl() {
+            return EventBuilder.builder()
+                    .organizer("Club Crawl")
+                    .title("Fourth of July at Club Crawl")
+                    .description("Get ready for the fourth of July at Club Crawl")
+                    .media("https://cdn.fourth-july.com/events5/banners/9a96ac18809543167bd2ff6f5bda4d7d88c4d3e9e9c3d03c78648cd20bc84874-rimg-w1200-h595-gmir.jpg?v=1653826119")
+                    .month(7)
+                    .dayStart(4)
+                    .hourStart(22)
+                    .dayEnd(5)
+                    .hourEnd(2)
+                    .price(20.00)
+                    .build().toEvent();
+        }
+
+        public static Event GoldenNightClubCrawl() {
+            return EventBuilder.builder()
+                    .organizer("Club Crawl")
+                    .title("Golden Night at Club Crawl")
+                    .description("Get ready for Golden night at Club Crawl")
+                    .media("https://media-cdn.tripadvisor.com/media/photo-s/18/dd/1f/f6/tourists-and-locals-to.jpg")
+                    .month(8)
+                    .dayStart(1)
+                    .hourStart(21)
+                    .dayEnd(2)
+                    .hourEnd(3)
+                    .price(25.00)
+                    .build().toEvent();
+        }
+
+        // *************************************************************************************************************
+        // South Korea Events: 3
+        // *************************************************************************************************************
+        public static Event rapNightSSoap() {
+            return EventBuilder.builder()
+                    .organizer("Soap Seoul")
+                    .title("Rap Night at Soap Seoul")
+                    .description("Get ready for Rap night at Soap Seoul")
+                    .media("https://viberatecdn.blob.core.windows.net/entity/venue/soap-seoul-Fo3B3")
+                    .month(8)
+                    .dayStart(3)
+                    .hourStart(22)
+                    .dayEnd(4)
+                    .hourEnd(4)
+                    .price(15.00)
+                    .build().toEvent();
+        }
+
+        public static Event redBullNightSSoap() {
+            return EventBuilder.builder()
+                    .organizer("Soap Seoul")
+                    .title("Red Bull event at Soap Seoul")
+                    .description("Soap Seoul is hosting a red bull event on the 30th of august")
+                    .media("https://viberatecdn.blob.core.windows.net/entity/venue/soap-seoul-Fo3B3")
+                    .month(8)
+                    .dayStart(30)
+                    .hourStart(21)
+                    .dayEnd(31)
+                    .hourEnd(4)
+                    .price(25.00)
+                    .build().toEvent();
+        }
+
+        public static Event ClubAuraGirlsNightOut() {
+            return EventBuilder.builder()
+                    .organizer("Hongdae Club Aura")
+                    .title("Girls night out")
+                    .description("Hongdae hosts a girl night out featuring Doja Cat")
+                    .media("https://zula.sg/wp-content/uploads/2018/05/clubbing-in-seoul-cover-1200x900.jpg")
+                    .month(12)
+                    .dayStart(23)
+                    .hourStart(21)
+                    .dayEnd(24)
+                    .hourEnd(3)
+                    .price(22.00)
+                    .build().toEvent();
+        }
+
+        // *************************************************************************************************************
+        // Australia Events: 2
+        // *************************************************************************************************************
+        public static Event retroNightClubRetro() {
+            return EventBuilder.builder()
+                    .organizer("Club Retro")
+                    .title("Retro night")
+                    .description("Time for a retro night playing old tunes and classics. Time to get footloose")
+                    .media("https://lh5.googleusercontent.com/p/AF1QipNsua7qPiTiJVwr2ErkyFGBTEsGzo4qD6vv__Wx=w480-h300-k-n")
+                    .month(9)
+                    .dayStart(18)
+                    .hourStart(21)
+                    .dayEnd(19)
+                    .hourEnd(3)
+                    .price(25.00)
+                    .build().toEvent();
+        }
+
+        public static Event gameDayClubRetro() {
+            return EventBuilder.builder()
+                    .organizer("Club Retro")
+                    .title("Game Day")
+                    .description("Get ready for game day at Club retro")
+                    .media("https://www.partystar.com.au/images/venue/159-3.jpg")
+                    .month(10)
+                    .dayStart(14)
+                    .hourStart(18)
+                    .dayEnd(15)
+                    .hourEnd(24)
                     .price(20.00)
                     .build().toEvent();
         }
