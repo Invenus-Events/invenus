@@ -32,8 +32,8 @@ class EventBuilder {
     public Event toEvent() {
         AvailableEventTicket eventTicket = new AvailableEventTicket();
         EventInstance eventInstance = EventInstance.builder()
-                .timeFrame(new TimeFrame(LocalDateTime.of(year, month, dayStart, hourStart, 0, 0),
-                        LocalDateTime.of(year, month, dayEnd, hourEnd, 0, 0)))
+                .timeFrame(new TimeFrame(LocalDateTime.of(year, month, dayStart, hourStart % 24, 0, 0),
+                        LocalDateTime.of(year, month, dayEnd, hourEnd % 24, 0, 0)))
                 .ticket(eventTicket)
                 .build();
         eventTicket.setEventInstance(eventInstance);
