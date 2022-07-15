@@ -21,7 +21,7 @@ import java.util.List;
 public class MockData {
 
     // *****************************************************************************************************************
-    // Clubs 18
+    // Clubs 27
     // *****************************************************************************************************************
 
         // *************************************************************************************************************
@@ -257,8 +257,8 @@ public class MockData {
                     .city("New York")
                     .postCode(10036)
                     .country("United States")
-                    .lat(40.7593f)
-                    .lon(73.9841f)
+                    .lat(40.759290395966644f)
+                    .lon(-73.984154731044f)
                     .build().toClub();
         }
 
@@ -276,8 +276,8 @@ public class MockData {
                     .city("New York")
                     .postCode(10019)
                     .country("United States")
-                    .lat(40.7667f)
-                    .lon(73.9962f)
+                    .lat(40.76681793672255f)
+                    .lon(-73.99617547325033f)
                     .build().toClub();
         }
 
@@ -295,8 +295,8 @@ public class MockData {
                     .city("New York")
                     .postCode(10019)
                     .country("United States")
-                    .lat(40.7619f)
-                    .lon(73.9835f)
+                    .lat(40.76194473732887f)
+                    .lon(-73.98353573092089f)
                     .build().toClub();
         }
 
@@ -1000,7 +1000,7 @@ public class MockData {
                     .organizer("GAY Copenhagen nightclub")
                     .title("Crazy Koraoke Wednesday")
                     .description("Time to sing ur heart out. Patrick and Eric are ready with karaoke from 6 pm - midnight")
-                    .media("https://scontent-frx5-2.xx.fbcdn.net/v/t39.30808-6/291574414_8382553048436753_6658236446827862884_n.jpg?stp=dst-jpg_p180x540&_nc_cat=109&ccb=1-7&_nc_sid=a26aad&_nc_ohc=IwbBd-yyCyEAX-ih0-k&_nc_oc=AQkV5NxL-fEJwF9E36UJ59F4QyT4aJtyyDPMBjOYNa4VqqfMRXhab__ZkcwCk9ZkUEnT7MILOuLoAeUyA-JmmaUv&_nc_ht=scontent-frx5-2.xx&oh=00_AT-9OyeOKDydMPXSVZK32SzUnYAokcyYOzTNTjsG2CZuVQ&oe=62CD2018")
+                    .media("https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F307449499%2F279973028887%2F1%2Foriginal.20220623-012333?w=1000&auto=format%2Ccompress&q=75&sharp=10&rect=24%2C0%2C530%2C265&s=2f9673a9a5106adde182a2588f337778")
                     .month(7)
                     .dayStart(13)
                     .hourStart(18)
