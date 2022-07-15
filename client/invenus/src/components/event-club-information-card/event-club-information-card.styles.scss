@@ -41,7 +41,7 @@
 .reviews{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  //align-items: center;
   padding: 0;
   margin: 0px;
 }
@@ -56,9 +56,9 @@
   color: white;
   font-weight: bold;
   width: 9rem;
+  margin-bottom: 10px;
   border: 1px solid black;
   padding: 2px;
-  margin-inline: 20px;
   float:right;
 }
 
@@ -81,5 +81,5 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 10px;
+  margin-bottom: 10px;
 }
