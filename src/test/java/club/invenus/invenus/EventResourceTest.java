@@ -1237,5 +1237,4 @@ public class EventResourceTest {
                         ]"""));
     }
 
-
 }
