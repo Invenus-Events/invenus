@@ -69,10 +69,10 @@ public class PaymentService {
                 .setPriceData(
                         SessionCreateParams.LineItem.PriceData.builder()
                                 .setCurrency("eur")
-                                .setProduct(item)
-                                .setUnitAmountDecimal(price)
+                                .setUnitAmountDecimal(price.multiply(BigDecimal.valueOf(100)))
                                 .setTaxBehavior(SessionCreateParams.LineItem.PriceData.TaxBehavior.INCLUSIVE)
                                 .setProductData(SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                                        .setName(item)
                                         .putMetadata("product_id", productId.toString())
                                         .setDescription(description)
                                         .build())

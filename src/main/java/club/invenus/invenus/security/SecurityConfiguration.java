@@ -10,16 +10,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors()
-                .and()
-                .authorizeRequests()
-                .anyRequest()
-                .permitAll()
-                .and()
-                .oauth2ResourceServer()
-                .jwt();
-
-        return http.build();
+        return http.cors().and().csrf().disable().build();
     }
 
 }
