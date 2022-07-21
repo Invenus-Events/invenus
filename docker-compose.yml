@@ -17,7 +17,6 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - invenus-server
-      - minio
     ports:
      - "80:8000"
   invenus-server:
@@ -27,7 +26,6 @@ services:
       dockerfile: docker/invenus-server/Dockerfile
     depends_on:
       - invenusdb
-      - minio
     environment:
       LOG_PATH: /app/logs
     volumes:
