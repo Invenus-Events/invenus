@@ -57,18 +57,9 @@ function determineStars(number){
 }
 
 
-function EventReviewCard({eventReviews}){
-    const [taOpen, setTaOpen] = useState(false);
+function EventReviewCard({event}){
     const [googleOpen, setGoogleOpen] = useState(false);
-    const [yelpOpen, setYelpOpen] = useState(false);
 
-    const oneReview = {
-        image: "https://m.media-amazon.com/images/I/81hxTtOsu+L._SS500_.jpg",
-        author: "Behsad Riemer",
-        time: "Saturday, 28th, 2016",
-        rating: 3.0,
-        description: "Best burger I tried in this kind of restaurants. Nice flavour, nice texture. Best fries I ever tried too. And the Milk Shake? It's like paradise. I had to buy another one when I finished because it was too good."
-    }
 
     return(
         <div className = "EventReviewCard EventDescriptionCard">
@@ -76,28 +67,13 @@ function EventReviewCard({eventReviews}){
             <div className = "reviews">
                 <div className = "invenus-rating">
                     <h4 className = "review-label"> We rate this place as: </h4>
-                        {determineStars(4)}
+                        {determineStars(event.club.ratingCollection.googleRatings.rating)}
                 </div>
-                <button className = "review-button" onClick={() => setTaOpen(!taOpen)} aria-controls="example-collapse-text" aria-expanded={taOpen}> Trip Advisor: {4.0} </button>
-                <Collapse in={taOpen}>
-                    <div id="example-collapse-text">
-                        {eventReviews.tripAdvisor.map((review) => {
-                            return <Review review={review}></Review>
-                        })}
-                    </div>
-                </Collapse>
                 <button className = "review-button" onClick={() => setGoogleOpen(!googleOpen)} aria-controls="example-collapse-text" aria-expanded={googleOpen}> Google: {4.0} </button>
                 <Collapse in={googleOpen}>
                     <div id="example-collapse-text">
-                        {eventReviews.google.map((review) => {
-                            return <Review review={review}></Review>
-                        })}
-                    </div>
-                </Collapse>
-                <button className = "review-button" onClick={() => setYelpOpen(!yelpOpen)} aria-controls="example-collapse-text" aria-expanded={yelpOpen}> Yelp: {3.8} </button>
-                <Collapse in={yelpOpen}>
-                    <div id="example-collapse-text">
-                        {eventReviews.yelp.map((review) => {
+                        {console.log(event.club.ratingCollection.googleRatings.ratings)}
+                        {event.club.ratingCollection.googleRatings.ratings.map((review) => {
                             return <Review review={review}></Review>
                         })}
                     </div>

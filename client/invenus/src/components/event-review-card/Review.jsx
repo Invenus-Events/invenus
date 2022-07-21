@@ -10,10 +10,7 @@ function Review({review}){
                     {determineStars(review.rating)}
                 </div>
             </div>
-
-            <img src = {review.image} className = "reviewer-image"></img>
-            <h6> {review.time} </h6>
-            <p> {review.description} </p>
+            <p> {review.message} </p>
         </div>
     );
 }

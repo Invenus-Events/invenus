@@ -99,7 +99,7 @@ const EventPage = () => {
                         <EventHeader event={res}></EventHeader>
                         <EventDescriptionCardComponent event={res}></EventDescriptionCardComponent>
                         <EventClubInformationCardComponent event={res}></EventClubInformationCardComponent>
-                        <EventReviewCard eventReviews={reviews}></EventReviewCard>
+                        <EventReviewCard event={res}/>
                         <EventLocationCardComponent event={res}></EventLocationCardComponent>
                         {/*<EventPageInformationCard title = {`EventId ${id}`}></EventPageInformationCard>*/}
                     </div>
