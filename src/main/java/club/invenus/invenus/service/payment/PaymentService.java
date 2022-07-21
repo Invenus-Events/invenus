@@ -52,7 +52,7 @@ public class PaymentService {
                 SessionCreateParams.builder()
                         .setMode(SessionCreateParams.Mode.PAYMENT)
                         .setSuccessUrl(webUrl + "/webhook/stripe/success")
-                        .setCancelUrl(webUrl + "/webhook/stripe/cancel")
+                        .setCancelUrl(webUrl)
                         .setAllowPromotionCodes(false)
                         .addAllLineItem(items)
                         .setAutomaticTax(
