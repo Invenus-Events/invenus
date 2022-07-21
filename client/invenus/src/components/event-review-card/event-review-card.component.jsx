@@ -72,9 +72,8 @@ function EventReviewCard({event}){
                 <button className = "review-button" onClick={() => setGoogleOpen(!googleOpen)} aria-controls="example-collapse-text" aria-expanded={googleOpen}> Google: {4.0} </button>
                 <Collapse in={googleOpen}>
                     <div id="example-collapse-text">
-                        {console.log(event.club.ratingCollection.googleRatings.ratings)}
-                        {event.club.ratingCollection.googleRatings.ratings.map((review) => {
-                            return <Review review={review}></Review>
+                        {event.club.ratingCollection.googleRatings.ratings.map((review, index) => {
+                            return <Review review={review} key={index} ></Review>
                         })}
                     </div>
                 </Collapse>
