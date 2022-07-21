@@ -22,6 +22,8 @@ public class EventDTO {
 
     private final UUID id;
 
+    private final UUID ticketId;
+
     @Size(min = 1, max = 30)
     private final String title;
 
@@ -47,6 +49,7 @@ public class EventDTO {
         var event = eventInstance.getEvent();
 
         this.id = eventInstance.getEventInstanceID();
+        this.ticketId = eventInstance.getTicket().getAvailableTicketId();
         this.title = event.getTitle();
         this.timeFrame = eventInstance.getTimeFrame();
         this.price = event.getPrice();

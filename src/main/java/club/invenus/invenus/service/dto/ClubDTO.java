@@ -37,7 +37,7 @@ public class ClubDTO {
 
     private final List<Genre> genres;
 
-    // TODO: RATING COLLECTION
+    private final RatingCollectionDTO ratingCollection;
 
     private final String imageUrl;
 
@@ -55,6 +55,7 @@ public class ClubDTO {
         this.phoneNumber = profile.getPhoneNumber();
         this.description = profile.getDescription();
         this.genres = profile.getGenres();
+        this.ratingCollection = new RatingCollectionDTO(club.getProfile().getRatingCollection());
         this.imageUrl = profile.getMedia().getURL();
         this.priceRange = profile.getPriceRange();
     }

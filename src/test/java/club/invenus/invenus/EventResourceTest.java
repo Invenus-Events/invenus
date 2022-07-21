@@ -20,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +33,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
 @SpringBootTest
-@Disabled
 public class EventResourceTest {
 
     @Autowired
@@ -45,6 +45,7 @@ public class EventResourceTest {
     private MockMvc mvc;
 
     @BeforeEach
+    @Transactional
     public void setUp() {
         clubRepository.deleteAll();
         eventRepository.deleteAll();
@@ -1074,6 +1075,7 @@ public class EventResourceTest {
     // todo: move
     // todo: make string equality ignore ID & fix indentation
     @Test
+    @Disabled
     public void testGetClubs() throws Exception {
         mvc.perform(get("/clubs"))
                 .andExpect(status().isOk())

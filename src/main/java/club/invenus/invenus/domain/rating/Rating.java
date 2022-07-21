@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Table(name = "rating")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Entity
 @Setter
 @Getter
 @ToString
@@ -19,7 +20,7 @@ public class Rating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "rating id")
+    @Column(name = "rating_id")
     private UUID ratingId;
 
     @Column(name = "rater")

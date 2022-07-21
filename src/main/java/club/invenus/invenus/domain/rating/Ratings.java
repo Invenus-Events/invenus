@@ -1,6 +1,5 @@
 package club.invenus.invenus.domain.rating;
 
-import club.invenus.invenus.domain.event.Event;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -8,8 +7,10 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-@Table(name = "rating")
+@Table(name = "ratings")
+@Entity
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Getter
 @Setter
@@ -20,12 +21,14 @@ import java.util.List;
 public class Ratings {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "ratings_id")
-    private int ratingsId;
+    private UUID ratingsId;
 
-    @ManyToOne
-    @JoinColumn(name = "rating id")
+    @Column(name = "rating")
+    private double rating;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Rating> ratings = new ArrayList<>();
 
 }
