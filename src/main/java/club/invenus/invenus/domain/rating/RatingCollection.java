@@ -21,4 +21,6 @@ public class RatingCollection {
     @Column(name = "rating_collection_id")
     private int ratingCollectionId;
 
+
+
 }
