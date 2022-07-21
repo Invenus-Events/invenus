@@ -11,7 +11,7 @@ const EventPageHeader = ({event}) => {
 
     const fetchData = () => {
         axios
-            .post("http://localhost:8080/checkout", {
+            .post("https://api.invenus.club/checkout", {
                 products: [
                     {
                         ticketId: event.ticketId,
@@ -20,35 +20,27 @@ const EventPageHeader = ({event}) => {
                 ]
             })
             .then(res => {
-                setRes(res);
+                window.location.href = res.data.checkoutUrl;
             })
             .catch(err => setError(err))
     }
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    if (res) {
-        return (
-            <div className="EventPageHeader">
-                <div className="row">
-                    <div className="col-sm">
-                        <h1 className="EventPageHeaderTitle-Main-title"> {event.title} </h1>
-                        <h2 className="EventPageHeaderDateAndTime"> {new Date(event.timeFrame.from).toLocaleString()}</h2>
-                    </div>
-                    <div className="col-sm eventPageHeaderButtons">
-                        {/*<button className='event-page-header-button event-page-header-share'>Share</button>*/}
-                        {/*<button className='event-page-header-button'>Join</button>*/}
-                        <a href={res.data.checkoutUrl}>
-                            <button className='event-page-header-button event-page-header-share'>Buy</button>
-                        </a>
-                    </div>
-                    <img src={event.imageUrl} className="event-banner"></img>
+    return (
+        <div className="EventPageHeader">
+            <div className="row">
+                <div className="col-sm">
+                    <h1 className="EventPageHeaderTitle-Main-title"> {event.title} </h1>
+                    <h2 className="EventPageHeaderDateAndTime"> {new Date(event.timeFrame.from).toLocaleString()}</h2>
                 </div>
+                <div className="col-sm eventPageHeaderButtons">
+                    {/*<button className='event-page-header-button event-page-header-share'>Share</button>*/}
+                    {/*<button className='event-page-header-button'>Join</button>*/}
+                    <button onClick={fetchData} className='event-page-header-button event-page-header-share'>Buy</button>
+                </div>
+                <img src={event.imageUrl} className="event-banner"></img>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default EventPageHeader;
