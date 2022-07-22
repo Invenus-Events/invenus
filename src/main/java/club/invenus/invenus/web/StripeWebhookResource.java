@@ -18,7 +18,7 @@ public class StripeWebhookResource {
     }
 
     @PostMapping("/webhook/stripe")
-    public void stripeWebhook(@RequestBody String payload, @RequestHeader(name = "STRIPE_SIGNATURE") String sigHeader) {
+    public void stripeWebhook(@RequestBody String payload, @RequestHeader(name = "Stripe-Signature") String sigHeader) {
         checkoutService.handleWebhook(payload, sigHeader);
     }
 

@@ -11,6 +11,7 @@ import club.invenus.invenus.repository.TicketRepository;
 import club.invenus.invenus.service.dto.TicketJwtDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TicketService {
@@ -76,7 +78,8 @@ public class TicketService {
             throw new IllegalArgumentException("Unknown ticket type");
         }
 
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper()
+                .registerModule(new JavaTimeModule());
         TypeReference<HashMap<String, Object>> ref = new TypeReference<>() {};
         HashMap<String, Object> dataMap = mapper.convertValue(dto, ref);
         return jwtService.createJwt(dataMap);

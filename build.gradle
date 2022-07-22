@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.sendgrid:sendgrid-java:4.9.3'
     implementation 'com.auth0:java-jwt:4.0.0'
     implementation 'com.google.maps:google-maps-services:2.1.0'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'

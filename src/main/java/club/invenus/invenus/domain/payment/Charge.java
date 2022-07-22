@@ -42,7 +42,7 @@ public class Charge {
     @Column(name = "amountTotal", nullable = false)
     private BigDecimal amountTotal;
 
-    @OneToMany
+    @ManyToMany
     @ToString.Exclude
     @Builder.Default
     private List<AvailableTicket> cart = new ArrayList<>();

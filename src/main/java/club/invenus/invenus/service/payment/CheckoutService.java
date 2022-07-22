@@ -20,11 +20,13 @@ import club.invenus.invenus.service.dto.ConfirmationEmailDTO;
 import club.invenus.invenus.service.dto.ProductDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.LineItem;
 import com.stripe.model.StripeObject;
 import com.stripe.model.checkout.Session;
+import com.stripe.net.RequestOptions;
 import com.stripe.net.Webhook;
 import com.stripe.param.checkout.SessionCreateParams;
 import lombok.extern.slf4j.Slf4j;
@@ -38,10 +40,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -54,8 +54,8 @@ public class CheckoutService {
     private final AvailableTicketRepository availableTicketRepository;
     private final ChargeRepository chargeRepository;
 
-    @Value("${stripe.secret-key}")
-    private String secretKey;
+    @Value("${stripe.webhook-secret}")
+    private String webhookSecret;
     @Value("${email.template.confirmation}")
     private String confirmationEmailTemplate;
 
@@ -71,7 +71,7 @@ public class CheckoutService {
     public void handleWebhook(@NotNull String payload, @NotNull String sigHeader) {
         com.stripe.model.Event event;
         try {
-            event = Webhook.constructEvent(payload, sigHeader, secretKey);
+            event = Webhook.constructEvent(payload, sigHeader, webhookSecret);
         } catch (SignatureVerificationException e) {
             throw new UnauthorizedException("Invalid signature", e);
         }
@@ -89,9 +89,7 @@ public class CheckoutService {
     void handleCheckoutSessionCompleted(@NotNull Session session) {
         log.info("Checkout session completed: " + session.getId());
 
-        List<AvailableTicket> cart = StreamSupport.stream(session.getLineItems().autoPagingIterable().spliterator(), false)
-                .map(LineItem::getPrice)
-                .map(price -> price.getMetadata().get("product_id"))
+        List<AvailableTicket> cart = Arrays.stream(session.getMetadata().get("product_ids").split(","))
                 .map(UUID::fromString)
                 .map(this::getTicket)
                 .toList();
@@ -107,7 +105,7 @@ public class CheckoutService {
 
         List<Ticket> tickets = ticketService.createTickets(cart, charge);
         Map<String, Object> ticketData = createConfirmationEmailData(session, tickets);
-        emailService.sendEmail(session.getCustomer(), session.getCustomerEmail(), confirmationEmailTemplate, ticketData);
+        emailService.sendEmail(session.getCustomerDetails().getName(), session.getCustomerDetails().getEmail(), confirmationEmailTemplate, ticketData);
     }
 
     private Map<String, Object> createConfirmationEmailData(Session session, List<Ticket> tickets) {
@@ -124,6 +122,7 @@ public class CheckoutService {
                 .name(session.getCustomer())
                 .orderNumber(session.getId())
                 .subject("INVENUS.CLUB - TICKETS")
+                .paymentMethod(session.getPaymentIntentObject().getPaymentMethod())
                 .date(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")))
                 .subTotal(session.getAmountSubtotal() / 100.0)
                 .vat((session.getAmountTotal() - session.getAmountSubtotal()) / 100.0)
@@ -131,8 +130,10 @@ public class CheckoutService {
                 .orders(orders)
                 .build();
 
-        ObjectMapper mapper = new ObjectMapper();
-        TypeReference<HashMap<String, Object>> typeRef = new TypeReference<>() {};
+        ObjectMapper mapper = new ObjectMapper()
+                .registerModule(new JavaTimeModule());
+        TypeReference<HashMap<String, Object>> typeRef = new TypeReference<>() {
+        };
         return mapper.convertValue(confirmationEmailData, typeRef);
     }
 
@@ -150,8 +151,14 @@ public class CheckoutService {
         List<SessionCreateParams.LineItem> items = cart.getProducts().stream()
                 .map(this::createLineItem)
                 .toList();
+        String products = cart.getProducts().stream()
+                .map(ProductDTO::getTicketId)
+                .map(UUID::toString)
+                .collect(Collectors.joining(","));
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put("product_ids", products);
         try {
-            return paymentService.createCheckoutSession(items);
+            return paymentService.createCheckoutSession(metadata, items);
         } catch (StripeException e) {
             throw new InternalServerException("Failed to create checkout session", e);
         }
@@ -164,7 +171,7 @@ public class CheckoutService {
         String name = getName(availableTicket);
         String description = getDescription(availableTicket);
 
-        return paymentService.createLineItem(availableTicket.getAvailableTicketId(), name, product.getAmount(), description, availableTicket.getPrice());
+        return paymentService.createLineItem(name, product.getAmount(), description, availableTicket.getPrice());
     }
 
     private String getName(@NotNull AvailableTicket ticket) {

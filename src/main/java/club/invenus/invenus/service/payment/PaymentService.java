@@ -24,6 +24,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -47,9 +48,10 @@ public class PaymentService {
         Stripe.apiKey = secretKey;
     }
 
-    public Session createCheckoutSession(@NotNull List<SessionCreateParams.LineItem> items) throws StripeException {
+    public Session createCheckoutSession(@NotNull Map<String, String> metadata, @NotNull List<SessionCreateParams.LineItem> items) throws StripeException {
         SessionCreateParams params =
                 SessionCreateParams.builder()
+                        .putAllMetadata(metadata)
                         .setMode(SessionCreateParams.Mode.PAYMENT)
                         .setSuccessUrl(webUrl + "/webhook/stripe/success")
                         .setCancelUrl(webUrl)
@@ -63,7 +65,7 @@ public class PaymentService {
         return Session.create(params);
     }
 
-    public SessionCreateParams.LineItem createLineItem(UUID productId, String item, int quantity, String description, BigDecimal price) {
+    public SessionCreateParams.LineItem createLineItem(String item, int quantity, String description, BigDecimal price) {
         return SessionCreateParams.LineItem.builder()
                 .setQuantity((long) quantity)
                 .setPriceData(
@@ -73,7 +75,6 @@ public class PaymentService {
                                 .setTaxBehavior(SessionCreateParams.LineItem.PriceData.TaxBehavior.EXCLUSIVE)
                                 .setProductData(SessionCreateParams.LineItem.PriceData.ProductData.builder()
                                         .setName(item)
-                                        .putMetadata("product_id", productId.toString())
                                         .setDescription(description)
                                         .build())
                                 .build())
