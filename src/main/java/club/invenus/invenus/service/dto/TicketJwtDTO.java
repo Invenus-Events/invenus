@@ -17,7 +17,7 @@ public class TicketJwtDTO {
 
     private final String title;
     private final String club;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private final LocalDateTime from;
     private final String address;
     private final int postCode;
