@@ -119,10 +119,10 @@ public class CheckoutService {
                 .toList();
 
         ConfirmationEmailDTO confirmationEmailData = ConfirmationEmailDTO.builder()
-                .name(session.getCustomer())
+                .name(session.getCustomerDetails().getName())
                 .orderNumber(session.getId())
                 .subject("INVENUS.CLUB - TICKETS")
-                .paymentMethod(session.getPaymentIntentObject().getPaymentMethod())
+                .paymentMethod("Stripe")
                 .date(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")))
                 .subTotal(session.getAmountSubtotal() / 100.0)
                 .vat((session.getAmountTotal() - session.getAmountSubtotal()) / 100.0)
