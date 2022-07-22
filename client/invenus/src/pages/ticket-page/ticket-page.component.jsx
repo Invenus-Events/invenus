@@ -17,10 +17,7 @@ const TicketPage = () => {
     useEffect(() => {
         const decodedToken = parseJwt(id);
         setData(decodedToken);
-
     }, [])
-
-    console.log(data);
 
     if (data != null) {
         return (
@@ -32,7 +29,7 @@ const TicketPage = () => {
                     <h1 className='ticket-title'>{data.title}</h1>
                     <p className='ticket-details'>Brought to you by: {data.club} <br/>
                         Event starts at: {new Date(data.from).toLocaleString()} <br/>
-                        Entry at: {data.address}, {data.postCode} {data.city}
+                        Entry at: {data.address.replace("Ã", "ß")}, {data.postCode} {data.city}
                     </p>
                     <QRCodeSVG
                         className="qr-code-container"
