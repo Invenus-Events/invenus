@@ -40,13 +40,15 @@ public class EmailService {
             personalization.addDynamicTemplateData(stringObjectEntry.getKey(), stringObjectEntry.getValue());
         }
 
+        mail.addPersonalization(personalization);
+
         Request request = new Request();
         try {
             request.setMethod(Method.POST);
             request.setEndpoint("mail/send");
             request.setBody(mail.build());
             Response response = sendGrid.api(request);
-            if (response.getStatusCode() != 200) {
+            if (response.getStatusCode() != 200 && response.getStatusCode() != 202) {
                 throw new RuntimeException("Failed to send email: " + response.getBody());
             }
         } catch (IOException ex) {
